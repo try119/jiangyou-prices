@@ -10,131 +10,672 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 .hd{background:linear-gradient(135deg,#1aad19,#129611);color:#fff;padding:16px;text-align:center;position:sticky;top:0;z-index:99;box-shadow:0 2px 8px rgba(0,0,0,.15)}
 .hd h1{font-size:18px;font-weight:700}
 .hd .dt{font-size:13px;opacity:.9;margin-top:4px}
-.notice{background:#fffbe6;border-left:4px solid #ffc107;margin:12px;padding:12px;border-radius:8px;font-size:13px;color:#856404}
-.sec{margin:12px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.sec-hd{padding:12px 16px;font-size:15px;font-weight:600;color:#fff}
+.hd .sub{font-size:11px;opacity:.75;margin-top:2px}
+.notice{background:#fffbe6;border-left:4px solid #ffc107;margin:12px 12px 0;padding:12px;border-radius:8px;font-size:13px;color:#856404}
+.sec{margin:10px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.sec-hd{padding:10px 16px;font-size:14px;font-weight:600;color:#fff;display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none}
+.sec-hd::after{content:"展开";margin-left:auto;font-size:11px;opacity:.8;font-weight:400}
+.sec-hd.collapsed::after{content:"收起"}
+.sec-hd.collapsed+table{display:none}
 table{width:100%;border-collapse:collapse}
-th{background:#f8f9fa;padding:8px 12px;font-size:12px;color:#666;text-align:left;border-bottom:1px solid #eee}
-th:last-child{text-align:right}
-td{padding:9px 12px;font-size:13px;border-bottom:1px solid #f0f0f0}
-td:last-child{text-align:right;font-weight:600;color:#d32f2f}
+th{background:#f8f9fa;padding:7px 10px;font-size:11px;color:#888;text-align:left;font-weight:500}
+th:last-child,td:last-child{text-align:right}
+td{padding:7px 10px;font-size:12px;border-bottom:1px solid #f0f0f0}
+td:first-child{color:#333}
+td:nth-child(2){color:#999;font-size:11px}
+td:last-child{font-weight:600;color:#d32f2f}
 tr:last-child td{border-bottom:none}
 tr:nth-child(even){background:#fafafa}
-.ft{text-align:center;padding:20px;color:#aaa;font-size:12px}
+.sub-hd{background:#f0f0f0;padding:5px 10px;font-size:11px;color:#888;font-weight:600;letter-spacing:1px}
+.sub-hd td{background:#f0f0f0;border:none;padding:5px 10px;font-size:11px}
+.ft{text-align:center;padding:24px 20px;color:#bbb;font-size:11px;line-height:1.8}
+.count-badge{display:inline-block;background:rgba(255,255,255,.25);border-radius:10px;padding:1px 8px;font-size:10px;font-weight:400}
+.navi{position:sticky;top:68px;z-index:98;background:#fff;border-bottom:1px solid #eee;padding:6px 12px;display:flex;gap:6px;overflow-x:auto;white-space:nowrap}
+.navi a{display:inline-block;padding:4px 10px;background:#f0f0f0;border-radius:20px;font-size:11px;color:#666;text-decoration:none;flex-shrink:0}
+.navi a:active{background:#1aad19;color:#fff}
 </style>
 </head>
 <body>
+
 <div class="hd">
   <h1>🥬 江油生鲜批发价格</h1>
-  <div class="dt">2026年3月27日（周五）· 今日报价</div>
+  <div class="dt">2026年3月27日（周五）· 每日更新</div>
+  <div class="sub">📱 完整品类 · <span style="color:#ffd700">300+</span> 品 参考价</div>
 </div>
-<div class="notice">⚠️ 以下为批发参考价，零售价在此基础上上浮 30%~50%，如遇货源紧张价格可能波动。</div>
 
-<!-- 蔬菜 -->
-<div class="sec">
-  <div class="sec-hd" style="background:#4caf50">🥬 蔬菜类</div>
+<div class="notice">⚠️ 以下为批发参考价，零售价上浮 <b>30%~50%</b>，节假日/恶劣天气价格可能波动较大。</div>
+
+<div class="navi">
+  <a href="#veg">🥬 蔬菜</a>
+  <a href="#meat">🥩 肉类</a>
+  <a href="#fish">🐟 水产</a>
+  <a href="#fruit">🍎 水果</a>
+  <a href="#condiment">🧂 调料</a>
+  <a href="#grain">🌾 粮油</a>
+  <a href="#frozen">🧊 冻品</a>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 一、蔬菜类 80品 -->
+<!-- ═══════════════════════════════════════ -->
+<div class="sec" id="veg">
+  <div class="sec-hd" style="background:#4caf50" onclick="this.classList.toggle('collapsed')">🥬 蔬菜类 <span class="count-badge">80品</span></div>
   <table>
-    <tr><th>品名</th><th>规格</th><th>今日批发价</th></tr>
+    <tr><th>品名</th><th>规格</th><th>批发价</th></tr>
+
+    <!-- 叶菜 -->
+    <tr class="sub-hd"><td colspan="3">🌿 叶菜类</td></tr>
     <tr><td>大白菜</td><td>散装/斤</td><td>0.95元</td></tr>
     <tr><td>小白菜</td><td>散装/斤</td><td>1.80元</td></tr>
     <tr><td>上海青(油菜)</td><td>散装/斤</td><td>2.00元</td></tr>
     <tr><td>菠菜</td><td>散装/斤</td><td>3.50元</td></tr>
     <tr><td>生菜</td><td>散装/斤</td><td>3.00元</td></tr>
+    <tr><td>油麦菜</td><td>散装/斤</td><td>2.80元</td></tr>
     <tr><td>茼蒿</td><td>散装/斤</td><td>4.50元</td></tr>
     <tr><td>香菜</td><td>散装/斤</td><td>6.00元</td></tr>
     <tr><td>韭菜</td><td>散装/斤</td><td>3.00元</td></tr>
-    <tr><td>芹菜</td><td>散装/斤</td><td>3.50元</td></tr>
+    <tr><td>韭黄</td><td>散装/斤</td><td>7.00元</td></tr>
+    <tr><td>空心菜</td><td>散装/斤</td><td>3.50元</td></tr>
+    <tr><td>莴笋叶</td><td>散装/斤</td><td>2.50元</td></tr>
+    <tr><td>娃娃菜</td><td>袋装/3棵</td><td>4.00元</td></tr>
+    <tr><td>菜心</td><td>散装/斤</td><td>3.50元</td></tr>
+    <tr><td>芥菜</td><td>散装/斤</td><td>2.00元</td></tr>
+    <tr><td>苋菜(红)</td><td>散装/斤</td><td>3.00元</td></tr>
+    <tr><td>木耳菜</td><td>散装/斤</td><td>4.00元</td></tr>
+    <tr><td>红薯叶</td><td>散装/斤</td><td>2.50元</td></tr>
+    <tr><td>牛皮菜</td><td>散装/斤</td><td>1.50元</td></tr>
+
+    <!-- 根茎类 -->
+    <tr class="sub-hd"><td colspan="3">🥔 根茎类</td></tr>
     <tr><td>白萝卜</td><td>散装/斤</td><td>0.90元</td></tr>
     <tr><td>胡萝卜</td><td>散装/斤</td><td>2.50元</td></tr>
     <tr><td>土豆</td><td>散装/斤</td><td>1.60元</td></tr>
+    <tr><td>红薯</td><td>散装/斤</td><td>2.00元</td></tr>
+    <tr><td>紫薯</td><td>散装/斤</td><td>3.50元</td></tr>
+    <tr><td>芋头</td><td>散装/斤</td><td>4.00元</td></tr>
     <tr><td>莲藕</td><td>散装/斤</td><td>4.50元</td></tr>
-    <tr><td>冬瓜</td><td>整只/斤</td><td>1.20元</td></tr>
+    <tr><td>山药</td><td>散装/斤</td><td>5.00元</td></tr>
+    <tr><td>冬笋</td><td>散装/斤</td><td>8.00元</td></tr>
+    <tr><td>竹笋</td><td>散装/斤</td><td>6.00元</td></tr>
+    <tr><td>芦笋</td><td>散装/斤</td><td>12.00元</td></tr>
+    <tr><td>莴笋</td><td>散装/斤</td><td>2.00元</td></tr>
+    <tr><td>苤蓝</td><td>散装/斤</td><td>2.00元</td></tr>
+    <tr><td>菱角</td><td>散装/斤</td><td>6.00元</td></tr>
+    <tr><td>芥蓝</td><td>散装/斤</td><td>3.50元</td></tr>
+
+    <!-- 瓜果类 -->
+    <tr class="sub-hd"><td colspan="3">🥒 瓜果类</td></tr>
     <tr><td>黄瓜</td><td>散装/斤</td><td>2.50元</td></tr>
+    <tr><td>苦瓜</td><td>散装/斤</td><td>4.50元</td></tr>
+    <tr><td>丝瓜</td><td>散装/斤</td><td>4.00元</td></tr>
+    <tr><td>冬瓜</td><td>整只/斤</td><td>1.20元</td></tr>
+    <tr><td>南瓜</td><td>散装/斤</td><td>1.50元</td></tr>
+    <tr><td>西葫芦</td><td>散装/斤</td><td>2.50元</td></tr>
     <tr><td>茄子</td><td>散装/斤</td><td>3.50元</td></tr>
     <tr><td>西红柿</td><td>散装/斤</td><td>3.00元</td></tr>
+    <tr><td>圣女果</td><td>斤</td><td>6.00元</td></tr>
     <tr><td>青椒</td><td>散装/斤</td><td>4.00元</td></tr>
+    <tr><td>彩椒(红/黄)</td><td>散装/斤</td><td>8.00元</td></tr>
+    <tr><td>小米椒</td><td>散装/斤</td><td>10.00元</td></tr>
+    <tr><td>线椒</td><td>散装/斤</td><td>5.00元</td></tr>
+    <tr><td>螺丝椒</td><td>散装/斤</td><td>5.50元</td></tr>
+    <tr><td>朝天椒</td><td>散装/斤</td><td>12.00元</td></tr>
     <tr><td>四季豆</td><td>散装/斤</td><td>5.00元</td></tr>
+    <tr><td>豇豆</td><td>散装/斤</td><td>4.50元</td></tr>
+    <tr><td>毛豆</td><td>散装/斤</td><td>5.00元</td></tr>
+    <tr><td>玉米</td><td>散装/斤</td><td>3.00元</td></tr>
+    <tr><td>甜糯玉米</td><td>根</td><td>3.50元</td></tr>
+
+    <!-- 菌菇类 -->
+    <tr class="sub-hd"><td colspan="3">🍄 菌菇类</td></tr>
     <tr><td>金针菇</td><td>袋装/斤</td><td>5.00元</td></tr>
     <tr><td>香菇</td><td>散装/斤</td><td>8.00元</td></tr>
-    <tr><td>大葱</td><td>散装/斤</td><td>2.50元</td></tr>
+    <tr><td>杏鲍菇</td><td>散装/斤</td><td>6.00元</td></tr>
+    <tr><td>白玉菇</td><td>袋装/斤</td><td>7.00元</td></tr>
+    <tr><td>蟹味菇</td><td>袋装/斤</td><td>7.00元</td></tr>
+    <tr><td>茶树菇</td><td>散装/斤</td><td>10.00元</td></tr>
+    <tr><td>鸡腿菇</td><td>散装/斤</td><td>9.00元</td></tr>
+    <tr><td>平菇</td><td>散装/斤</td><td>4.50元</td></tr>
+    <tr><td>木耳(鲜)</td><td>散装/斤</td><td>6.00元</td></tr>
     <tr><td>木耳(干)</td><td>散装/斤</td><td>35.00元</td></tr>
+    <tr><td>银耳(干)</td><td>散装/斤</td><td>40.00元</td></tr>
+
+    <!-- 调味菜 -->
+    <tr class="sub-hd"><td colspan="3">🧄 调味菜</td></tr>
+    <tr><td>大葱</td><td>散装/斤</td><td>2.50元</td></tr>
+    <tr><td>小葱</td><td>散装/斤</td><td>4.00元</td></tr>
+    <tr><td>生姜</td><td>散装/斤</td><td>8.00元</td></tr>
+    <tr><td>大蒜</td><td>散装/斤</td><td>7.00元</td></tr>
+    <tr><td>独蒜</td><td>散装/斤</td><td>12.00元</td></tr>
+    <tr><td>蒜薹</td><td>散装/斤</td><td>5.00元</td></tr>
+    <tr><td>蒜苗</td><td>散装/斤</td><td>4.00元</td></tr>
+    <tr><td>洋葱</td><td>散装/斤</td><td>2.00元</td></tr>
+
+    <!-- 精品/有机菜 -->
+    <tr class="sub-hd"><td colspan="3">✨ 精品菜 / 有机</td></tr>
+    <tr><td>有机菠菜</td><td>袋装/200g</td><td>8.00元</td></tr>
+    <tr><td>有机胡萝卜</td><td>袋装/300g</td><td>7.50元</td></tr>
+    <tr><td>净菜套装(4品)</td><td>盒</td><td>15.00元</td></tr>
+    <tr><td>沙拉菜混合</td><td>盒/200g</td><td>12.00元</td></tr>
+    <tr><td>紫甘蓝</td><td>散装/斤</td><td>3.50元</td></tr>
+    <tr><td>西兰花</td><td>散装/斤</td><td>4.50元</td></tr>
+    <tr><td>花椰菜</td><td>散装/斤</td><td>3.50元</td></tr>
   </table>
 </div>
 
-<!-- 肉类 -->
-<div class="sec">
-  <div class="sec-hd" style="background:#e53935">🥩 肉类</div>
+<!-- ═══════════════════════════════════════ -->
+<!-- 二、肉类 60品 -->
+<!-- ═══════════════════════════════════════ -->
+<div class="sec" id="meat">
+  <div class="sec-hd" style="background:#e53935" onclick="this.classList.toggle('collapsed')">🥩 肉类 <span class="count-badge">60品</span></div>
   <table>
-    <tr><th>品名</th><th>规格</th><th>今日批发价</th></tr>
+    <tr><th>品名</th><th>规格</th><th>批发价</th></tr>
+
+    <!-- 猪肉 -->
+    <tr class="sub-hd"><td colspan="3">🐷 猪肉</td></tr>
     <tr><td>猪肉·前腿</td><td>精切/斤</td><td>13.50元</td></tr>
+    <tr><td>猪肉·后腿</td><td>精切/斤</td><td>13.50元</td></tr>
+    <tr><td>猪肉·里脊</td><td>精切/斤</td><td>17.00元</td></tr>
     <tr><td>猪肉·五花</td><td>精切/斤</td><td>14.50元</td></tr>
-    <tr><td>排骨</td><td>精切/斤</td><td>20.00元</td></tr>
+    <tr><td>猪肉·肥膘</td><td>斤</td><td>10.00元</td></tr>
+    <tr><td>排骨(肋排)</td><td>精切/斤</td><td>20.00元</td></tr>
     <tr><td>筒骨</td><td>斤</td><td>12.00元</td></tr>
+    <tr><td>棒骨</td><td>斤</td><td>10.00元</td></tr>
+    <tr><td>脊骨</td><td>斤</td><td>11.00元</td></tr>
     <tr><td>猪蹄</td><td>斤</td><td>16.00元</td></tr>
+    <tr><td>猪肘</td><td>斤</td><td>15.00元</td></tr>
+    <tr><td>猪舌</td><td>斤</td><td>22.00元</td></tr>
+    <tr><td>猪心</td><td>斤</td><td>18.00元</td></tr>
+    <tr><td>猪肝</td><td>斤</td><td>15.00元</td></tr>
+    <tr><td>猪肚</td><td>斤</td><td>28.00元</td></tr>
+    <tr><td>猪腰</td><td>斤</td><td>25.00元</td></tr>
+    <tr><td>猪大肠</td><td>斤</td><td>12.00元</td></tr>
+    <tr><td>猪小肠</td><td>斤</td><td>14.00元</td></tr>
+    <tr><td>猪血</td><td>斤</td><td>3.00元</td></tr>
+    <tr><td>土猪肉·五花</td><td>斤</td><td>22.00元</td></tr>
+    <tr><td>黑猪·前腿</td><td>斤</td><td>25.00元</td></tr>
+
+    <!-- 牛肉 -->
+    <tr class="sub-hd"><td colspan="3">🐮 牛肉</td></tr>
     <tr><td>牛肉·腱子</td><td>斤</td><td>38.00元</td></tr>
+    <tr><td>牛肉·里脊</td><td>斤</td><td>42.00元</td></tr>
+    <tr><td>牛肉·眼肉</td><td>斤</td><td>45.00元</td></tr>
     <tr><td>牛腩</td><td>斤</td><td>36.00元</td></tr>
+    <tr><td>牛里脊片</td><td>斤</td><td>43.00元</td></tr>
+    <tr><td>肥牛卷</td><td>斤</td><td>35.00元</td></tr>
+    <tr><td>牛百叶</td><td>斤</td><td>32.00元</td></tr>
+    <tr><td>牛肚</td><td>斤</td><td>28.00元</td></tr>
+    <tr><td>牛腱子</td><td>斤</td><td>40.00元</td></tr>
+    <tr><td>牛排骨</td><td>斤</td><td>20.00元</td></tr>
+
+    <!-- 羊肉 -->
+    <tr class="sub-hd"><td colspan="3">🐑 羊肉</td></tr>
     <tr><td>羊肉(带骨)</td><td>斤</td><td>32.00元</td></tr>
+    <tr><td>羊排</td><td>斤</td><td>35.00元</td></tr>
+    <tr><td>羊腿肉</td><td>斤</td><td>36.00元</td></tr>
+    <tr><td>羊蝎子</td><td>斤</td><td>22.00元</td></tr>
+    <tr><td>羊杂</td><td>斤</td><td>18.00元</td></tr>
+    <tr><td>羊肉卷</td><td>斤</td><td>30.00元</td></tr>
+
+    <!-- 禽肉 -->
+    <tr class="sub-hd"><td colspan="3">🐔 禽肉</td></tr>
     <tr><td>鸡胸肉</td><td>斤</td><td>9.00元</td></tr>
+    <tr><td>鸡腿肉</td><td>斤</td><td>10.00元</td></tr>
+    <tr><td>鸡翅(中)</td><td>斤</td><td>14.00元</td></tr>
+    <tr><td>鸡翅根</td><td>斤</td><td>11.00元</td></tr>
+    <tr><td>鸡爪</td><td>斤</td><td>12.00元</td></tr>
+    <tr><td>鸡架</td><td>斤</td><td>4.00元</td></tr>
+    <tr><td>鸡胗</td><td>斤</td><td>13.00元</td></tr>
+    <tr><td>鸡肝</td><td>斤</td><td>5.00元</td></tr>
+    <tr><td>整鸡(冷冻)</td><td>斤</td><td>7.50元</td></tr>
     <tr><td>三黄鸡(整只)</td><td>斤</td><td>10.00元</td></tr>
     <tr><td>土鸡(散养)</td><td>斤</td><td>25.00元</td></tr>
+    <tr><td>乌鸡</td><td>斤</td><td>22.00元</td></tr>
+    <tr><td>老母鸡</td><td>斤</td><td>20.00元</td></tr>
+    <tr><td>小公鸡</td><td>斤</td><td>15.00元</td></tr>
+    <tr><td>鸡苗(肉用)</td><td>只</td><td>3.00元</td></tr>
+    <tr><td>鸭血</td><td>斤</td><td>4.00元</td></tr>
     <tr><td>老鸭</td><td>斤</td><td>18.00元</td></tr>
+    <tr><td>麻鸭</td><td>斤</td><td>14.00元</td></tr>
+    <tr><td>鸭胗</td><td>斤</td><td>15.00元</td></tr>
+    <tr><td>鹅</td><td>斤</td><td>20.00元</td></tr>
+    <tr><td>鸽子</td><td>只</td><td>25.00元</td></tr>
+    <tr><td>鹌鹑</td><td>只</td><td>5.00元</td></tr>
   </table>
 </div>
 
-<!-- 水产 -->
-<div class="sec">
-  <div class="sec-hd" style="background:#0288d1">🐟 水产类</div>
+<!-- ═══════════════════════════════════════ -->
+<!-- 三、水产类 50品 -->
+<!-- ═══════════════════════════════════════ -->
+<div class="sec" id="fish">
+  <div class="sec-hd" style="background:#0288d1" onclick="this.classList.toggle('collapsed')">🐟 水产类 <span class="count-badge">50品</span></div>
   <table>
-    <tr><th>品名</th><th>规格</th><th>今日批发价</th></tr>
+    <tr><th>品名</th><th>规格</th><th>批发价</th></tr>
+
+    <!-- 淡水鱼 -->
+    <tr class="sub-hd"><td colspan="3">🌊 淡水鱼</td></tr>
     <tr><td>草鱼</td><td>活鱼/斤</td><td>8.50元</td></tr>
     <tr><td>鲫鱼</td><td>活鱼/斤</td><td>9.00元</td></tr>
     <tr><td>花鲢(大头)</td><td>活鱼/斤</td><td>8.00元</td></tr>
+    <tr><td>白鲢</td><td>活鱼/斤</td><td>6.00元</td></tr>
     <tr><td>鲤鱼</td><td>活鱼/斤</td><td>8.00元</td></tr>
     <tr><td>黄辣丁</td><td>活鱼/斤</td><td>14.00元</td></tr>
+    <tr><td>江团</td><td>活鱼/斤</td><td>15.00元</td></tr>
+    <tr><td>黄鳝</td><td>活/斤</td><td>35.00元</td></tr>
+    <tr><td>泥鳅</td><td>活/斤</td><td>18.00元</td></tr>
+    <tr><td>鳜鱼(桂鱼)</td><td>活鱼/斤</td><td>40.00元</td></tr>
+    <tr><td>鳜鱼(1斤内)</td><td>活鱼/斤</td><td>42.00元</td></tr>
+    <tr><td>鳜鱼(1斤+)</td><td>活鱼/斤</td><td>48.00元</td></tr>
     <tr><td>鲈鱼</td><td>活鱼/斤</td><td>18.00元</td></tr>
-    <tr><td>小龙虾(大)</td><td>活虾/斤</td><td>28.00元</td></tr>
+    <tr><td>罗非鱼</td><td>活鱼/斤</td><td>8.00元</td></tr>
+    <tr><td>黑鱼(财鱼)</td><td>活鱼/斤</td><td>16.00元</td></tr>
+    <tr><td>白乌鱼</td><td>活鱼/斤</td><td>18.00元</td></tr>
+    <tr><td>三角峰</td><td>活鱼/斤</td><td>14.00元</td></tr>
+    <tr><td>裸斑</td><td>活鱼/斤</td><td>10.00元</td></tr>
+
+    <!-- 海水鱼 -->
+    <tr class="sub-hd"><td colspan="3">🌊 海水鱼</td></tr>
+    <tr><td>带鱼</td><td>斤</td><td>15.00元</td></tr>
+    <tr><td>黄花鱼(小)</td><td>斤</td><td>18.00元</td></tr>
+    <tr><td>黄花鱼(大)</td><td>斤</td><td>25.00元</td></tr>
+    <tr><td>鲳鱼</td><td>斤</td><td>22.00元</td></tr>
+    <tr><td>多宝鱼</td><td>斤</td><td>30.00元</td></tr>
+    <tr><td>石斑鱼</td><td>斤</td><td>38.00元</td></tr>
+
+    <!-- 虾蟹 -->
+    <tr class="sub-hd"><td colspan="3">🦐 虾蟹</td></tr>
+    <tr><td>小龙虾(小/4-6钱)</td><td>活虾/斤</td><td>18.00元</td></tr>
+    <tr><td>小龙虾(中/7-9钱)</td><td>活虾/斤</td><td>24.00元</td></tr>
+    <tr><td>小龙虾(大/1两+)</td><td>活虾/斤</td><td>32.00元</td></tr>
     <tr><td>基围虾</td><td>活虾/斤</td><td>35.00元</td></tr>
+    <tr><td>白对虾</td><td>斤</td><td>30.00元</td></tr>
+    <tr><td>罗氏虾</td><td>斤</td><td>38.00元</td></tr>
+    <tr><td>河虾</td><td>活虾/斤</td><td>40.00元</td></tr>
+    <tr><td>青蟹(梭子蟹)</td><td>斤</td><td>45.00元</td></tr>
+    <tr><td>大闸蟹(公3两)</td><td>只</td><td>20.00元</td></tr>
+    <tr><td>大闸蟹(母2两)</td><td>只</td><td>18.00元</td></tr>
+    <tr><td>肉蟹</td><td>斤</td><td>38.00元</td></tr>
+    <tr><td>帝王蟹</td><td>斤</td><td>120.00元</td></tr>
+
+    <!-- 贝类 -->
+    <tr class="sub-hd"><td colspan="3">🐚 贝类</td></tr>
+    <tr><td>花蛤</td><td>斤</td><td>6.00元</td></tr>
+    <tr><td>文蛤</td><td>斤</td><td>10.00元</td></tr>
+    <tr><td>扇贝</td><td>斤</td><td>12.00元</td></tr>
+    <tr><td>生蚝(带壳)</td><td>斤</td><td>10.00元</td></tr>
+    <tr><td>生蚝肉</td><td>斤</td><td>30.00元</td></tr>
+    <tr><td>蛏子</td><td>斤</td><td>15.00元</td></tr>
+    <tr><td>鲍鱼(小)</td><td>只</td><td>6.00元</td></tr>
+    <tr><td>鲍鱼(中)</td><td>只</td><td>10.00元</td></tr>
+    <tr><td>海螺</td><td>斤</td><td>20.00元</td></tr>
+    <tr><td>田螺</td><td>斤</td><td>5.00元</td></tr>
+
+    <!-- 两栖/特种 -->
+    <tr class="sub-hd"><td colspan="3">🐸 特色水产</td></tr>
     <tr><td>牛蛙</td><td>活/斤</td><td>12.00元</td></tr>
+    <tr><td>美蛙</td><td>活/斤</td><td>10.00元</td></tr>
+    <tr><td>甲鱼(养殖)</td><td>斤</td><td>35.00元</td></tr>
+    <tr><td>乌龟</td><td>斤</td><td>30.00元</td></tr>
+    <tr><td>娃娃鱼</td><td>斤</td><td>60.00元</td></tr>
+    <tr><td>乌龟蛋</td><td>个</td><td>3.00元</td></tr>
   </table>
 </div>
 
-<!-- 水果 -->
-<div class="sec">
-  <div class="sec-hd" style="background:#f57c00">🍎 水果类</div>
+<!-- ═══════════════════════════════════════ -->
+<!-- 四、水果类 75品 -->
+<!-- ═══════════════════════════════════════ -->
+<div class="sec" id="fruit">
+  <div class="sec-hd" style="background:#f57c00" onclick="this.classList.toggle('collapsed')">🍎 水果类 <span class="count-badge">75品</span></div>
   <table>
-    <tr><th>品名</th><th>规格</th><th>今日批发价</th></tr>
+    <tr><th>品名</th><th>规格</th><th>批发价</th></tr>
+
+    <!-- 苹果梨 -->
+    <tr class="sub-hd"><td colspan="3">🍎 苹果/梨</td></tr>
     <tr><td>苹果·红富士</td><td>斤</td><td>4.50元</td></tr>
-    <tr><td>香蕉</td><td>斤</td><td>3.00元</td></tr>
-    <tr><td>葡萄·巨峰</td><td>斤</td><td>8.00元</td></tr>
-    <tr><td>橙子·脐橙</td><td>斤</td><td>4.50元</td></tr>
+    <tr><td>苹果·红富士(优)</td><td>斤</td><td>6.00元</td></tr>
+    <tr><td>苹果·青苹果</td><td>斤</td><td>5.00元</td></tr>
+    <tr><td>苹果·花牛</td><td>斤</td><td>5.50元</td></tr>
+    <tr><td>苹果·阿克苏</td><td>斤</td><td>7.00元</td></tr>
+    <tr><td>苹果·盐源丑苹果</td><td>斤</td><td>5.00元</td></tr>
+    <tr><td>梨·皇冠梨</td><td>斤</td><td>3.50元</td></tr>
+    <tr><td>梨·雪梨</td><td>斤</td><td>3.00元</td></tr>
+    <tr><td>梨·丰水梨</td><td>斤</td><td>5.00元</td></tr>
+    <tr><td>梨·香梨</td><td>斤</td><td>8.00元</td></tr>
+    <tr><td>梨·砀山梨</td><td>斤</td><td>2.00元</td></tr>
+
+    <!-- 柑橘类 -->
+    <tr class="sub-hd"><td colspan="3">🍊 柑橘类</td></tr>
+    <tr><td>橙子·赣南脐橙</td><td>斤</td><td>4.50元</td></tr>
+    <tr><td>橙子·血橙</td><td>斤</td><td>6.00元</td></tr>
+    <tr><td>橙子·褚橙</td><td>斤</td><td>8.00元</td></tr>
     <tr><td>沃柑</td><td>斤</td><td>5.00元</td></tr>
-    <tr><td>芒果</td><td>斤</td><td>7.00元</td></tr>
+    <tr><td>耙耙柑(春见)</td><td>斤</td><td>5.50元</td></tr>
+    <tr><td>丑橘(不知火)</td><td>斤</td><td>4.50元</td></tr>
+    <tr><td>爱媛果冻橙</td><td>斤</td><td>7.00元</td></tr>
+    <tr><td>砂糖橘</td><td>斤</td><td>4.00元</td></tr>
+    <tr><td>蜜橘</td><td>斤</td><td>2.50元</td></tr>
+    <tr><td>柚子(白肉)</td><td>斤</td><td>3.00元</td></tr>
+    <tr><td>柚子(红肉)</td><td>斤</td><td>4.00元</td></tr>
+    <tr><td>柠檬</td><td>斤</td><td>6.00元</td></tr>
+    <tr><td>青柠</td><td>斤</td><td>8.00元</td></tr>
+
+    <!-- 热带水果 -->
+    <tr class="sub-hd"><td colspan="3">🥭 热带水果</td></tr>
+    <tr><td>香蕉</td><td>斤</td><td>3.00元</td></tr>
+    <tr><td>香蕉·小米蕉</td><td>斤</td><td>4.50元</td></tr>
+    <tr><td>芒果·小台农</td><td>斤</td><td>7.00元</td></tr>
+    <tr><td>芒果·大青芒</td><td>斤</td><td>8.00元</td></tr>
+    <tr><td>芒果·凯特芒</td><td>斤</td><td>6.00元</td></tr>
     <tr><td>火龙果(白心)</td><td>斤</td><td>5.00元</td></tr>
-    <tr><td>榴莲</td><td>斤</td><td>25.00元</td></tr>
+    <tr><td>火龙果(红心)</td><td>斤</td><td>7.00元</td></tr>
     <tr><td>菠萝</td><td>斤</td><td>3.00元</td></tr>
+    <tr><td>菠萝蜜</td><td>斤</td><td>8.00元</td></tr>
+    <tr><td>榴莲</td><td>斤</td><td>25.00元</td></tr>
+    <tr><td>榴莲(金枕)</td><td>斤</td><td>28.00元</td></tr>
+    <tr><td>山竹</td><td>斤</td><td>15.00元</td></tr>
+    <tr><td>椰子</td><td>个</td><td>8.00元</td></tr>
+    <tr><td>释迦</td><td>斤</td><td>18.00元</td></tr>
+    <tr><td>莲雾</td><td>斤</td><td>15.00元</td></tr>
+    <tr><td>百香果</td><td>斤</td><td>10.00元</td></tr>
+    <tr><td>杨桃</td><td>斤</td><td>8.00元</td></tr>
+    <tr><td>番石榴(芭乐)</td><td>斤</td><td>6.00元</td></tr>
+    <tr><td>龙眼</td><td>斤</td><td>10.00元</td></tr>
+    <tr><td>荔枝</td><td>斤</td><td>12.00元</td></tr>
+    <tr><td>红毛丹</td><td>斤</td><td>15.00元</td></tr>
+    <tr><td>芒果干</td><td>斤</td><td>30.00元</td></tr>
+
+    <!-- 葡萄/瓜类 -->
+    <tr class="sub-hd"><td colspan="3">🍇 葡萄/瓜类</td></tr>
+    <tr><td>葡萄·巨峰</td><td>斤</td><td>8.00元</td></tr>
+    <tr><td>葡萄·夏黑</td><td>斤</td><td>9.00元</td></tr>
+    <tr><td>葡萄·阳光玫瑰</td><td>斤</td><td>15.00元</td></tr>
+    <tr><td>葡萄·红提</td><td>斤</td><td>10.00元</td></tr>
+    <tr><td>葡萄·黑提</td><td>斤</td><td>12.00元</td></tr>
+    <tr><td>葡萄·青提</td><td>斤</td><td>11.00元</td></tr>
+    <tr><td>提子</td><td>斤</td><td>10.00元</td></tr>
+    <tr><td>西瓜(小麒麟)</td><td>斤</td><td>2.50元</td></tr>
+    <tr><td>西瓜(大西瓜)</td><td>斤</td><td>1.80元</td></tr>
+    <tr><td>哈密瓜</td><td>斤</td><td>4.00元</td></tr>
+    <tr><td>网纹瓜</td><td>斤</td><td>6.00元</td></tr>
+    <tr><td>香瓜</td><td>斤</td><td>4.00元</td></tr>
+    <tr><td>东方蜜</td><td>斤</td><td>4.50元</td></tr>
+    <tr><td>羊角蜜</td><td>斤</td><td>6.00元</td></tr>
+
+    <!-- 桃/李/杏/樱桃 -->
+    <tr class="sub-hd"><td colspan="3">🍑 桃/李/樱桃</td></tr>
+    <tr><td>桃子·水蜜桃</td><td>斤</td><td>7.00元</td></tr>
+    <tr><td>桃子·黄桃</td><td>斤</td><td>6.00元</td></tr>
+    <tr><td>桃子·油桃</td><td>斤</td><td>7.50元</td></tr>
+    <tr><td>桃子·蟠桃</td><td>斤</td><td>8.00元</td></tr>
+    <tr><td>李子·青脆李</td><td>斤</td><td>6.00元</td></tr>
+    <tr><td>李子·红布林</td><td>斤</td><td>8.00元</td></tr>
+    <tr><td>杏子</td><td>斤</td><td>5.00元</td></tr>
+    <tr><td>樱桃·美早</td><td>斤</td><td>30.00元</td></tr>
+    <tr><td>樱桃·红灯</td><td>斤</td><td>20.00元</td></tr>
+    <tr><td>车厘子(2J)</td><td>斤</td><td>40.00元</td></tr>
+    <tr><td>车厘子(3J)</td><td>斤</td><td>50.00元</td></tr>
+    <tr><td>枇杷</td><td>斤</td><td>12.00元</td></tr>
+    <tr><td>无花果</td><td>斤</td><td>15.00元</td></tr>
+    <tr><td>猕猴桃(绿心)</td><td>斤</td><td>5.00元</td></tr>
+    <tr><td>猕猴桃(红心)</td><td>斤</td><td>10.00元</td></tr>
+    <tr><td>猕猴桃(徐香)</td><td>斤</td><td>7.00元</td></tr>
+    <tr><td>柿子</td><td>斤</td><td>4.00元</td></tr>
+    <tr><td>石榴</td><td>斤</td><td>6.00元</td></tr>
+    <tr><td>石榴(软籽)</td><td>斤</td><td>10.00元</td></tr>
   </table>
 </div>
 
-<!-- 调料油粮 -->
-<div class="sec">
-  <div class="sec-hd" style="background:#7b1fa2">🧂 调料 / 油粮</div>
+<!-- ═══════════════════════════════════════ -->
+<!-- 五、调料类 90品 -->
+<!-- ═══════════════════════════════════════ -->
+<div class="sec" id="condiment">
+  <div class="sec-hd" style="background:#7b1fa2" onclick="this.classList.toggle('collapsed')">🧂 调料类 <span class="count-badge">90品</span></div>
   <table>
-    <tr><th>品名</th><th>规格</th><th>今日批发价</th></tr>
-    <tr><td>菜籽油(一级)</td><td>5L桶</td><td>8.00元/斤</td></tr>
-    <tr><td>花生油(纯)</td><td>5L桶</td><td>16.00元/斤</td></tr>
+    <tr><th>品名</th><th>规格</th><th>批发价</th></tr>
+
+    <!-- 酱油/醋/料酒 -->
+    <tr class="sub-hd"><td colspan="3">🍶 酱油·醋·料酒</td></tr>
     <tr><td>生抽酱油</td><td>500ml</td><td>6.50元</td></tr>
+    <tr><td>老抽</td><td>500ml</td><td>7.00元</td></tr>
+    <tr><td>味极鲜</td><td>500ml</td><td>10.00元</td></tr>
+    <tr><td>蒸鱼豉油</td><td>500ml</td><td>9.00元</td></tr>
+    <tr><td>有机酱油</td><td>500ml</td><td>15.00元</td></tr>
+    <tr><td>零添加酱油</td><td>500ml</td><td>12.00元</td></tr>
+    <tr><td>寿司酱油</td><td>200ml</td><td>8.00元</td></tr>
+    <tr><td>陈醋</td><td>500ml</td><td>6.00元</td></tr>
+    <tr><td>香醋</td><td>500ml</td><td>7.00元</td></tr>
+    <tr><td>白醋</td><td>500ml</td><td>4.00元</td></tr>
+    <tr><td>米醋</td><td>500ml</td><td>6.00元</td></tr>
+    <tr><td>镇江香醋</td><td>500ml</td><td>8.00元</td></tr>
+    <tr><td>料酒</td><td>500ml</td><td>6.00元</td></tr>
+    <tr><td>花雕酒</td><td>500ml</td><td>12.00元</td></tr>
+
+    <!-- 蚝油/酱类 -->
+    <tr class="sub-hd"><td colspan="3">🥫 蚝油·酱类</td></tr>
     <tr><td>蚝油</td><td>500g</td><td>7.00元</td></tr>
-    <tr><td>郫县豆瓣(红油)</td><td>500g</td><td>8.00元</td></tr>
-    <tr><td>火锅底料(重庆)</td><td>500g</td><td>8.00元</td></tr>
+    <tr><td>海鲜酱</td><td>250g</td><td>8.00元</td></tr>
+    <tr><td>叉烧酱</td><td>250g</td><td>8.00元</td></tr>
+    <tr><td>沙拉酱</td><td>250g</td><td>10.00元</td></tr>
+    <tr><td>番茄沙司</td><td>250g</td><td>6.00元</td></tr>
+    <tr><td>甜面酱</td><td>250g</td><td>5.00元</td></tr>
+    <tr><td>黄豆酱</td><td>250g</td><td>6.00元</td></tr>
+    <tr><td>豆瓣酱(郫县)</td><td>500g</td><td>8.00元</td></tr>
+    <tr><td>红油豆瓣</td><td>500g</td><td>9.00元</td></tr>
+    <tr><td>豆豉</td><td>250g</td><td>7.00元</td></tr>
+    <tr><td>老干妈(香辣脆)</td><td>280g</td><td>12.00元</td></tr>
+    <tr><td>老干妈(风味)</td><td>280g</td><td>11.00元</td></tr>
+    <tr><td>牛肉酱</td><td>250g</td><td>15.00元</td></tr>
+    <tr><td>XO酱</td><td>200g</td><td>30.00元</td></tr>
+    <tr><td>虾酱</td><td>250g</td><td>12.00元</td></tr>
+    <tr><td>辣妹子</td><td>260g</td><td>6.00元</td></tr>
+    <tr><td>泡椒凤爪调料</td><td>200g</td><td>7.00元</td></tr>
+
+    <!-- 火锅底料 -->
+    <tr class="sub-hd"><td colspan="3">🍲 火锅·麻辣调料</td></tr>
+    <tr><td>火锅底料(重庆牛油)</td><td>500g</td><td>8.00元</td></tr>
+    <tr><td>火锅底料(清汤)</td><td>500g</td><td>7.00元</td></tr>
+    <tr><td>麻辣烫底料</td><td>500g</td><td>8.00元</td></tr>
+    <tr><td>串串香底料</td><td>500g</td><td>8.00元</td></tr>
+    <tr><td>冒菜底料</td><td>500g</td><td>8.00元</td></tr>
+    <tr><td>水煮鱼调料</td><td>300g</td><td>9.00元</td></tr>
+    <tr><td>酸菜鱼调料</td><td>300g</td><td>8.00元</td></tr>
+    <tr><td>鱼香肉丝调料</td><td>200g</td><td>6.00元</td></tr>
+    <tr><td>回锅肉调料</td><td>200g</td><td>6.00元</td></tr>
+    <tr><td>麻婆豆腐调料</td><td>200g</td><td>6.00元</td></tr>
+    <tr><td>钵钵鸡调料</td><td>300g</td><td>9.00元</td></tr>
+    <tr><td>小龙虾调料</td><td>300g</td><td>10.00元</td></tr>
+
+    <!-- 盐/糖/味精 -->
+    <tr class="sub-hd"><td colspan="3">🧂 盐·糖·味精</td></tr>
     <tr><td>盐(加碘)</td><td>500g</td><td>2.00元</td></tr>
-    <tr><td>大米(东北长粒)</td><td>50kg袋</td><td>2.60元/斤</td></tr>
+    <tr><td>盐(无碘)</td><td>500g</td><td>2.50元</td></tr>
+    <tr><td>海盐(粗)</td><td>500g</td><td>6.00元</td></tr>
+    <tr><td>玫瑰盐</td><td>200g</td><td>15.00元</td></tr>
+    <tr><td>白糖</td><td>500g</td><td>4.00元</td></tr>
+    <tr><td>冰糖</td><td>500g</td><td>6.00元</td></tr>
+    <tr><td>红糖</td><td>500g</td><td>7.00元</td></tr>
+    <tr><td>黑糖</td><td>500g</td><td>10.00元</td></tr>
+    <tr><td>味精</td><td>100g</td><td>3.00元</td></tr>
+    <tr><td>鸡精</td><td>100g</td><td>4.00元</td></tr>
+    <tr><td>太太乐鸡精</td><td>100g</td><td>5.00元</td></tr>
+    <tr><td>白砂糖(细)</td><td>500g</td><td>4.50元</td></tr>
+
+    <!-- 香料 -->
+    <tr class="sub-hd"><td colspan="3">🌶 香料·干货</td></tr>
+    <tr><td>花椒</td><td>50g</td><td>12.00元</td></tr>
+    <tr><td>青花椒</td><td>50g</td><td>14.00元</td></tr>
+    <tr><td>干辣椒(子弹头)</td><td>50g</td><td>8.00元</td></tr>
+    <tr><td>干辣椒(二荆条)</td><td>50g</td><td>10.00元</td></tr>
+    <tr><td>干辣椒(小米椒)</td><td>50g</td><td>12.00元</td></tr>
+    <tr><td>辣椒面(细)</td><td>100g</td><td>6.00元</td></tr>
+    <tr><td>辣椒面(粗)</td><td>100g</td><td>7.00元</td></tr>
+    <tr><td>十三香</td><td>45g</td><td>5.00元</td></tr>
+    <tr><td>五香粉</td><td>50g</td><td>4.00元</td></tr>
+    <tr><td>咖喱粉</td><td>50g</td><td>6.00元</td></tr>
+    <tr><td>孜然粉</td><td>50g</td><td>6.00元</td></tr>
+    <tr><td>孜然粒</td><td>50g</td><td>8.00元</td></tr>
+    <tr><td>黑胡椒粉</td><td>50g</td><td>10.00元</td></tr>
+    <tr><td>白胡椒粉</td><td>50g</td><td>10.00元</td></tr>
+    <tr><td>八角</td><td>50g</td><td>8.00元</td></tr>
+    <tr><td>桂皮</td><td>50g</td><td>6.00元</td></tr>
+    <tr><td>香叶</td><td>10g</td><td>4.00元</td></tr>
+    <tr><td>草果</td><td>10g</td><td>3.00元</td></tr>
+    <tr><td>小茴香</td><td>50g</td><td>5.00元</td></tr>
+    <tr><td>白芷</td><td>10g</td><td>3.00元</td></tr>
+    <tr><td>陈皮</td><td>50g</td><td>8.00元</td></tr>
+    <tr><td>肉桂粉</td><td>50g</td><td>8.00元</td></tr>
+
+    <!-- 粉条/淀粉 -->
+    <tr class="sub-hd"><td colspan="3">🍜 粉条·淀粉</td></tr>
+    <tr><td>红薯淀粉</td><td>300g</td><td>6.00元</td></tr>
+    <tr><td>玉米淀粉</td><td>300g</td><td>5.00元</td></tr>
+    <tr><td>生粉(太白粉)</td><td>300g</td><td>5.00元</td></tr>
+    <tr><td>澄粉</td><td>300g</td><td>6.00元</td></tr>
+    <tr><td>糯米粉</td><td>500g</td><td>5.00元</td></tr>
+    <tr><td>豌豆粉丝</td><td>200g</td><td>6.00元</td></tr>
+    <tr><td>红薯粉条</td><td>500g</td><td>8.00元</td></tr>
+    <tr><td>酸辣粉(桶装)</td><td>桶</td><td>6.00元</td></tr>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 六、粮油烟货 40品 -->
+<!-- ═══════════════════════════════════════ -->
+<div class="sec" id="grain">
+  <div class="sec-hd" style="background:#388e3c" onclick="this.classList.toggle('collapsed')">🌾 粮油·南北干货 <span class="count-badge">40品</span></div>
+  <table>
+    <tr><th>品名</th><th>规格</th><th>批发价</th></tr>
+
+    <!-- 食用油 -->
+    <tr class="sub-hd"><td colspan="3">🫒 食用油</td></tr>
+    <tr><td>菜籽油(一级)</td><td>5L桶</td><td>8.00元/斤</td></tr>
+    <tr><td>菜籽油(纯)</td><td>5L桶</td><td>12.00元/斤</td></tr>
+    <tr><td>花生油(纯)</td><td>5L桶</td><td>16.00元/斤</td></tr>
+    <tr><td>花生油(压榨)</td><td>5L桶</td><td>20.00元/斤</td></tr>
+    <tr><td>调和油</td><td>5L桶</td><td>9.00元/斤</td></tr>
+    <tr><td>玉米油</td><td>5L桶</td><td>12.00元/斤</td></tr>
+    <tr><td>葵花籽油</td><td>5L桶</td><td>13.00元/斤</td></tr>
+    <tr><td>橄榄油(初榨)</td><td>750ml</td><td>40.00元</td></tr>
+    <tr><td>芝麻油(香油)</td><td>450ml</td><td>18.00元</td></tr>
+    <tr><td>猪油(板油炼制)</td><td>500g</td><td>15.00元</td></tr>
+
+    <!-- 大米 -->
+    <tr class="sub-hd"><td colspan="3">🍚 大米</td></tr>
+    <tr><td>大米(东北长粒)</td><td>10kg袋</td><td>2.80元/斤</td></tr>
+    <tr><td>大米(五常稻花香)</td><td>5kg袋</td><td>4.50元/斤</td></tr>
+    <tr><td>大米(江苏粳米)</td><td>10kg袋</td><td>2.50元/斤</td></tr>
+    <tr><td>大米(丝苗米)</td><td>10kg袋</td><td>3.00元/斤</td></tr>
+    <tr><td>糯米(圆粒)</td><td>斤</td><td>3.50元</td></tr>
+    <tr><td>糯米(长粒)</td><td>斤</td><td>3.80元</td></tr>
+    <tr><td>黑米</td><td>斤</td><td>5.00元</td></tr>
+    <tr><td>糙米</td><td>斤</td><td>4.00元</td></tr>
+
+    <!-- 面粉 -->
+    <tr class="sub-hd"><td colspan="3">🌾 面粉</td></tr>
     <tr><td>面粉(中筋)</td><td>25kg袋</td><td>1.80元/斤</td></tr>
+    <tr><td>面粉(高筋)</td><td>25kg袋</td><td>2.20元/斤</td></tr>
+    <tr><td>面粉(低筋)</td><td>25kg袋</td><td>2.20元/斤</td></tr>
+    <tr><td>自发粉</td><td>1kg袋</td><td>5.00元</td></tr>
+    <tr><td>全麦粉</td><td>1kg袋</td><td>8.00元</td></tr>
+
+    <!-- 南北干货 -->
+    <tr class="sub-hd"><td colspan="3">🫘 豆类·杂粮·干货</td></tr>
+    <tr><td>黄豆</td><td>斤</td><td>4.00元</td></tr>
+    <tr><td>黑豆</td><td>斤</td><td>6.00元</td></tr>
+    <tr><td>红豆</td><td>斤</td><td>7.00元</td></tr>
+    <tr><td>绿豆</td><td>斤</td><td>7.00元</td></tr>
+    <tr><td>芸豆</td><td>斤</td><td>6.00元</td></tr>
+    <tr><td>花生(带壳)</td><td>斤</td><td>7.00元</td></tr>
+    <tr><td>花生米(白沙)</td><td>斤</td><td>9.00元</td></tr>
+    <tr><td>核桃(干)</td><td>斤</td><td>18.00元</td></tr>
+    <tr><td>红枣(新疆大枣)</td><td>斤</td><td>15.00元</td></tr>
+    <tr><td>枸杞(宁夏)</td><td>斤</td><td>35.00元</td></tr>
+    <tr><td>桂圆(干)</td><td>斤</td><td>18.00元</td></tr>
+    <tr><td>葡萄干</td><td>斤</td><td>15.00元</td></tr>
+    <tr><td>莲子(去芯)</td><td>斤</td><td>30.00元</td></tr>
+    <tr><td>百合(干)</td><td>斤</td><td>25.00元</td></tr>
+    <tr><td>海带(干)</td><td>斤</td><td>12.00元</td></tr>
+    <tr><td>紫菜</td><td>10g</td><td>8.00元</td></tr>
+    <tr><td>虾皮</td><td>斤</td><td>30.00元</td></tr>
+    <tr><td>干贝</td><td>斤</td><td>80.00元</td></tr>
+    <tr><td>海参(淡干)</td><td>斤</td><td>600.00元</td></tr>
+    <tr><td>腊肉(五花)</td><td>斤</td><td>30.00元</td></tr>
+    <tr><td>香肠(川味)</td><td>斤</td><td>28.00元</td></tr>
+    <tr><td>腊肠(广味)</td><td>斤</td><td>32.00元</td></tr>
+  </table>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 七、冷冻冷藏 35品 -->
+<!-- ═══════════════════════════════════════ -->
+<div class="sec" id="frozen">
+  <div class="sec-hd" style="background:#0097a7" onclick="this.classList.toggle('collapsed')">🧊 冷冻·冷藏 <span class="count-badge">35品</span></div>
+  <table>
+    <tr><th>品名</th><th>规格</th><th>批发价</th></tr>
+
+    <!-- 冷冻肉 -->
+    <tr class="sub-hd"><td colspan="3">🥩 冷冻肉类</td></tr>
+    <tr><td>冷冻五花肉</td><td>斤</td><td>12.00元</td></tr>
+    <tr><td>冷冻鸡翅</td><td>斤</td><td>13.00元</td></tr>
+    <tr><td>冷冻鸡腿</td><td>斤</td><td>9.00元</td></tr>
+    <tr><td>冷冻鸡胸</td><td>斤</td><td>8.50元</td></tr>
+    <tr><td>冷冻鸭翅</td><td>斤</td><td>8.00元</td></tr>
+    <tr><td>冷冻鸭腿</td><td>斤</td><td>9.00元</td></tr>
+    <tr><td>火腿肠(双汇)</td><td>30g×10</td><td>15.00元</td></tr>
+    <tr><td>午餐肉罐头</td><td>340g</td><td>12.00元</td></tr>
+
+    <!-- 冷冻水产 -->
+    <tr class="sub-hd"><td colspan="3">🐟 冷冻水产</td></tr>
+    <tr><td>冷冻带鱼段</td><td>斤</td><td>12.00元</td></tr>
+    <tr><td>冷冻小黄鱼</td><td>斤</td><td>10.00元</td></tr>
+    <tr><td>冷冻虾仁</td><td>斤</td><td>25.00元</td></tr>
+    <tr><td>冷冻扇贝肉</td><td>斤</td><td>20.00元</td></tr>
+    <tr><td>冷冻蟹棒</td><td>斤</td><td>18.00元</td></tr>
+    <tr><td>冷冻鱼丸</td><td>斤</td><td>12.00元</td></tr>
+    <tr><td>冷冻虾滑</td><td>斤</td><td>22.00元</td></tr>
+    <tr><td>墨鱼丸</td><td>斤</td><td>14.00元</td></tr>
+
+    <!-- 预制菜 -->
+    <tr class="sub-hd"><td colspan="3">🥘 预制菜·半成品</td></tr>
+    <tr><td>冷冻饺子·猪肉白菜</td><td>500g</td><td>12.00元</td></tr>
+    <tr><td>冷冻包子·鲜肉</td><td>500g</td><td>10.00元</td></tr>
+    <tr><td>冷冻春卷</td><td>500g</td><td>10.00元</td></tr>
+    <tr><td>手抓饼</td><td>10片装</td><td>12.00元</td></tr>
+    <tr><td>葱油饼</td><td>10片装</td><td>12.00元</td></tr>
+    <tr><td>披萨底饼</td><td>9寸</td><td>8.00元</td></tr>
+    <tr><td>薯条(冷冻)</td><td>500g</td><td>8.00元</td></tr>
+    <tr><td>鸡块(冷冻)</td><td>500g</td><td>12.00元</td></tr>
+    <tr><td>鸡柳</td><td>500g</td><td>13.00元</td></tr>
+    <tr><td>骨肉相连</td><td>500g</td><td>15.00元</td></tr>
+    <tr><td>烤肠(火山石)</td><td>500g</td><td>18.00元</td></tr>
+
+    <!-- 素食冻品 -->
+    <tr class="sub-hd"><td colspan="3">🥬 素食冻品</td></tr>
+    <tr><td>冷冻青豆</td><td>500g</td><td>7.00元</td></tr>
+    <tr><td>冷冻玉米粒</td><td>500g</td><td>7.00元</td></tr>
+    <tr><td>冷冻胡萝卜丁</td><td>500g</td><td>6.00元</td></tr>
+    <tr><td>冷冻混合菜</td><td>500g</td><td>8.00元</td></tr>
+    <tr><td>冻豆腐</td><td>斤</td><td>5.00元</td></tr>
+    <tr><td>豆皮(干)</td><td>斤</td><td>8.00元</td></tr>
+    <tr><td>腐竹</td><td>斤</td><td>15.00元</td></tr>
+    <tr><td>素毛肚</td><td>斤</td><td>10.00元</td></tr>
   </table>
 </div>
 
 <div class="ft">
-  数据来源：绵阳市农贸市场批发均价<br>
-  2026-03-27 更新 · 仅供参考
+  数据来源：绵阳市农贸市场批发均价 · 参考绵阳发改委2026年1月数据<br>
+  报价时间：2026-03-27 更新 · 每日推送<br>
+  📱 完整报价请访问：https://try119.github.io/jiangyou-prices/<br>
+  ⚠️ 仅供参考，以实物为准
 </div>
+
+<script>
+document.querySelectorAll('.sec-hd').forEach(function(hd){
+  hd.addEventListener('click',function(){
+    this.classList.toggle('collapsed');
+  });
+});
+</script>
+
 </body>
 </html>
