@@ -3,53 +3,411 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>江油生鲜批发报价单 2026-03-28</title>
+<title>四川农产品每日价格 - 2026-03-31</title>
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f0f2f5; color: #333; }
-.header { background: linear-gradient(135deg, #1a73e8, #0d47a1); color: white; padding: 18px 16px; text-align: center; }
-.header h1 { font-size: 20px; font-weight: 700; letter-spacing: 1px; }
-.header .sub { font-size: 12px; opacity: 0.85; margin-top: 5px; }
-.tags { margin-top: 8px; }
-.tag { display: inline-block; background: rgba(255,255,255,0.2); padding: 2px 10px; border-radius: 12px; font-size: 11px; margin: 2px; }
-.container { max-width: 860px; margin: 0 auto; padding: 10px; }
-.tip { background: #e8f4fd; border-left: 4px solid #1a73e8; padding: 8px 12px; font-size: 12px; color: #1a73e8; margin-bottom: 10px; border-radius: 0 6px 6px 0; }
-.sec { background: white; border-radius: 10px; margin-bottom: 12px; overflow: hidden; box-shadow: 0 1px 6px rgba(0,0,0,0.08); }
-.sec-hd { padding: 10px 14px; font-weight: 700; font-size: 14px; border-bottom: 1px solid #f0f0f0; }
-.v .sec-hd { background: #e8f5e9; color: #2e7d32; }
-.m .sec-hd { background: #fce4ec; color: #c62828; }
-.s .sec-hd { background: #e3f2fd; color: #1565c0; }
-.f .sec-hd { background: #fff8e1; color: #f57f17; }
-.c .sec-hd { background: #ede7f6; color: #4527a0; }
-table { width: 100%; border-collapse: collapse; }
-th { background: #f8f9fa; padding: 7px 8px; font-size: 11px; color: #888; text-align: center; border-bottom: 1px solid #eee; }
-td { padding: 7px 8px; font-size: 13px; border-bottom: 1px solid #f5f5f5; text-align: center; }
-td:first-child { text-align: left; font-weight: 500; padding-left: 14px; }
-tr:last-child td { border-bottom: none; }
-tr:nth-child(even) td { background: #fafafa; }
-.bj { color: #999; font-size: 12px; }
-.my { font-weight: 700; color: #1a73e8; }
-.ret { color: #e53935; font-weight: 600; }
-.src { font-size: 11px; color: #bbb; }
-.footer { text-align: center; padding: 14px; color: #aaa; font-size: 11px; }
+  :root {
+    --bg: #f0f4f8;
+    --card: #ffffff;
+    --text: #2d3748;
+    --muted: #718096;
+    --border: #e2e8f0;
+    --up: #c53030;
+    --dn: #276749;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 20px;
+    font-size: 14px;
+  }
+  .header {
+    background: linear-gradient(135deg, #1a365d 0%, #2b6cb0 100%);
+    color: white;
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  .header h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+  .header .meta { opacity: 0.85; font-size: 13px; }
+  .stats-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .stat-card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 18px 24px;
+    flex: 1;
+    min-width: 140px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    text-align: center;
+  }
+  .stat-card .num { font-size: 28px; font-weight: 700; }
+  .stat-card .label { color: var(--muted); font-size: 12px; margin-top: 4px; }
+  .stat-card.up-card .num { color: var(--up); }
+  .stat-card.dn-card .num { color: var(--dn); }
+  .nav-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .nav-tab {
+    padding: 8px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    border: 2px solid transparent;
+    transition: all .2s;
+    text-decoration: none;
+    color: var(--muted);
+    background: var(--card);
+  }
+  .nav-tab:hover { background: #ebf8ff; color: #2b6cb0; }
+  .category-section {
+    background: var(--card);
+    border-radius: 14px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: #f7fafc;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-icon { font-size: 22px; }
+  .section-header h2 { font-size: 17px; font-weight: 700; flex: 1; }
+  .count-badge {
+    background: #edf2f7;
+    color: var(--muted);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+  }
+  .table-wrapper { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; }
+  thead tr { background: #f7fafc; }
+  th {
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f7fafc; }
+  .sub-cat {
+    background: #e2e8f0;
+    color: #4a5568;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+  .name-cell { font-weight: 600; }
+  .price-cell { font-weight: 700; color: #2d3748; }
+  .place-cell { color: var(--muted); font-size: 12px; }
+  .up   { color: var(--up); font-weight: 600; }
+  .down { color: var(--dn); font-weight: 600; }
+  .flat { color: #718096; }
+  .no-change { color: #cbd5e0; }
+  .footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 28px;
+    padding: 16px;
+  }
+  @media (max-width: 600px) {
+    .stats-row { gap: 10px; }
+    .stat-card { padding: 14px 16px; min-width: 100px; }
+    .stat-card .num { font-size: 22px; }
+    body { padding: 12px; }
+  }
 </style>
 </head>
 <body>
+
 <div class="header">
-  <h1>🛒 江油生鲜批发报价单</h1>
-  <div class="sub">更新时间：2026-03-28 上午 | 江油·绵阳地区适用</div>
-  <div class="tags">
-    <span class="tag">📡 新发地实时</span>
-    <span class="tag">🏙️ 成都市场参考</span>
-    <span class="tag">🐟 水产新增成都价</span>
+  <h1>🌾 四川农产品每日价格</h1>
+  <div class="meta">
+    📅 2026-03-31 &nbsp;|&nbsp;
+    🕐 更新于 08:31:31 &nbsp;|&nbsp;
+    📊 共 20 条数据 &nbsp;|&nbsp;
+    数据来源：惠农网 · 国家发改委
   </div>
 </div>
-<div class="container">
-  <div class="tip">💡 肉类/水产已参考成都五块石·农产品中心价格，更贴近绵阳实际行情。以实际进货价为准。</div>
-<div class="sec v"><div class="sec-hd">🥦 蔬菜类（30品）</div><table><tr><th>品名</th><th>北京批发(元/斤)</th><th>绵阳批发(元/斤)</th><th>零售建议(元/斤)</th></tr><tr><td class="">大白菜</td><td class="bj">0.9</td><td class="my">0.8</td><td class="ret">1.1</td></tr><tr><td class="">菠菜</td><td class="bj">1.0</td><td class="my">0.9</td><td class="ret">1.3</td></tr><tr><td class="">芹菜</td><td class="bj">1.1</td><td class="my">1.0</td><td class="ret">1.4</td></tr><tr><td class="">白萝卜</td><td class="bj">0.5</td><td class="my">0.4</td><td class="ret">0.6</td></tr><tr><td class="">胡萝卜</td><td class="bj">0.9</td><td class="my">0.9</td><td class="ret">1.3</td></tr><tr><td class="">莲藕</td><td class="bj">3.0</td><td class="my">2.7</td><td class="ret">3.8</td></tr><tr><td class="">茄子</td><td class="bj">2.1</td><td class="my">1.9</td><td class="ret">2.7</td></tr><tr><td class="">西红柿</td><td class="bj">-</td><td class="my">-</td><td class="ret">-</td></tr><tr><td class="">黄瓜</td><td class="bj">1.2</td><td class="my">1.1</td><td class="ret">1.5</td></tr><tr><td class="">土豆</td><td class="bj">1.1</td><td class="my">1.0</td><td class="ret">1.4</td></tr><tr><td class="">洋葱</td><td class="bj">-</td><td class="my">-</td><td class="ret">-</td></tr><tr><td class="">大葱</td><td class="bj">0.8</td><td class="my">0.7</td><td class="ret">1.0</td></tr><tr><td class="">生姜</td><td class="bj">2.8</td><td class="my">2.5</td><td class="ret">3.5</td></tr><tr><td class="">大蒜</td><td class="bj">3.6</td><td class="my">3.2</td><td class="ret">4.5</td></tr><tr><td class="">青椒</td><td class="bj">-</td><td class="my">-</td><td class="ret">-</td></tr><tr><td class="">红椒</td><td class="bj">-</td><td class="my">-</td><td class="ret">-</td></tr><tr><td class="">香菇</td><td class="bj">4.8</td><td class="my">4.3</td><td class="ret">6.0</td></tr><tr><td class="">平菇</td><td class="bj">2.2</td><td class="my">2.0</td><td class="ret">2.8</td></tr><tr><td class="">金针菇</td><td class="bj">3.5</td><td class="my">3.1</td><td class="ret">4.3</td></tr><tr><td class="">西兰花</td><td class="bj">-</td><td class="my">-</td><td class="ret">-</td></tr><tr><td class="">豆角</td><td class="bj">43.7</td><td class="my">39.3</td><td class="ret">55.0</td></tr><tr><td class="">南瓜</td><td class="bj">1.6</td><td class="my">1.5</td><td class="ret">2.1</td></tr><tr><td class="">冬瓜</td><td class="bj">0.8</td><td class="my">0.7</td><td class="ret">1.0</td></tr><tr><td class="">韭菜</td><td class="bj">2.0</td><td class="my">1.8</td><td class="ret">2.5</td></tr><tr><td class="">苦瓜</td><td class="bj">2.8</td><td class="my">2.5</td><td class="ret">3.5</td></tr><tr><td class="">丝瓜</td><td class="bj">3.2</td><td class="my">2.9</td><td class="ret">4.1</td></tr><tr><td class="">生菜</td><td class="bj">2.3</td><td class="my">2.1</td><td class="ret">2.9</td></tr><tr><td class="">豆腐</td><td class="bj">1.9</td><td class="my">1.7</td><td class="ret">2.4</td></tr><tr><td class="">藕带</td><td class="bj">-</td><td class="my">-</td><td class="ret">-</td></tr><tr><td class="">山药</td><td class="bj">2.9</td><td class="my">2.6</td><td class="ret">3.6</td></tr></table></div><div class="sec m"><div class="sec-hd">🥩 肉类（16品）含成都参考</div><table><tr><th>品名</th><th>北京批发(元/斤)</th><th>绵阳批发(元/斤)</th><th>零售建议(元/斤)</th><th>数据来源</th></tr><tr><td class="">猪腿肉</td><td class="bj">-</td><td class="my">13.0</td><td class="ret">17.6</td><td class="src">成都五块石</td></tr><tr><td class="">猪五花</td><td class="bj">-</td><td class="my">14.0</td><td class="ret">18.9</td><td class="src">成都五块石</td></tr><tr><td class="">猪里脊</td><td class="bj">-</td><td class="my">17.0</td><td class="ret">23.0</td><td class="src">成都五块石</td></tr><tr><td class="">猪排骨</td><td class="bj">15.5</td><td class="my">17.5</td><td class="ret">24.1</td><td class="src">新发地+成都综合</td></tr><tr><td class="">猪蹄</td><td class="bj">16.5</td><td class="my">11.0</td><td class="ret">15.4</td><td class="src">新发地+成都综合</td></tr><tr><td class="">猪大肠</td><td class="bj">-</td><td class="my">12.0</td><td class="ret">16.2</td><td class="src">绵阳参考</td></tr><tr><td class="">猪肝</td><td class="bj">-</td><td class="my">8.5</td><td class="ret">11.5</td><td class="src">绵阳参考</td></tr><tr><td class="">白条鸡</td><td class="bj">10.0</td><td class="my">11.5</td><td class="ret">15.5</td><td class="src">新发地+成都综合</td></tr><tr><td class="">鸡腿</td><td class="bj">9.0</td><td class="my">8.3</td><td class="ret">11.2</td><td class="src">新发地参考</td></tr><tr><td class="">鸡胸肉</td><td class="bj">8.5</td><td class="my">7.8</td><td class="ret">10.5</td><td class="src">新发地参考</td></tr><tr><td class="">整鸭</td><td class="bj">-</td><td class="my">9.0</td><td class="ret">12.2</td><td class="src">成都五块石</td></tr><tr><td class="">牛腱肉</td><td class="bj">34.0</td><td class="my">30.0</td><td class="ret">39.0</td><td class="src">新发地+成都综合</td></tr><tr><td class="">牛腩</td><td class="bj">29.0</td><td class="my">27.0</td><td class="ret">35.1</td><td class="src">新发地+成都综合</td></tr><tr><td class="">牛排骨</td><td class="bj">27.5</td><td class="my">26.1</td><td class="ret">33.4</td><td class="src">新发地参考</td></tr><tr><td class="">羊肉片</td><td class="bj">-</td><td class="my">32.0</td><td class="ret">41.0</td><td class="src">成都五块石</td></tr><tr><td class="">羊排</td><td class="bj">25.0</td><td class="my">23.8</td><td class="ret">30.5</td><td class="src">新发地参考</td></tr></table></div><div class="sec s"><div class="sec-hd">🐟 水产（15品）含成都参考</div><table><tr><th>品名</th><th>北京批发(元/斤)</th><th>绵阳批发(元/斤)</th><th>零售建议(元/斤)</th><th>数据来源</th></tr><tr><td class="">草鱼</td><td class="bj">8.5</td><td class="my">7.0</td><td class="ret">9.8</td><td class="src">成都参考</td></tr><tr><td class="">鲤鱼</td><td class="bj">6.2</td><td class="my">6.0</td><td class="ret">8.4</td><td class="src">成都参考</td></tr><tr><td class="">鲫鱼</td><td class="bj">11.0</td><td class="my">8.0</td><td class="ret">11.2</td><td class="src">成都参考</td></tr><tr><td class="">鲢鱼</td><td class="bj">5.8</td><td class="my">5.0</td><td class="ret">7.0</td><td class="src">成都参考</td></tr><tr><td class="">武昌鱼</td><td class="bj">11.5</td><td class="my">8.5</td><td class="ret">11.9</td><td class="src">成都参考</td></tr><tr><td class="">淡水鲈鱼</td><td class="bj">14.8</td><td class="my">15.0</td><td class="ret">21.0</td><td class="src">成都参考</td></tr><tr><td class="">花鲢头</td><td class="bj">-</td><td class="my">6.0</td><td class="ret">8.4</td><td class="src">成都参考</td></tr><tr><td class="">小龙虾</td><td class="bj">25.5</td><td class="my">14.0</td><td class="ret">19.6</td><td class="src">成都参考</td></tr><tr><td class="">基围虾</td><td class="bj">147.5</td><td class="my">30.0</td><td class="ret">42.0</td><td class="src">成都参考</td></tr><tr><td class="">带鱼</td><td class="bj">11.5</td><td class="my">10.5</td><td class="ret">14.7</td><td class="src">成都参考</td></tr><tr><td class="">鱿鱼</td><td class="bj">21.0</td><td class="my">9.0</td><td class="ret">12.6</td><td class="src">成都参考</td></tr><tr><td class="">墨鱼</td><td class="bj">32.5</td><td class="my">12.0</td><td class="ret">16.8</td><td class="src">成都参考</td></tr><tr><td class="">螃蟹</td><td class="bj">-</td><td class="my">20.0</td><td class="ret">28.0</td><td class="src">成都参考</td></tr><tr><td class="">黄辣丁</td><td class="bj">-</td><td class="my">25.0</td><td class="ret">35.0</td><td class="src">成都参考</td></tr><tr><td class="">泥鳅</td><td class="bj">12.5</td><td class="my">12.0</td><td class="ret">16.8</td><td class="src">成都参考</td></tr></table></div><div class="sec f"><div class="sec-hd">🍎 水果类（15品）</div><table><tr><th>品名</th><th>北京批发(元/斤)</th><th>绵阳批发(元/斤)</th><th>零售建议(元/斤)</th></tr><tr><td class="">苹果</td><td class="bj">5.8</td><td class="my">5.2</td><td class="ret">7.2</td></tr><tr><td class="">香蕉</td><td class="bj">3.5</td><td class="my">3.2</td><td class="ret">4.4</td></tr><tr><td class="">橙子</td><td class="bj">37.0</td><td class="my">33.3</td><td class="ret">46.0</td></tr><tr><td class="">葡萄</td><td class="bj">9.5</td><td class="my">8.6</td><td class="ret">11.9</td></tr><tr><td class="">西瓜</td><td class="bj">2.5</td><td class="my">2.3</td><td class="ret">3.2</td></tr><tr><td class="">哈密瓜</td><td class="bj">1.7</td><td class="my">1.5</td><td class="ret">2.1</td></tr><tr><td class="">草莓</td><td class="bj">11.5</td><td class="my">10.3</td><td class="ret">14.2</td></tr><tr><td class="">柠檬</td><td class="bj">9.0</td><td class="my">8.1</td><td class="ret">11.2</td></tr><tr><td class="">猕猴桃</td><td class="bj">6.0</td><td class="my">5.4</td><td class="ret">7.5</td></tr><tr><td class="">芒果</td><td class="bj">4.5</td><td class="my">4.0</td><td class="ret">5.5</td></tr><tr><td class="">菠萝</td><td class="bj">2.0</td><td class="my">1.8</td><td class="ret">2.5</td></tr><tr><td class="">梨</td><td class="bj">4.2</td><td class="my">3.7</td><td class="ret">5.1</td></tr><tr><td class="">桃</td><td class="bj">2.6</td><td class="my">2.4</td><td class="ret">3.3</td></tr><tr><td class="">李子</td><td class="bj">12.5</td><td class="my">11.2</td><td class="ret">15.5</td></tr><tr><td class="">柚子</td><td class="bj">-</td><td class="my">-</td><td class="ret">-</td></tr></table></div><div class="sec c"><div class="sec-hd">🧂 调料 & 粮油（15品）</div><table><tr><th>品名</th><th>参考价</th><th>单位</th></tr><tr><td class="">食用油（金龙鱼5L）</td><td class="bj">48.0</td><td class="my">桶</td></tr><tr><td class="">食用油（鲁花5L）</td><td class="bj">55.0</td><td class="my">桶</td></tr><tr><td class="">大米（东北10kg）</td><td class="bj">38.0</td><td class="my">袋</td></tr><tr><td class="">面粉（富强粉5kg）</td><td class="bj">16.0</td><td class="my">袋</td></tr><tr><td class="">盐（加碘500g）</td><td class="bj">2.5</td><td class="my">袋</td></tr><tr><td class="">白砂糖（1kg）</td><td class="bj">5.5</td><td class="my">袋</td></tr><tr><td class="">生抽（海天500ml）</td><td class="bj">7.0</td><td class="my">瓶</td></tr><tr><td class="">老抽（海天500ml）</td><td class="bj">7.0</td><td class="my">瓶</td></tr><tr><td class="">陈醋（500ml）</td><td class="bj">5.0</td><td class="my">瓶</td></tr><tr><td class="">豆瓣酱（郫县400g）</td><td class="bj">8.0</td><td class="my">盒</td></tr><tr><td class="">鸡精（太太乐200g）</td><td class="bj">6.0</td><td class="my">盒</td></tr><tr><td class="">淀粉（500g）</td><td class="bj">4.5</td><td class="my">袋</td></tr><tr><td class="">花椒（100g）</td><td class="bj">8.0</td><td class="my">袋</td></tr><tr><td class="">八角（100g）</td><td class="bj">6.0</td><td class="my">袋</td></tr><tr><td class="">干辣椒（100g）</td><td class="bj">7.0</td><td class="my">袋</td></tr></table></div>  <div class="footer">
-    数据来源：北京新发地批发市场（实时） · 成都五块石批发市场 · 成都农产品中心<br>
-    本报价单仅供参考，以当日实际进货价为准 | 2026-03-28
+
+<div class="stats-row">
+  <div class="stat-card">
+    <div class="num">20</div>
+    <div class="label">今日采集品种</div>
+  </div>
+  <div class="stat-card up-card">
+    <div class="num">0</div>
+    <div class="label">↑ 价格上涨</div>
+  </div>
+  <div class="stat-card dn-card">
+    <div class="num">0</div>
+    <div class="label">↓ 价格下降</div>
+  </div>
+  <div class="stat-card">
+    <div class="num">4</div>
+    <div class="label">品类覆盖</div>
   </div>
 </div>
+
+<div class="nav-tabs">
+  <a class="nav-tab" href="#生鲜">🥬 生鲜</a><a class="nav-tab" href="#肉类">🥩 肉类</a><a class="nav-tab" href="#干杂">🌾 干杂</a><a class="nav-tab" href="#调料品">🧄 调料品</a>
+</div>
+
+
+        <section class="category-section" id="生鲜">
+            <div class="section-header" style="border-left: 5px solid #2ecc71;">
+                <span class="section-icon">🥬</span>
+                <h2>生鲜</h2>
+                <span class="count-badge">4 条</span>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>品类</th>
+                            <th>品种</th>
+                            <th>价格</th>
+                            <th>较昨日</th>
+                            <th>产地</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            <tr>
+                <td><span class="sub-cat">生鲜</span></td>
+                <td class="name-cell">鲤鱼</td>
+                <td class="price-cell">5 元/公斤</td>
+                <td><span class="flat">持平</span></td>
+                <td class="place-cell">花生油</td>
+            </tr>
+            <tr>
+                <td><span class="sub-cat">生鲜</span></td>
+                <td class="name-cell">草鱼</td>
+                <td class="price-cell">5 元/公斤</td>
+                <td><span class="flat">持平</span></td>
+                <td class="place-cell">花生油</td>
+            </tr>
+            <tr>
+                <td><span class="sub-cat">生鲜</span></td>
+                <td class="name-cell">带鱼</td>
+                <td class="price-cell">5 元/公斤</td>
+                <td><span class="flat">持平</span></td>
+                <td class="place-cell">花生油</td>
+            </tr>
+            <tr>
+                <td><span class="sub-cat">生鲜</span></td>
+                <td class="name-cell">生鲜乳</td>
+                <td class="price-cell">5 元/公斤</td>
+                <td><span class="flat">持平</span></td>
+                <td class="place-cell">花生油</td>
+            </tr></tbody>
+                </table>
+            </div>
+        </section>
+        <section class="category-section" id="肉类">
+            <div class="section-header" style="border-left: 5px solid #e74c3c;">
+                <span class="section-icon">🥩</span>
+                <h2>肉类</h2>
+                <span class="count-badge">8 条</span>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>品类</th>
+                            <th>品种</th>
+                            <th>价格</th>
+                            <th>较昨日</th>
+                            <th>产地</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            <tr>
+                <td><span class="sub-cat">肉类</span></td>
+                <td class="name-cell">牛奶</td>
+                <td class="price-cell">5 元/公斤</td>
+                <td><span class="flat">持平</span></td>
+                <td class="place-cell">花生油</td>
+            </tr>
+            <tr>
+                <td><span class="sub-cat">肉类</span></td>
+                <td class="name-cell">鸡肉</td>
+                <td class="price-cell">5 元/公斤</td>
+                <td><span class="flat">持平</span></td>
+                <td class="place-cell">花生油</td>
+            </tr>
+            <tr>
+                <td><span class="sub-cat">肉类</span></td>
+                <td class="name-cell">鲜牛肉</td>
+                <td class="price-cell">5 元/公斤</td>
+                <td><span class="flat">持平</span></td>
+                <td class="place-cell">花生油</td>
+            </tr>
+            <tr>
+                <td><span class="sub-cat">肉类</span></td>
+                <td class="name-cell">鲜猪肉</td>
+                <td class="price-cell">5 元/公斤</td>
+                <td><span class="flat">持平</span></td>
+                <td class="place-cell">花生油</td>
+            </tr>
+            <tr>
+                <td><span class="sub-cat">肉类</span></td>
+                <td class="name-cell">母猪</td>
+                <td class="price-cell">5 元/公斤</td>
+                <td><span class="flat">持平</span></td>
+                <td class="place-cell">花生油</td>
+            </tr>
+            <tr>
+                <td><span class="sub-cat">肉类</span></td>
+                <td class="name-cell">仔猪</td>
+                <td class="price-cell">5 元/公斤</td>
+                <td><span class="flat">持平</span></td>
+                <td class="place-cell">花生油</td>
+            </tr>
+            <tr>
+                <td><span class="sub-cat">肉类</span></td>
+                <td class="name-cell">鸡蛋</td>
+                <td class="price-cell">5 元/公斤</td>
+                <td><span class="flat">持平</span></td>
+                <td class="place-cell">花生油</td>
+            </tr>
+            <tr>
+                <td><span class="sub-cat">肉类</span></td>
+                <td class="name-cell">生猪</td>
+                <td class="price-cell">5 元/公斤</td>
+                <td><span class="flat">持平</span></td>
+                <td class="place-cell">花生油</td>
+            </tr></tbody>
+                </table>
+            </div>
+        </section>
+        <section class="category-section" id="干杂">
+            <div class="section-header" style="border-left: 5px solid #f39c12;">
+                <span class="section-icon">🌾</span>
+                <h2>干杂</h2>
+                <span class="count-badge">5 条</span>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>品类</th>
+                            <th>品种</th>
+                            <th>价格</th>
+                            <th>较昨日</th>
+                            <th>产地</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            <tr>
+                <td><span class="sub-cat">干杂</span></td>
+                <td class="name-cell">饼干</td>
+                <td class="price-cell">5 元/公斤</td>
+                <td><span class="flat">持平</span></td>
+                <td class="place-cell">花生油</td>
+            </tr>
+            <tr>
+                <td><span class="sub-cat">干杂</span></td>
+                <td class="name-cell">奶粉</td>
+                <td class="price-cell">5 元/公斤</td>
+                <td><span class="flat">持平</span></td>
+                <td class="place-cell">花生油</td>
+            </tr>
+            <tr>
+                <td><span class="sub-cat">干杂</span></td>
+                <td class="name-cell">花生油</td>
+                <td class="price-cell">5 元/公斤</td>
+                <td><span class="flat">持平</span></td>
+                <td class="place-cell">花生油</td>
+            </tr>
+            <tr>
+                <td><span class="sub-cat">干杂</span></td>
+                <td class="name-cell">大豆油</td>
+                <td class="price-cell">5 元/公斤</td>
+                <td><span class="flat">持平</span></td>
+                <td class="place-cell">花生油</td>
+            </tr>
+            <tr>
+                <td><span class="sub-cat">干杂</span></td>
+                <td class="name-cell">菜籽油</td>
+                <td class="price-cell">5 元/公斤</td>
+                <td><span class="flat">持平</span></td>
+                <td class="place-cell">花生油</td>
+            </tr></tbody>
+                </table>
+            </div>
+        </section>
+        <section class="category-section" id="调料品">
+            <div class="section-header" style="border-left: 5px solid #9b59b6;">
+                <span class="section-icon">🧄</span>
+                <h2>调料品</h2>
+                <span class="count-badge">3 条</span>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>品类</th>
+                            <th>品种</th>
+                            <th>价格</th>
+                            <th>较昨日</th>
+                            <th>产地</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            <tr>
+                <td><span class="sub-cat">调料品</span></td>
+                <td class="name-cell">红糖</td>
+                <td class="price-cell">5 元/公斤</td>
+                <td><span class="flat">持平</span></td>
+                <td class="place-cell">花生油</td>
+            </tr>
+            <tr>
+                <td><span class="sub-cat">调料品</span></td>
+                <td class="name-cell">白砂糖</td>
+                <td class="price-cell">5 元/公斤</td>
+                <td><span class="flat">持平</span></td>
+                <td class="place-cell">花生油</td>
+            </tr>
+            <tr>
+                <td><span class="sub-cat">调料品</span></td>
+                <td class="name-cell">食用盐</td>
+                <td class="price-cell">5 元/公斤</td>
+                <td><span class="flat">持平</span></td>
+                <td class="place-cell">花生油</td>
+            </tr></tbody>
+                </table>
+            </div>
+        </section>
+
+<div class="footer">
+  数据仅供参考，不构成任何商业建议 &nbsp;·&nbsp; 四川农产品每日价格监测工具
+</div>
+
 </body>
 </html>
