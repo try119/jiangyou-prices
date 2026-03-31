@@ -12,7 +12,7 @@
             min-height: 100vh;
             padding: 20px;
         }
-        .container { max-width: 1200px; margin: 0 auto; }
+        .container { max-width: 1400px; margin: 0 auto; }
         
         .header {
             background: white;
@@ -45,33 +45,31 @@
             border-radius: 8px;
             padding: 12px 16px;
             margin: 15px auto;
-            max-width: 600px;
+            max-width: 700px;
             font-size: 13px;
             color: #856404;
         }
-        .unit-notice strong { color: #721c24; }
         
-        .market-tabs {
+        .city-legend {
             display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
             justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
         }
-        .market-tab {
+        .city-badge {
             background: white;
-            padding: 12px 20px;
-            border-radius: 25px;
-            font-size: 14px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
             font-weight: 500;
-            color: #34495e;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
-        .market-tab:hover { transform: translateY(-2px); }
-        .market-tab.active { background: #3498db; color: white; }
-        .market-tab.kg { border: 2px dashed #9b59b6; }
+        .city-badge .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .city-badge.kg { border: 2px dashed #9b59b6; }
         
         .category {
             background: white;
@@ -95,24 +93,39 @@
             font-size: 12px;
         }
         
-        table { width: 100%; border-collapse: collapse; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
         th {
             background: #f8f9fa;
-            padding: 14px 12px;
-            text-align: left;
+            padding: 12px 8px;
+            text-align: center;
             font-weight: 600;
             color: #2c3e50;
-            font-size: 13px;
+            font-size: 12px;
             border-bottom: 2px solid #e9ecef;
         }
-        td { padding: 12px; border-bottom: 1px solid #f0f0f0; font-size: 14px; }
+        th:first-child { text-align: left; padding-left: 16px; }
+        td {
+            padding: 10px 8px;
+            border-bottom: 1px solid #f0f0f0;
+            text-align: center;
+        }
+        td:first-child { text-align: left; padding-left: 16px; font-weight: 500; }
         tr:last-child td { border-bottom: none; }
         tr:hover { background: #f8f9fa; }
-        .price-col { font-weight: 600; color: #e74c3c; }
-        .unit-col { color: #95a5a6; font-size: 12px; }
-        .city-price { display: none; }
-        .city-price.show { display: table-cell; }
-        .kg-mark { color: #9b59b6; font-weight: bold; }
+        
+        .price { font-weight: 600; }
+        .price-beijing { color: #e74c3c; }
+        .price-chengdu { color: #3498db; }
+        .price-mianyang { color: #2ecc71; }
+        .price-kunming { color: #9b59b6; }
+        .price-xian { color: #f39c12; }
+        
+        .kg-note { 
+            font-size: 10px; 
+            color: #9b59b6; 
+            display: block;
+            margin-top: 2px;
+        }
         
         .footer {
             text-align: center;
@@ -123,15 +136,16 @@
         
         @media (max-width: 768px) {
             body { padding: 10px; }
-            .header h1 { font-size: 22px; }
-            th, td { padding: 10px 8px; font-size: 12px; }
+            .header h1 { font-size: 20px; }
+            th, td { padding: 8px 4px; font-size: 11px; }
+            th:first-child, td:first-child { padding-left: 10px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🐾 江油生鲜每日批发报价</h1>
+            <h1>江油生鲜每日批发报价</h1>
             <div class="date">2026年03月31日</div>
             <div class="stats">
                 <span class="stat">7 大品类</span>
@@ -139,18 +153,31 @@
                 <span class="stat">5 大市场对比</span>
             </div>
             <div class="unit-notice">
-                <strong>[价格说明]</strong><br>
-                北京/成都/绵阳/西安: <strong>元/斤</strong> &nbsp;|&nbsp;
-                昆明: <strong>元/公斤</strong> (已换算为斤)
+                <strong>[价格说明]</strong> 北京/成都/绵阳/西安按<strong>斤</strong>报价 | 昆明按<strong>公斤</strong>报价（已x2换算为斤）
             </div>
         </div>
         
-        <div class="market-tabs">
-            <div class="market-tab active" onclick="showCity('beijing')">北京新发地 <small>(斤)</small></div>
-            <div class="market-tab" onclick="showCity('chengdu')">四川成都 <small>(斤)</small></div>
-            <div class="market-tab" onclick="showCity('mianyang')">四川绵阳 <small>(斤)</small></div>
-            <div class="market-tab kg" onclick="showCity('kunming')">云南昆明 <small>(公斤x2)</small></div>
-            <div class="market-tab" onclick="showCity('xian')">陕西西安 <small>(斤)</small></div>
+        <div class="city-legend">
+            <div class="city-badge">
+                <span class="dot" style="background:#e74c3c"></span>
+                北京新发地
+            </div>
+            <div class="city-badge">
+                <span class="dot" style="background:#3498db"></span>
+                四川成都 +8%
+            </div>
+            <div class="city-badge">
+                <span class="dot" style="background:#2ecc71"></span>
+                四川绵阳 +10%
+            </div>
+            <div class="city-badge kg">
+                <span class="dot" style="background:#9b59b6"></span>
+                云南昆明 +12% (公斤)
+            </div>
+            <div class="city-badge">
+                <span class="dot" style="background:#f39c12"></span>
+                陕西西安 +5%
+            </div>
         </div>
 
         <div class="category">
@@ -159,1266 +186,1103 @@
                 <span class="count">20品种</span>
             </div>
             <table>
-                <thead>
-                    <tr>
-                        <th style="width:30%">品名</th>
-                        <th style="width:14%" class="city-price show" data-city="beijing">北京<br><small>(斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="chengdu">成都+8%<br><small>(斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="mianyang">绵阳+10%<br><small>(斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="kunming">昆明+12%<br><small class="kg-mark">(公斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="xian">西安+5%<br><small>(斤)</small></th>
-                    </tr>
-                </thead>
-                <tbody>
-<tr>
+                <thead>                    <tr>
+                        <th style="width:22%">品名</th>
+                        <th style="width:15.5%">北京新发地<br><small>(斤)</small></th>
+                        <th style="width:15.5%">成都+8%<br><small>(斤)</small></th>
+                        <th style="width:15.5%">绵阳+10%<br><small>(斤)</small></th>
+                        <th style="width:15.5%">昆明+12%<br><small style="color:#9b59b6">(公斤)</small></th>
+                        <th style="width:15.5%">西安+5%<br><small>(斤)</small></th>
+                    </tr></thead>
+                <tbody><tr>
                 <td>大白菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.75</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.81</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.83</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.68</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.79</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.75</td>
+                <td class="price price-chengdu">¥0.81</td>
+                <td class="price price-mianyang">¥0.83</td>
+                <td class="price price-kunming">¥1.68<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.79</td>
+            </tr><tr>
                 <td>娃娃菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.24</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.26</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.21</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.15</td>
+                <td class="price price-chengdu">¥1.24</td>
+                <td class="price price-mianyang">¥1.26</td>
+                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.21</td>
+            </tr><tr>
                 <td>小白菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.60</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.65</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.66</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.34</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.63</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.60</td>
+                <td class="price price-chengdu">¥0.65</td>
+                <td class="price price-mianyang">¥0.66</td>
+                <td class="price price-kunming">¥1.34<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.63</td>
+            </tr><tr>
                 <td>圆白菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.70</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.76</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.77</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.57</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.73</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.70</td>
+                <td class="price price-chengdu">¥0.76</td>
+                <td class="price price-mianyang">¥0.77</td>
+                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.73</td>
+            </tr><tr>
                 <td>紫甘蓝</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.24</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.26</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.21</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.15</td>
+                <td class="price price-chengdu">¥1.24</td>
+                <td class="price price-mianyang">¥1.26</td>
+                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.21</td>
+            </tr><tr>
                 <td>芹菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.24</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.26</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.21</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.15</td>
+                <td class="price price-chengdu">¥1.24</td>
+                <td class="price price-mianyang">¥1.26</td>
+                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.21</td>
+            </tr><tr>
                 <td>西芹</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.32</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.37</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥4.82</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.26</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥2.15</td>
+                <td class="price price-chengdu">¥2.32</td>
+                <td class="price price-mianyang">¥2.37</td>
+                <td class="price price-kunming">¥4.82<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.26</td>
+            </tr><tr>
                 <td>菠菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.80</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.86</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.88</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.79</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.84</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.80</td>
+                <td class="price price-chengdu">¥0.86</td>
+                <td class="price price-mianyang">¥0.88</td>
+                <td class="price price-kunming">¥1.79<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.84</td>
+            </tr><tr>
                 <td>莴笋</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.62</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.65</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.36</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.58</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.50</td>
+                <td class="price price-chengdu">¥1.62</td>
+                <td class="price price-mianyang">¥1.65</td>
+                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.58</td>
+            </tr><tr>
                 <td>团生菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.25</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.43</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.48</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥5.04</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.36</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥2.25</td>
+                <td class="price price-chengdu">¥2.43</td>
+                <td class="price price-mianyang">¥2.48</td>
+                <td class="price price-kunming">¥5.04<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.36</td>
+            </tr><tr>
                 <td>罗马生菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.55</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.67</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.71</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.47</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.63</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.55</td>
+                <td class="price price-chengdu">¥1.67</td>
+                <td class="price price-mianyang">¥1.71</td>
+                <td class="price price-kunming">¥3.47<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.63</td>
+            </tr><tr>
                 <td>散叶生菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.90</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.97</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.99</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.02</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.95</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.90</td>
+                <td class="price price-chengdu">¥0.97</td>
+                <td class="price price-mianyang">¥0.99</td>
+                <td class="price price-kunming">¥2.02<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.95</td>
+            </tr><tr>
                 <td>油菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.70</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.76</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.77</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.57</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.73</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.70</td>
+                <td class="price price-chengdu">¥0.76</td>
+                <td class="price price-mianyang">¥0.77</td>
+                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.73</td>
+            </tr><tr>
                 <td>香菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.62</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.65</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.36</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.58</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.50</td>
+                <td class="price price-chengdu">¥1.62</td>
+                <td class="price price-mianyang">¥1.65</td>
+                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.58</td>
+            </tr><tr>
                 <td>茴香</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.62</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.65</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.36</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.58</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.50</td>
+                <td class="price price-chengdu">¥1.62</td>
+                <td class="price price-mianyang">¥1.65</td>
+                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.58</td>
+            </tr><tr>
                 <td>韭菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.60</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.73</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.76</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.68</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.60</td>
+                <td class="price price-chengdu">¥1.73</td>
+                <td class="price price-mianyang">¥1.76</td>
+                <td class="price price-kunming">¥3.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.68</td>
+            </tr><tr>
                 <td>苦菊</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.70</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.84</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.87</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.81</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.78</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.70</td>
+                <td class="price price-chengdu">¥1.84</td>
+                <td class="price price-mianyang">¥1.87</td>
+                <td class="price price-kunming">¥3.81<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.78</td>
+            </tr><tr>
                 <td>油麦菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.25</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.35</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.38</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.80</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.31</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.25</td>
+                <td class="price price-chengdu">¥1.35</td>
+                <td class="price price-mianyang">¥1.38</td>
+                <td class="price price-kunming">¥2.80<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.31</td>
+            </tr><tr>
                 <td>散菜花</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.05</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.21</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.25</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥4.59</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.15</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥2.05</td>
+                <td class="price price-chengdu">¥2.21</td>
+                <td class="price price-mianyang">¥2.25</td>
+                <td class="price price-kunming">¥4.59<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.15</td>
+            </tr><tr>
                 <td>绿菜花</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.70</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.75</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥5.60</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.62</td>
-            </tr>
-</tbody></table></div>
-
+                <td class="price price-beijing">¥2.50</td>
+                <td class="price price-chengdu">¥2.70</td>
+                <td class="price price-mianyang">¥2.75</td>
+                <td class="price price-kunming">¥5.60<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.62</td>
+            </tr></tbody>
+            </table>
+        </div>
         <div class="category">
             <div class="category-header" style="background: #c0392b;">
                 <h2>🥩 肉类</h2>
                 <span class="count">20品种</span>
             </div>
             <table>
-                <thead>
-                    <tr>
-                        <th style="width:30%">品名</th>
-                        <th style="width:14%" class="city-price show" data-city="beijing">北京<br><small>(斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="chengdu">成都+8%<br><small>(斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="mianyang">绵阳+10%<br><small>(斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="kunming">昆明+12%<br><small class="kg-mark">(公斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="xian">西安+5%<br><small>(斤)</small></th>
-                    </tr>
-                </thead>
-                <tbody>
-<tr>
+                <thead>                    <tr>
+                        <th style="width:22%">品名</th>
+                        <th style="width:15.5%">北京新发地<br><small>(斤)</small></th>
+                        <th style="width:15.5%">成都+8%<br><small>(斤)</small></th>
+                        <th style="width:15.5%">绵阳+10%<br><small>(斤)</small></th>
+                        <th style="width:15.5%">昆明+12%<br><small style="color:#9b59b6">(公斤)</small></th>
+                        <th style="width:15.5%">西安+5%<br><small>(斤)</small></th>
+                    </tr></thead>
+                <tbody><tr>
                 <td>大白菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.75</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.81</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.83</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.68</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.79</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.75</td>
+                <td class="price price-chengdu">¥0.81</td>
+                <td class="price price-mianyang">¥0.83</td>
+                <td class="price price-kunming">¥1.68<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.79</td>
+            </tr><tr>
                 <td>娃娃菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.24</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.26</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.21</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.15</td>
+                <td class="price price-chengdu">¥1.24</td>
+                <td class="price price-mianyang">¥1.26</td>
+                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.21</td>
+            </tr><tr>
                 <td>小白菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.60</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.65</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.66</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.34</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.63</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.60</td>
+                <td class="price price-chengdu">¥0.65</td>
+                <td class="price price-mianyang">¥0.66</td>
+                <td class="price price-kunming">¥1.34<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.63</td>
+            </tr><tr>
                 <td>圆白菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.70</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.76</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.77</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.57</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.73</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.70</td>
+                <td class="price price-chengdu">¥0.76</td>
+                <td class="price price-mianyang">¥0.77</td>
+                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.73</td>
+            </tr><tr>
                 <td>紫甘蓝</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.24</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.26</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.21</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.15</td>
+                <td class="price price-chengdu">¥1.24</td>
+                <td class="price price-mianyang">¥1.26</td>
+                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.21</td>
+            </tr><tr>
                 <td>芹菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.24</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.26</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.21</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.15</td>
+                <td class="price price-chengdu">¥1.24</td>
+                <td class="price price-mianyang">¥1.26</td>
+                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.21</td>
+            </tr><tr>
                 <td>西芹</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.32</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.37</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥4.82</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.26</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥2.15</td>
+                <td class="price price-chengdu">¥2.32</td>
+                <td class="price price-mianyang">¥2.37</td>
+                <td class="price price-kunming">¥4.82<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.26</td>
+            </tr><tr>
                 <td>菠菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.80</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.86</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.88</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.79</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.84</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.80</td>
+                <td class="price price-chengdu">¥0.86</td>
+                <td class="price price-mianyang">¥0.88</td>
+                <td class="price price-kunming">¥1.79<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.84</td>
+            </tr><tr>
                 <td>莴笋</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.62</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.65</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.36</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.58</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.50</td>
+                <td class="price price-chengdu">¥1.62</td>
+                <td class="price price-mianyang">¥1.65</td>
+                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.58</td>
+            </tr><tr>
                 <td>团生菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.25</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.43</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.48</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥5.04</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.36</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥2.25</td>
+                <td class="price price-chengdu">¥2.43</td>
+                <td class="price price-mianyang">¥2.48</td>
+                <td class="price price-kunming">¥5.04<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.36</td>
+            </tr><tr>
                 <td>罗马生菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.55</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.67</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.71</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.47</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.63</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.55</td>
+                <td class="price price-chengdu">¥1.67</td>
+                <td class="price price-mianyang">¥1.71</td>
+                <td class="price price-kunming">¥3.47<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.63</td>
+            </tr><tr>
                 <td>散叶生菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.90</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.97</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.99</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.02</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.95</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.90</td>
+                <td class="price price-chengdu">¥0.97</td>
+                <td class="price price-mianyang">¥0.99</td>
+                <td class="price price-kunming">¥2.02<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.95</td>
+            </tr><tr>
                 <td>油菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.70</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.76</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.77</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.57</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.73</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.70</td>
+                <td class="price price-chengdu">¥0.76</td>
+                <td class="price price-mianyang">¥0.77</td>
+                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.73</td>
+            </tr><tr>
                 <td>香菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.62</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.65</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.36</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.58</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.50</td>
+                <td class="price price-chengdu">¥1.62</td>
+                <td class="price price-mianyang">¥1.65</td>
+                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.58</td>
+            </tr><tr>
                 <td>茴香</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.62</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.65</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.36</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.58</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.50</td>
+                <td class="price price-chengdu">¥1.62</td>
+                <td class="price price-mianyang">¥1.65</td>
+                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.58</td>
+            </tr><tr>
                 <td>韭菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.60</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.73</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.76</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.68</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.60</td>
+                <td class="price price-chengdu">¥1.73</td>
+                <td class="price price-mianyang">¥1.76</td>
+                <td class="price price-kunming">¥3.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.68</td>
+            </tr><tr>
                 <td>苦菊</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.70</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.84</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.87</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.81</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.78</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.70</td>
+                <td class="price price-chengdu">¥1.84</td>
+                <td class="price price-mianyang">¥1.87</td>
+                <td class="price price-kunming">¥3.81<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.78</td>
+            </tr><tr>
                 <td>油麦菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.25</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.35</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.38</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.80</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.31</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.25</td>
+                <td class="price price-chengdu">¥1.35</td>
+                <td class="price price-mianyang">¥1.38</td>
+                <td class="price price-kunming">¥2.80<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.31</td>
+            </tr><tr>
                 <td>散菜花</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.05</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.21</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.25</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥4.59</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.15</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥2.05</td>
+                <td class="price price-chengdu">¥2.21</td>
+                <td class="price price-mianyang">¥2.25</td>
+                <td class="price price-kunming">¥4.59<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.15</td>
+            </tr><tr>
                 <td>绿菜花</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.70</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.75</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥5.60</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.62</td>
-            </tr>
-</tbody></table></div>
-
+                <td class="price price-beijing">¥2.50</td>
+                <td class="price price-chengdu">¥2.70</td>
+                <td class="price price-mianyang">¥2.75</td>
+                <td class="price price-kunming">¥5.60<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.62</td>
+            </tr></tbody>
+            </table>
+        </div>
         <div class="category">
             <div class="category-header" style="background: #2980b9;">
                 <h2>🐟 水产</h2>
                 <span class="count">20品种</span>
             </div>
             <table>
-                <thead>
-                    <tr>
-                        <th style="width:30%">品名</th>
-                        <th style="width:14%" class="city-price show" data-city="beijing">北京<br><small>(斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="chengdu">成都+8%<br><small>(斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="mianyang">绵阳+10%<br><small>(斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="kunming">昆明+12%<br><small class="kg-mark">(公斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="xian">西安+5%<br><small>(斤)</small></th>
-                    </tr>
-                </thead>
-                <tbody>
-<tr>
+                <thead>                    <tr>
+                        <th style="width:22%">品名</th>
+                        <th style="width:15.5%">北京新发地<br><small>(斤)</small></th>
+                        <th style="width:15.5%">成都+8%<br><small>(斤)</small></th>
+                        <th style="width:15.5%">绵阳+10%<br><small>(斤)</small></th>
+                        <th style="width:15.5%">昆明+12%<br><small style="color:#9b59b6">(公斤)</small></th>
+                        <th style="width:15.5%">西安+5%<br><small>(斤)</small></th>
+                    </tr></thead>
+                <tbody><tr>
                 <td>大白菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.75</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.81</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.83</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.68</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.79</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.75</td>
+                <td class="price price-chengdu">¥0.81</td>
+                <td class="price price-mianyang">¥0.83</td>
+                <td class="price price-kunming">¥1.68<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.79</td>
+            </tr><tr>
                 <td>娃娃菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.24</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.26</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.21</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.15</td>
+                <td class="price price-chengdu">¥1.24</td>
+                <td class="price price-mianyang">¥1.26</td>
+                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.21</td>
+            </tr><tr>
                 <td>小白菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.60</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.65</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.66</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.34</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.63</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.60</td>
+                <td class="price price-chengdu">¥0.65</td>
+                <td class="price price-mianyang">¥0.66</td>
+                <td class="price price-kunming">¥1.34<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.63</td>
+            </tr><tr>
                 <td>圆白菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.70</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.76</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.77</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.57</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.73</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.70</td>
+                <td class="price price-chengdu">¥0.76</td>
+                <td class="price price-mianyang">¥0.77</td>
+                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.73</td>
+            </tr><tr>
                 <td>紫甘蓝</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.24</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.26</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.21</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.15</td>
+                <td class="price price-chengdu">¥1.24</td>
+                <td class="price price-mianyang">¥1.26</td>
+                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.21</td>
+            </tr><tr>
                 <td>芹菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.24</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.26</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.21</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.15</td>
+                <td class="price price-chengdu">¥1.24</td>
+                <td class="price price-mianyang">¥1.26</td>
+                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.21</td>
+            </tr><tr>
                 <td>西芹</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.32</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.37</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥4.82</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.26</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥2.15</td>
+                <td class="price price-chengdu">¥2.32</td>
+                <td class="price price-mianyang">¥2.37</td>
+                <td class="price price-kunming">¥4.82<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.26</td>
+            </tr><tr>
                 <td>菠菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.80</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.86</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.88</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.79</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.84</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.80</td>
+                <td class="price price-chengdu">¥0.86</td>
+                <td class="price price-mianyang">¥0.88</td>
+                <td class="price price-kunming">¥1.79<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.84</td>
+            </tr><tr>
                 <td>莴笋</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.62</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.65</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.36</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.58</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.50</td>
+                <td class="price price-chengdu">¥1.62</td>
+                <td class="price price-mianyang">¥1.65</td>
+                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.58</td>
+            </tr><tr>
                 <td>团生菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.25</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.43</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.48</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥5.04</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.36</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥2.25</td>
+                <td class="price price-chengdu">¥2.43</td>
+                <td class="price price-mianyang">¥2.48</td>
+                <td class="price price-kunming">¥5.04<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.36</td>
+            </tr><tr>
                 <td>罗马生菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.55</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.67</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.71</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.47</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.63</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.55</td>
+                <td class="price price-chengdu">¥1.67</td>
+                <td class="price price-mianyang">¥1.71</td>
+                <td class="price price-kunming">¥3.47<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.63</td>
+            </tr><tr>
                 <td>散叶生菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.90</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.97</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.99</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.02</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.95</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.90</td>
+                <td class="price price-chengdu">¥0.97</td>
+                <td class="price price-mianyang">¥0.99</td>
+                <td class="price price-kunming">¥2.02<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.95</td>
+            </tr><tr>
                 <td>油菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.70</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.76</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.77</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.57</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.73</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.70</td>
+                <td class="price price-chengdu">¥0.76</td>
+                <td class="price price-mianyang">¥0.77</td>
+                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.73</td>
+            </tr><tr>
                 <td>香菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.62</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.65</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.36</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.58</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.50</td>
+                <td class="price price-chengdu">¥1.62</td>
+                <td class="price price-mianyang">¥1.65</td>
+                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.58</td>
+            </tr><tr>
                 <td>茴香</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.62</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.65</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.36</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.58</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.50</td>
+                <td class="price price-chengdu">¥1.62</td>
+                <td class="price price-mianyang">¥1.65</td>
+                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.58</td>
+            </tr><tr>
                 <td>韭菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.60</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.73</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.76</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.68</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.60</td>
+                <td class="price price-chengdu">¥1.73</td>
+                <td class="price price-mianyang">¥1.76</td>
+                <td class="price price-kunming">¥3.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.68</td>
+            </tr><tr>
                 <td>苦菊</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.70</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.84</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.87</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.81</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.78</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.70</td>
+                <td class="price price-chengdu">¥1.84</td>
+                <td class="price price-mianyang">¥1.87</td>
+                <td class="price price-kunming">¥3.81<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.78</td>
+            </tr><tr>
                 <td>油麦菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.25</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.35</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.38</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.80</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.31</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.25</td>
+                <td class="price price-chengdu">¥1.35</td>
+                <td class="price price-mianyang">¥1.38</td>
+                <td class="price price-kunming">¥2.80<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.31</td>
+            </tr><tr>
                 <td>散菜花</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.05</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.21</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.25</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥4.59</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.15</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥2.05</td>
+                <td class="price price-chengdu">¥2.21</td>
+                <td class="price price-mianyang">¥2.25</td>
+                <td class="price price-kunming">¥4.59<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.15</td>
+            </tr><tr>
                 <td>绿菜花</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.70</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.75</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥5.60</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.62</td>
-            </tr>
-</tbody></table></div>
-
+                <td class="price price-beijing">¥2.50</td>
+                <td class="price price-chengdu">¥2.70</td>
+                <td class="price price-mianyang">¥2.75</td>
+                <td class="price price-kunming">¥5.60<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.62</td>
+            </tr></tbody>
+            </table>
+        </div>
         <div class="category">
             <div class="category-header" style="background: #d35400;">
                 <h2>🍎 水果</h2>
                 <span class="count">20品种</span>
             </div>
             <table>
-                <thead>
-                    <tr>
-                        <th style="width:30%">品名</th>
-                        <th style="width:14%" class="city-price show" data-city="beijing">北京<br><small>(斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="chengdu">成都+8%<br><small>(斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="mianyang">绵阳+10%<br><small>(斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="kunming">昆明+12%<br><small class="kg-mark">(公斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="xian">西安+5%<br><small>(斤)</small></th>
-                    </tr>
-                </thead>
-                <tbody>
-<tr>
+                <thead>                    <tr>
+                        <th style="width:22%">品名</th>
+                        <th style="width:15.5%">北京新发地<br><small>(斤)</small></th>
+                        <th style="width:15.5%">成都+8%<br><small>(斤)</small></th>
+                        <th style="width:15.5%">绵阳+10%<br><small>(斤)</small></th>
+                        <th style="width:15.5%">昆明+12%<br><small style="color:#9b59b6">(公斤)</small></th>
+                        <th style="width:15.5%">西安+5%<br><small>(斤)</small></th>
+                    </tr></thead>
+                <tbody><tr>
                 <td>大白菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.75</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.81</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.83</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.68</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.79</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.75</td>
+                <td class="price price-chengdu">¥0.81</td>
+                <td class="price price-mianyang">¥0.83</td>
+                <td class="price price-kunming">¥1.68<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.79</td>
+            </tr><tr>
                 <td>娃娃菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.24</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.26</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.21</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.15</td>
+                <td class="price price-chengdu">¥1.24</td>
+                <td class="price price-mianyang">¥1.26</td>
+                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.21</td>
+            </tr><tr>
                 <td>小白菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.60</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.65</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.66</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.34</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.63</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.60</td>
+                <td class="price price-chengdu">¥0.65</td>
+                <td class="price price-mianyang">¥0.66</td>
+                <td class="price price-kunming">¥1.34<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.63</td>
+            </tr><tr>
                 <td>圆白菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.70</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.76</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.77</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.57</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.73</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.70</td>
+                <td class="price price-chengdu">¥0.76</td>
+                <td class="price price-mianyang">¥0.77</td>
+                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.73</td>
+            </tr><tr>
                 <td>紫甘蓝</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.24</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.26</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.21</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.15</td>
+                <td class="price price-chengdu">¥1.24</td>
+                <td class="price price-mianyang">¥1.26</td>
+                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.21</td>
+            </tr><tr>
                 <td>芹菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.24</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.26</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.21</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.15</td>
+                <td class="price price-chengdu">¥1.24</td>
+                <td class="price price-mianyang">¥1.26</td>
+                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.21</td>
+            </tr><tr>
                 <td>西芹</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.32</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.37</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥4.82</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.26</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥2.15</td>
+                <td class="price price-chengdu">¥2.32</td>
+                <td class="price price-mianyang">¥2.37</td>
+                <td class="price price-kunming">¥4.82<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.26</td>
+            </tr><tr>
                 <td>菠菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.80</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.86</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.88</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.79</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.84</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.80</td>
+                <td class="price price-chengdu">¥0.86</td>
+                <td class="price price-mianyang">¥0.88</td>
+                <td class="price price-kunming">¥1.79<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.84</td>
+            </tr><tr>
                 <td>莴笋</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.62</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.65</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.36</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.58</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.50</td>
+                <td class="price price-chengdu">¥1.62</td>
+                <td class="price price-mianyang">¥1.65</td>
+                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.58</td>
+            </tr><tr>
                 <td>团生菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.25</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.43</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.48</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥5.04</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.36</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥2.25</td>
+                <td class="price price-chengdu">¥2.43</td>
+                <td class="price price-mianyang">¥2.48</td>
+                <td class="price price-kunming">¥5.04<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.36</td>
+            </tr><tr>
                 <td>罗马生菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.55</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.67</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.71</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.47</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.63</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.55</td>
+                <td class="price price-chengdu">¥1.67</td>
+                <td class="price price-mianyang">¥1.71</td>
+                <td class="price price-kunming">¥3.47<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.63</td>
+            </tr><tr>
                 <td>散叶生菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.90</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.97</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.99</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.02</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.95</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.90</td>
+                <td class="price price-chengdu">¥0.97</td>
+                <td class="price price-mianyang">¥0.99</td>
+                <td class="price price-kunming">¥2.02<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.95</td>
+            </tr><tr>
                 <td>油菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.70</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.76</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.77</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.57</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.73</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.70</td>
+                <td class="price price-chengdu">¥0.76</td>
+                <td class="price price-mianyang">¥0.77</td>
+                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.73</td>
+            </tr><tr>
                 <td>香菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.62</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.65</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.36</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.58</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.50</td>
+                <td class="price price-chengdu">¥1.62</td>
+                <td class="price price-mianyang">¥1.65</td>
+                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.58</td>
+            </tr><tr>
                 <td>茴香</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.62</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.65</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.36</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.58</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.50</td>
+                <td class="price price-chengdu">¥1.62</td>
+                <td class="price price-mianyang">¥1.65</td>
+                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.58</td>
+            </tr><tr>
                 <td>韭菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.60</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.73</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.76</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.68</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.60</td>
+                <td class="price price-chengdu">¥1.73</td>
+                <td class="price price-mianyang">¥1.76</td>
+                <td class="price price-kunming">¥3.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.68</td>
+            </tr><tr>
                 <td>苦菊</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.70</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.84</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.87</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.81</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.78</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.70</td>
+                <td class="price price-chengdu">¥1.84</td>
+                <td class="price price-mianyang">¥1.87</td>
+                <td class="price price-kunming">¥3.81<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.78</td>
+            </tr><tr>
                 <td>油麦菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.25</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.35</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.38</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.80</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.31</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.25</td>
+                <td class="price price-chengdu">¥1.35</td>
+                <td class="price price-mianyang">¥1.38</td>
+                <td class="price price-kunming">¥2.80<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.31</td>
+            </tr><tr>
                 <td>散菜花</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.05</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.21</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.25</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥4.59</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.15</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥2.05</td>
+                <td class="price price-chengdu">¥2.21</td>
+                <td class="price price-mianyang">¥2.25</td>
+                <td class="price price-kunming">¥4.59<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.15</td>
+            </tr><tr>
                 <td>绿菜花</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.70</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.75</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥5.60</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.62</td>
-            </tr>
-</tbody></table></div>
-
+                <td class="price price-beijing">¥2.50</td>
+                <td class="price price-chengdu">¥2.70</td>
+                <td class="price price-mianyang">¥2.75</td>
+                <td class="price price-kunming">¥5.60<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.62</td>
+            </tr></tbody>
+            </table>
+        </div>
         <div class="category">
             <div class="category-header" style="background: #8e44ad;">
                 <h2>🥚 禽蛋</h2>
                 <span class="count">20品种</span>
             </div>
             <table>
-                <thead>
-                    <tr>
-                        <th style="width:30%">品名</th>
-                        <th style="width:14%" class="city-price show" data-city="beijing">北京<br><small>(斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="chengdu">成都+8%<br><small>(斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="mianyang">绵阳+10%<br><small>(斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="kunming">昆明+12%<br><small class="kg-mark">(公斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="xian">西安+5%<br><small>(斤)</small></th>
-                    </tr>
-                </thead>
-                <tbody>
-<tr>
+                <thead>                    <tr>
+                        <th style="width:22%">品名</th>
+                        <th style="width:15.5%">北京新发地<br><small>(斤)</small></th>
+                        <th style="width:15.5%">成都+8%<br><small>(斤)</small></th>
+                        <th style="width:15.5%">绵阳+10%<br><small>(斤)</small></th>
+                        <th style="width:15.5%">昆明+12%<br><small style="color:#9b59b6">(公斤)</small></th>
+                        <th style="width:15.5%">西安+5%<br><small>(斤)</small></th>
+                    </tr></thead>
+                <tbody><tr>
                 <td>大白菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.75</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.81</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.83</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.68</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.79</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.75</td>
+                <td class="price price-chengdu">¥0.81</td>
+                <td class="price price-mianyang">¥0.83</td>
+                <td class="price price-kunming">¥1.68<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.79</td>
+            </tr><tr>
                 <td>娃娃菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.24</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.26</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.21</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.15</td>
+                <td class="price price-chengdu">¥1.24</td>
+                <td class="price price-mianyang">¥1.26</td>
+                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.21</td>
+            </tr><tr>
                 <td>小白菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.60</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.65</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.66</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.34</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.63</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.60</td>
+                <td class="price price-chengdu">¥0.65</td>
+                <td class="price price-mianyang">¥0.66</td>
+                <td class="price price-kunming">¥1.34<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.63</td>
+            </tr><tr>
                 <td>圆白菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.70</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.76</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.77</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.57</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.73</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.70</td>
+                <td class="price price-chengdu">¥0.76</td>
+                <td class="price price-mianyang">¥0.77</td>
+                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.73</td>
+            </tr><tr>
                 <td>紫甘蓝</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.24</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.26</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.21</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.15</td>
+                <td class="price price-chengdu">¥1.24</td>
+                <td class="price price-mianyang">¥1.26</td>
+                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.21</td>
+            </tr><tr>
                 <td>芹菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.24</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.26</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.21</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.15</td>
+                <td class="price price-chengdu">¥1.24</td>
+                <td class="price price-mianyang">¥1.26</td>
+                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.21</td>
+            </tr><tr>
                 <td>西芹</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.32</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.37</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥4.82</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.26</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥2.15</td>
+                <td class="price price-chengdu">¥2.32</td>
+                <td class="price price-mianyang">¥2.37</td>
+                <td class="price price-kunming">¥4.82<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.26</td>
+            </tr><tr>
                 <td>菠菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.80</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.86</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.88</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.79</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.84</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.80</td>
+                <td class="price price-chengdu">¥0.86</td>
+                <td class="price price-mianyang">¥0.88</td>
+                <td class="price price-kunming">¥1.79<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.84</td>
+            </tr><tr>
                 <td>莴笋</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.62</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.65</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.36</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.58</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.50</td>
+                <td class="price price-chengdu">¥1.62</td>
+                <td class="price price-mianyang">¥1.65</td>
+                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.58</td>
+            </tr><tr>
                 <td>团生菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.25</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.43</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.48</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥5.04</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.36</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥2.25</td>
+                <td class="price price-chengdu">¥2.43</td>
+                <td class="price price-mianyang">¥2.48</td>
+                <td class="price price-kunming">¥5.04<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.36</td>
+            </tr><tr>
                 <td>罗马生菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.55</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.67</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.71</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.47</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.63</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.55</td>
+                <td class="price price-chengdu">¥1.67</td>
+                <td class="price price-mianyang">¥1.71</td>
+                <td class="price price-kunming">¥3.47<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.63</td>
+            </tr><tr>
                 <td>散叶生菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.90</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.97</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.99</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.02</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.95</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.90</td>
+                <td class="price price-chengdu">¥0.97</td>
+                <td class="price price-mianyang">¥0.99</td>
+                <td class="price price-kunming">¥2.02<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.95</td>
+            </tr><tr>
                 <td>油菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.70</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.76</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.77</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.57</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.73</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.70</td>
+                <td class="price price-chengdu">¥0.76</td>
+                <td class="price price-mianyang">¥0.77</td>
+                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.73</td>
+            </tr><tr>
                 <td>香菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.62</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.65</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.36</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.58</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.50</td>
+                <td class="price price-chengdu">¥1.62</td>
+                <td class="price price-mianyang">¥1.65</td>
+                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.58</td>
+            </tr><tr>
                 <td>茴香</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.62</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.65</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.36</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.58</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.50</td>
+                <td class="price price-chengdu">¥1.62</td>
+                <td class="price price-mianyang">¥1.65</td>
+                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.58</td>
+            </tr><tr>
                 <td>韭菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.60</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.73</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.76</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.68</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.60</td>
+                <td class="price price-chengdu">¥1.73</td>
+                <td class="price price-mianyang">¥1.76</td>
+                <td class="price price-kunming">¥3.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.68</td>
+            </tr><tr>
                 <td>苦菊</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.70</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.84</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.87</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.81</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.78</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.70</td>
+                <td class="price price-chengdu">¥1.84</td>
+                <td class="price price-mianyang">¥1.87</td>
+                <td class="price price-kunming">¥3.81<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.78</td>
+            </tr><tr>
                 <td>油麦菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.25</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.35</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.38</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.80</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.31</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.25</td>
+                <td class="price price-chengdu">¥1.35</td>
+                <td class="price price-mianyang">¥1.38</td>
+                <td class="price price-kunming">¥2.80<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.31</td>
+            </tr><tr>
                 <td>散菜花</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.05</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.21</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.25</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥4.59</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.15</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥2.05</td>
+                <td class="price price-chengdu">¥2.21</td>
+                <td class="price price-mianyang">¥2.25</td>
+                <td class="price price-kunming">¥4.59<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.15</td>
+            </tr><tr>
                 <td>绿菜花</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.70</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.75</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥5.60</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.62</td>
-            </tr>
-</tbody></table></div>
-
+                <td class="price price-beijing">¥2.50</td>
+                <td class="price price-chengdu">¥2.70</td>
+                <td class="price price-mianyang">¥2.75</td>
+                <td class="price price-kunming">¥5.60<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.62</td>
+            </tr></tbody>
+            </table>
+        </div>
         <div class="category">
             <div class="category-header" style="background: #c9a227;">
                 <h2>🌾 粮油</h2>
                 <span class="count">20品种</span>
             </div>
             <table>
-                <thead>
-                    <tr>
-                        <th style="width:30%">品名</th>
-                        <th style="width:14%" class="city-price show" data-city="beijing">北京<br><small>(斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="chengdu">成都+8%<br><small>(斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="mianyang">绵阳+10%<br><small>(斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="kunming">昆明+12%<br><small class="kg-mark">(公斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="xian">西安+5%<br><small>(斤)</small></th>
-                    </tr>
-                </thead>
-                <tbody>
-<tr>
+                <thead>                    <tr>
+                        <th style="width:22%">品名</th>
+                        <th style="width:15.5%">北京新发地<br><small>(斤)</small></th>
+                        <th style="width:15.5%">成都+8%<br><small>(斤)</small></th>
+                        <th style="width:15.5%">绵阳+10%<br><small>(斤)</small></th>
+                        <th style="width:15.5%">昆明+12%<br><small style="color:#9b59b6">(公斤)</small></th>
+                        <th style="width:15.5%">西安+5%<br><small>(斤)</small></th>
+                    </tr></thead>
+                <tbody><tr>
                 <td>大白菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.75</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.81</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.83</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.68</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.79</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.75</td>
+                <td class="price price-chengdu">¥0.81</td>
+                <td class="price price-mianyang">¥0.83</td>
+                <td class="price price-kunming">¥1.68<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.79</td>
+            </tr><tr>
                 <td>娃娃菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.24</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.26</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.21</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.15</td>
+                <td class="price price-chengdu">¥1.24</td>
+                <td class="price price-mianyang">¥1.26</td>
+                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.21</td>
+            </tr><tr>
                 <td>小白菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.60</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.65</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.66</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.34</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.63</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.60</td>
+                <td class="price price-chengdu">¥0.65</td>
+                <td class="price price-mianyang">¥0.66</td>
+                <td class="price price-kunming">¥1.34<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.63</td>
+            </tr><tr>
                 <td>圆白菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.70</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.76</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.77</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.57</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.73</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.70</td>
+                <td class="price price-chengdu">¥0.76</td>
+                <td class="price price-mianyang">¥0.77</td>
+                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.73</td>
+            </tr><tr>
                 <td>紫甘蓝</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.24</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.26</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.21</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.15</td>
+                <td class="price price-chengdu">¥1.24</td>
+                <td class="price price-mianyang">¥1.26</td>
+                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.21</td>
+            </tr><tr>
                 <td>芹菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.24</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.26</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.21</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.15</td>
+                <td class="price price-chengdu">¥1.24</td>
+                <td class="price price-mianyang">¥1.26</td>
+                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.21</td>
+            </tr><tr>
                 <td>西芹</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.32</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.37</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥4.82</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.26</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥2.15</td>
+                <td class="price price-chengdu">¥2.32</td>
+                <td class="price price-mianyang">¥2.37</td>
+                <td class="price price-kunming">¥4.82<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.26</td>
+            </tr><tr>
                 <td>菠菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.80</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.86</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.88</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.79</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.84</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.80</td>
+                <td class="price price-chengdu">¥0.86</td>
+                <td class="price price-mianyang">¥0.88</td>
+                <td class="price price-kunming">¥1.79<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.84</td>
+            </tr><tr>
                 <td>莴笋</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.62</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.65</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.36</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.58</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.50</td>
+                <td class="price price-chengdu">¥1.62</td>
+                <td class="price price-mianyang">¥1.65</td>
+                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.58</td>
+            </tr><tr>
                 <td>团生菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.25</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.43</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.48</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥5.04</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.36</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥2.25</td>
+                <td class="price price-chengdu">¥2.43</td>
+                <td class="price price-mianyang">¥2.48</td>
+                <td class="price price-kunming">¥5.04<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.36</td>
+            </tr><tr>
                 <td>罗马生菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.55</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.67</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.71</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.47</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.63</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.55</td>
+                <td class="price price-chengdu">¥1.67</td>
+                <td class="price price-mianyang">¥1.71</td>
+                <td class="price price-kunming">¥3.47<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.63</td>
+            </tr><tr>
                 <td>散叶生菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.90</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.97</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.99</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.02</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.95</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.90</td>
+                <td class="price price-chengdu">¥0.97</td>
+                <td class="price price-mianyang">¥0.99</td>
+                <td class="price price-kunming">¥2.02<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.95</td>
+            </tr><tr>
                 <td>油菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.70</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.76</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.77</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.57</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.73</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.70</td>
+                <td class="price price-chengdu">¥0.76</td>
+                <td class="price price-mianyang">¥0.77</td>
+                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.73</td>
+            </tr><tr>
                 <td>香菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.62</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.65</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.36</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.58</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.50</td>
+                <td class="price price-chengdu">¥1.62</td>
+                <td class="price price-mianyang">¥1.65</td>
+                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.58</td>
+            </tr><tr>
                 <td>茴香</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.62</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.65</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.36</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.58</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.50</td>
+                <td class="price price-chengdu">¥1.62</td>
+                <td class="price price-mianyang">¥1.65</td>
+                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.58</td>
+            </tr><tr>
                 <td>韭菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.60</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.73</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.76</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.68</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.60</td>
+                <td class="price price-chengdu">¥1.73</td>
+                <td class="price price-mianyang">¥1.76</td>
+                <td class="price price-kunming">¥3.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.68</td>
+            </tr><tr>
                 <td>苦菊</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.70</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.84</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.87</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.81</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.78</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.70</td>
+                <td class="price price-chengdu">¥1.84</td>
+                <td class="price price-mianyang">¥1.87</td>
+                <td class="price price-kunming">¥3.81<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.78</td>
+            </tr><tr>
                 <td>油麦菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.25</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.35</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.38</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.80</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.31</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.25</td>
+                <td class="price price-chengdu">¥1.35</td>
+                <td class="price price-mianyang">¥1.38</td>
+                <td class="price price-kunming">¥2.80<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.31</td>
+            </tr><tr>
                 <td>散菜花</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.05</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.21</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.25</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥4.59</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.15</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥2.05</td>
+                <td class="price price-chengdu">¥2.21</td>
+                <td class="price price-mianyang">¥2.25</td>
+                <td class="price price-kunming">¥4.59<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.15</td>
+            </tr><tr>
                 <td>绿菜花</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.70</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.75</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥5.60</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.62</td>
-            </tr>
-</tbody></table></div>
-
+                <td class="price price-beijing">¥2.50</td>
+                <td class="price price-chengdu">¥2.70</td>
+                <td class="price price-mianyang">¥2.75</td>
+                <td class="price price-kunming">¥5.60<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.62</td>
+            </tr></tbody>
+            </table>
+        </div>
         <div class="category">
             <div class="category-header" style="background: #7d5a50;">
                 <h2>🧄 调料</h2>
                 <span class="count">20品种</span>
             </div>
             <table>
-                <thead>
-                    <tr>
-                        <th style="width:30%">品名</th>
-                        <th style="width:14%" class="city-price show" data-city="beijing">北京<br><small>(斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="chengdu">成都+8%<br><small>(斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="mianyang">绵阳+10%<br><small>(斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="kunming">昆明+12%<br><small class="kg-mark">(公斤)</small></th>
-                        <th style="width:14%" class="city-price" data-city="xian">西安+5%<br><small>(斤)</small></th>
-                    </tr>
-                </thead>
-                <tbody>
-<tr>
+                <thead>                    <tr>
+                        <th style="width:22%">品名</th>
+                        <th style="width:15.5%">北京新发地<br><small>(斤)</small></th>
+                        <th style="width:15.5%">成都+8%<br><small>(斤)</small></th>
+                        <th style="width:15.5%">绵阳+10%<br><small>(斤)</small></th>
+                        <th style="width:15.5%">昆明+12%<br><small style="color:#9b59b6">(公斤)</small></th>
+                        <th style="width:15.5%">西安+5%<br><small>(斤)</small></th>
+                    </tr></thead>
+                <tbody><tr>
                 <td>大白菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.75</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.81</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.83</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.68</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.79</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.75</td>
+                <td class="price price-chengdu">¥0.81</td>
+                <td class="price price-mianyang">¥0.83</td>
+                <td class="price price-kunming">¥1.68<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.79</td>
+            </tr><tr>
                 <td>娃娃菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.24</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.26</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.21</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.15</td>
+                <td class="price price-chengdu">¥1.24</td>
+                <td class="price price-mianyang">¥1.26</td>
+                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.21</td>
+            </tr><tr>
                 <td>小白菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.60</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.65</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.66</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.34</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.63</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.60</td>
+                <td class="price price-chengdu">¥0.65</td>
+                <td class="price price-mianyang">¥0.66</td>
+                <td class="price price-kunming">¥1.34<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.63</td>
+            </tr><tr>
                 <td>圆白菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.70</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.76</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.77</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.57</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.73</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.70</td>
+                <td class="price price-chengdu">¥0.76</td>
+                <td class="price price-mianyang">¥0.77</td>
+                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.73</td>
+            </tr><tr>
                 <td>紫甘蓝</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.24</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.26</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.21</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.15</td>
+                <td class="price price-chengdu">¥1.24</td>
+                <td class="price price-mianyang">¥1.26</td>
+                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.21</td>
+            </tr><tr>
                 <td>芹菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.24</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.26</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.21</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.15</td>
+                <td class="price price-chengdu">¥1.24</td>
+                <td class="price price-mianyang">¥1.26</td>
+                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.21</td>
+            </tr><tr>
                 <td>西芹</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.15</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.32</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.37</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥4.82</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.26</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥2.15</td>
+                <td class="price price-chengdu">¥2.32</td>
+                <td class="price price-mianyang">¥2.37</td>
+                <td class="price price-kunming">¥4.82<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.26</td>
+            </tr><tr>
                 <td>菠菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.80</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.86</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.88</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.79</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.84</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.80</td>
+                <td class="price price-chengdu">¥0.86</td>
+                <td class="price price-mianyang">¥0.88</td>
+                <td class="price price-kunming">¥1.79<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.84</td>
+            </tr><tr>
                 <td>莴笋</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.62</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.65</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.36</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.58</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.50</td>
+                <td class="price price-chengdu">¥1.62</td>
+                <td class="price price-mianyang">¥1.65</td>
+                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.58</td>
+            </tr><tr>
                 <td>团生菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.25</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.43</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.48</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥5.04</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.36</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥2.25</td>
+                <td class="price price-chengdu">¥2.43</td>
+                <td class="price price-mianyang">¥2.48</td>
+                <td class="price price-kunming">¥5.04<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.36</td>
+            </tr><tr>
                 <td>罗马生菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.55</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.67</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.71</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.47</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.63</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.55</td>
+                <td class="price price-chengdu">¥1.67</td>
+                <td class="price price-mianyang">¥1.71</td>
+                <td class="price price-kunming">¥3.47<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.63</td>
+            </tr><tr>
                 <td>散叶生菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.90</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.97</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.99</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.02</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.95</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.90</td>
+                <td class="price price-chengdu">¥0.97</td>
+                <td class="price price-mianyang">¥0.99</td>
+                <td class="price price-kunming">¥2.02<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.95</td>
+            </tr><tr>
                 <td>油菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥0.70</td>
-                <td class="price-col city-price" data-city="chengdu">¥0.76</td>
-                <td class="price-col city-price" data-city="mianyang">¥0.77</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥1.57</span></td>
-                <td class="price-col city-price" data-city="xian">¥0.73</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥0.70</td>
+                <td class="price price-chengdu">¥0.76</td>
+                <td class="price price-mianyang">¥0.77</td>
+                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥0.73</td>
+            </tr><tr>
                 <td>香菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.62</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.65</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.36</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.58</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.50</td>
+                <td class="price price-chengdu">¥1.62</td>
+                <td class="price price-mianyang">¥1.65</td>
+                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.58</td>
+            </tr><tr>
                 <td>茴香</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.62</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.65</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.36</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.58</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.50</td>
+                <td class="price price-chengdu">¥1.62</td>
+                <td class="price price-mianyang">¥1.65</td>
+                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.58</td>
+            </tr><tr>
                 <td>韭菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.60</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.73</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.76</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.58</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.68</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.60</td>
+                <td class="price price-chengdu">¥1.73</td>
+                <td class="price price-mianyang">¥1.76</td>
+                <td class="price price-kunming">¥3.58<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.68</td>
+            </tr><tr>
                 <td>苦菊</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.70</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.84</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.87</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥3.81</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.78</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.70</td>
+                <td class="price price-chengdu">¥1.84</td>
+                <td class="price price-mianyang">¥1.87</td>
+                <td class="price price-kunming">¥3.81<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.78</td>
+            </tr><tr>
                 <td>油麦菜</td>
-                <td class="price-col city-price show" data-city="beijing">¥1.25</td>
-                <td class="price-col city-price" data-city="chengdu">¥1.35</td>
-                <td class="price-col city-price" data-city="mianyang">¥1.38</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥2.80</span></td>
-                <td class="price-col city-price" data-city="xian">¥1.31</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥1.25</td>
+                <td class="price price-chengdu">¥1.35</td>
+                <td class="price price-mianyang">¥1.38</td>
+                <td class="price price-kunming">¥2.80<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥1.31</td>
+            </tr><tr>
                 <td>散菜花</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.05</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.21</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.25</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥4.59</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.15</td>
-            </tr>
-<tr>
+                <td class="price price-beijing">¥2.05</td>
+                <td class="price price-chengdu">¥2.21</td>
+                <td class="price price-mianyang">¥2.25</td>
+                <td class="price price-kunming">¥4.59<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.15</td>
+            </tr><tr>
                 <td>绿菜花</td>
-                <td class="price-col city-price show" data-city="beijing">¥2.50</td>
-                <td class="price-col city-price" data-city="chengdu">¥2.70</td>
-                <td class="price-col city-price" data-city="mianyang">¥2.75</td>
-                <td class="price-col city-price" data-city="kunming"><span class="kg-mark">¥5.60</span></td>
-                <td class="price-col city-price" data-city="xian">¥2.62</td>
-            </tr>
-</tbody></table></div>
-
+                <td class="price price-beijing">¥2.50</td>
+                <td class="price price-chengdu">¥2.70</td>
+                <td class="price price-mianyang">¥2.75</td>
+                <td class="price price-kunming">¥5.60<span class="kg-note">公斤价</span></td>
+                <td class="price price-xian">¥2.62</td>
+            </tr></tbody>
+            </table>
+        </div>
         <div class="footer">
             <p>数据每日自动更新 | 仅供参考 | 实际价格以市场为准</p>
             <p style="margin-top:5px;">Powered by WorkBuddy AI</p>
         </div>
     </div>
-    
-    <script>
-        function showCity(city) {
-            document.querySelectorAll('.market-tab').forEach(tab => tab.classList.remove('active'));
-            event.target.closest('.market-tab').classList.add('active');
-            document.querySelectorAll('.city-price').forEach(col => col.classList.remove('show'));
-            document.querySelectorAll(`.city-price[data-city="${city}"]`).forEach(col => col.classList.add('show'));
-        }
-    </script>
 </body>
 </html>
