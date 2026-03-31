@@ -3,1285 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>江油生鲜每日报价 - 2026-03-31</title>
+    <title>江油生鲜批发报价 - 2026年03月31日</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
         }
         .container { max-width: 1400px; margin: 0 auto; }
         
+        /* 头部 */
         .header {
             background: white;
             border-radius: 16px;
-            padding: 30px;
+            padding: 24px;
             margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             text-align: center;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
         }
-        .header h1 { font-size: 28px; color: #2c3e50; margin-bottom: 10px; }
-        .header .date { color: #7f8c8d; font-size: 14px; }
-        .header .stats {
-            margin-top: 15px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .stat { 
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-        }
-        
-        .unit-notice {
-            background: #fff3cd;
-            border: 1px solid #ffc107;
+        .header h1 { color: #1f2937; font-size: 28px; margin-bottom: 8px; }
+        .header .date { color: #6b7280; font-size: 14px; margin-bottom: 16px; }
+        .header .stats { 
+            display: inline-flex;
+            gap: 24px;
+            background: #f3f4f6;
+            padding: 12px 24px;
             border-radius: 8px;
-            padding: 12px 16px;
-            margin: 15px auto;
-            max-width: 700px;
-            font-size: 13px;
-            color: #856404;
         }
+        .header .stats span { color: #4b5563; font-size: 14px; }
+        .header .stats strong { color: #7c3aed; }
         
-        .city-legend {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-        .city-badge {
+        /* 市场说明 */
+        .markets-info {
             background: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 500;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
         }
-        .city-badge .dot { width: 10px; height: 10px; border-radius: 50%; }
-        .city-badge.kg { border: 2px dashed #9b59b6; }
+        .markets-info h3 { 
+            font-size: 14px; 
+            color: #6b7280; 
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        .markets-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+        }
+        .market-badge {
+            text-align: center;
+            padding: 10px 8px;
+            border-radius: 8px;
+            font-size: 12px;
+        }
+        .market-badge .name { font-weight: 600; margin-bottom: 4px; }
+        .market-badge .unit { font-size: 11px; opacity: 0.8; }
         
-        .category {
+        /* 品类区块 */
+        .category-section {
             background: white;
             border-radius: 16px;
             margin-bottom: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
         .category-header {
-            padding: 20px;
+            padding: 16px 20px;
             color: white;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
-        .category-header h2 { font-size: 20px; }
+        .category-header .icon { font-size: 24px; }
+        .category-header .name { font-size: 20px; font-weight: 600; }
         .category-header .count {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.3);
             padding: 4px 12px;
             border-radius: 12px;
             font-size: 12px;
         }
         
-        table { width: 100%; border-collapse: collapse; font-size: 13px; }
-        th {
-            background: #f8f9fa;
+        /* 表格 */
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        .price-table th {
+            background: #f9fafb;
             padding: 12px 8px;
             text-align: center;
             font-weight: 600;
-            color: #2c3e50;
-            font-size: 12px;
-            border-bottom: 2px solid #e9ecef;
+            color: #374151;
+            border-bottom: 2px solid #e5e7eb;
         }
-        th:first-child { text-align: left; padding-left: 16px; }
-        td {
+        .price-table th:first-child { text-align: left; padding-left: 20px; }
+        .price-table td {
             padding: 10px 8px;
-            border-bottom: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f3f4f6;
             text-align: center;
         }
-        td:first-child { text-align: left; padding-left: 16px; font-weight: 500; }
-        tr:last-child td { border-bottom: none; }
-        tr:hover { background: #f8f9fa; }
-        
-        .price { font-weight: 600; }
-        .price-beijing { color: #e74c3c; }
-        .price-chengdu { color: #3498db; }
-        .price-mianyang { color: #2ecc71; }
-        .price-kunming { color: #9b59b6; }
-        .price-xian { color: #f39c12; }
-        
-        .kg-note { 
-            font-size: 10px; 
-            color: #9b59b6; 
-            display: block;
-            margin-top: 2px;
+        .price-table td:first-child { 
+            text-align: left; 
+            padding-left: 20px;
+            font-weight: 500;
+            color: #1f2937;
         }
+        .price-table tr:hover { background: #f9fafb; }
+        .price { font-weight: 600; color: #dc2626; }
         
+        /* 底部 */
         .footer {
             text-align: center;
-            color: rgba(255,255,255,0.7);
+            padding: 20px;
+            color: rgba(255,255,255,0.8);
             font-size: 12px;
-            margin-top: 20px;
         }
         
-        @media (max-width: 768px) {
+        /* 响应式 */
+        @media (max-width: 1024px) {
+            .markets-grid { grid-template-columns: repeat(3, 1fr); }
+            .price-table { font-size: 11px; }
+            .price-table th, .price-table td { padding: 8px 4px; }
+        }
+        @media (max-width: 640px) {
+            .markets-grid { grid-template-columns: repeat(2, 1fr); }
             body { padding: 10px; }
             .header h1 { font-size: 20px; }
-            th, td { padding: 8px 4px; font-size: 11px; }
-            th:first-child, td:first-child { padding-left: 10px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>江油生鲜每日批发报价</h1>
-            <div class="date">2026年03月31日</div>
+            <h1>🥬 江油生鲜批发报价</h1>
+            <div class="date">2026年03月31日 | 数据来源：北京新发地批发市场</div>
             <div class="stats">
-                <span class="stat">7 大品类</span>
-                <span class="stat">140+ 品种</span>
-                <span class="stat">5 大市场对比</span>
-            </div>
-            <div class="unit-notice">
-                <strong>[价格说明]</strong> 北京/成都/绵阳/西安按<strong>斤</strong>报价 | 昆明按<strong>公斤</strong>报价（已x2换算为斤）
+                <span>📦 <strong>0</strong> 个品种</span>
+                <span>🏪 <strong>5</strong> 个市场</span>
+                <span>📊 <strong>7</strong> 大品类</span>
             </div>
         </div>
         
-        <div class="city-legend">
-            <div class="city-badge">
-                <span class="dot" style="background:#e74c3c"></span>
-                北京新发地
-            </div>
-            <div class="city-badge">
-                <span class="dot" style="background:#3498db"></span>
-                四川成都 +8%
-            </div>
-            <div class="city-badge">
-                <span class="dot" style="background:#2ecc71"></span>
-                四川绵阳 +10%
-            </div>
-            <div class="city-badge kg">
-                <span class="dot" style="background:#9b59b6"></span>
-                云南昆明 +12% (公斤)
-            </div>
-            <div class="city-badge">
-                <span class="dot" style="background:#f39c12"></span>
-                陕西西安 +5%
+        <div class="markets-info">
+            <h3>📍 五省市批发价格对比（已含运费及损耗）</h3>
+            <div class="markets-grid">
+                <div class="market-badge" style="background: #d1fae5; color: #065f46;">
+                    <div class="name">🏙️ 北京新发地</div>
+                    <div class="unit">基准价（元/斤）</div>
+                </div>
+                <div class="market-badge" style="background: #dbeafe; color: #1e40af;">
+                    <div class="name">🏔️ 四川成都</div>
+                    <div class="unit">+8%（元/斤）</div>
+                </div>
+                <div class="market-badge" style="background: #dcfce7; color: #166534;">
+                    <div class="name">🏔️ 四川绵阳</div>
+                    <div class="unit">+10%（元/斤）</div>
+                </div>
+                <div class="market-badge" style="background: #f3e8ff; color: #6b21a8;">
+                    <div class="name">🌸 云南昆明</div>
+                    <div class="unit">+12%（元/公斤）</div>
+                </div>
+                <div class="market-badge" style="background: #ffedd5; color: #9a3412;">
+                    <div class="name">🏯 陕西西安</div>
+                    <div class="unit">+5%（元/斤）</div>
+                </div>
             </div>
         </div>
 
-        <div class="category">
-            <div class="category-header" style="background: #27ae60;">
-                <h2>🥬 蔬菜</h2>
-                <span class="count">20品种</span>
-            </div>
-            <table>
-                <thead>                    <tr>
-                        <th style="width:22%">品名</th>
-                        <th style="width:15.5%">北京新发地<br><small>(斤)</small></th>
-                        <th style="width:15.5%">成都+8%<br><small>(斤)</small></th>
-                        <th style="width:15.5%">绵阳+10%<br><small>(斤)</small></th>
-                        <th style="width:15.5%">昆明+12%<br><small style="color:#9b59b6">(公斤)</small></th>
-                        <th style="width:15.5%">西安+5%<br><small>(斤)</small></th>
-                    </tr></thead>
-                <tbody><tr>
-                <td>大白菜</td>
-                <td class="price price-beijing">¥0.75</td>
-                <td class="price price-chengdu">¥0.81</td>
-                <td class="price price-mianyang">¥0.83</td>
-                <td class="price price-kunming">¥1.68<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.79</td>
-            </tr><tr>
-                <td>娃娃菜</td>
-                <td class="price price-beijing">¥1.15</td>
-                <td class="price price-chengdu">¥1.24</td>
-                <td class="price price-mianyang">¥1.26</td>
-                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.21</td>
-            </tr><tr>
-                <td>小白菜</td>
-                <td class="price price-beijing">¥0.60</td>
-                <td class="price price-chengdu">¥0.65</td>
-                <td class="price price-mianyang">¥0.66</td>
-                <td class="price price-kunming">¥1.34<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.63</td>
-            </tr><tr>
-                <td>圆白菜</td>
-                <td class="price price-beijing">¥0.70</td>
-                <td class="price price-chengdu">¥0.76</td>
-                <td class="price price-mianyang">¥0.77</td>
-                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.73</td>
-            </tr><tr>
-                <td>紫甘蓝</td>
-                <td class="price price-beijing">¥1.15</td>
-                <td class="price price-chengdu">¥1.24</td>
-                <td class="price price-mianyang">¥1.26</td>
-                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.21</td>
-            </tr><tr>
-                <td>芹菜</td>
-                <td class="price price-beijing">¥1.15</td>
-                <td class="price price-chengdu">¥1.24</td>
-                <td class="price price-mianyang">¥1.26</td>
-                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.21</td>
-            </tr><tr>
-                <td>西芹</td>
-                <td class="price price-beijing">¥2.15</td>
-                <td class="price price-chengdu">¥2.32</td>
-                <td class="price price-mianyang">¥2.37</td>
-                <td class="price price-kunming">¥4.82<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.26</td>
-            </tr><tr>
-                <td>菠菜</td>
-                <td class="price price-beijing">¥0.80</td>
-                <td class="price price-chengdu">¥0.86</td>
-                <td class="price price-mianyang">¥0.88</td>
-                <td class="price price-kunming">¥1.79<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.84</td>
-            </tr><tr>
-                <td>莴笋</td>
-                <td class="price price-beijing">¥1.50</td>
-                <td class="price price-chengdu">¥1.62</td>
-                <td class="price price-mianyang">¥1.65</td>
-                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.58</td>
-            </tr><tr>
-                <td>团生菜</td>
-                <td class="price price-beijing">¥2.25</td>
-                <td class="price price-chengdu">¥2.43</td>
-                <td class="price price-mianyang">¥2.48</td>
-                <td class="price price-kunming">¥5.04<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.36</td>
-            </tr><tr>
-                <td>罗马生菜</td>
-                <td class="price price-beijing">¥1.55</td>
-                <td class="price price-chengdu">¥1.67</td>
-                <td class="price price-mianyang">¥1.71</td>
-                <td class="price price-kunming">¥3.47<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.63</td>
-            </tr><tr>
-                <td>散叶生菜</td>
-                <td class="price price-beijing">¥0.90</td>
-                <td class="price price-chengdu">¥0.97</td>
-                <td class="price price-mianyang">¥0.99</td>
-                <td class="price price-kunming">¥2.02<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.95</td>
-            </tr><tr>
-                <td>油菜</td>
-                <td class="price price-beijing">¥0.70</td>
-                <td class="price price-chengdu">¥0.76</td>
-                <td class="price price-mianyang">¥0.77</td>
-                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.73</td>
-            </tr><tr>
-                <td>香菜</td>
-                <td class="price price-beijing">¥1.50</td>
-                <td class="price price-chengdu">¥1.62</td>
-                <td class="price price-mianyang">¥1.65</td>
-                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.58</td>
-            </tr><tr>
-                <td>茴香</td>
-                <td class="price price-beijing">¥1.50</td>
-                <td class="price price-chengdu">¥1.62</td>
-                <td class="price price-mianyang">¥1.65</td>
-                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.58</td>
-            </tr><tr>
-                <td>韭菜</td>
-                <td class="price price-beijing">¥1.60</td>
-                <td class="price price-chengdu">¥1.73</td>
-                <td class="price price-mianyang">¥1.76</td>
-                <td class="price price-kunming">¥3.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.68</td>
-            </tr><tr>
-                <td>苦菊</td>
-                <td class="price price-beijing">¥1.70</td>
-                <td class="price price-chengdu">¥1.84</td>
-                <td class="price price-mianyang">¥1.87</td>
-                <td class="price price-kunming">¥3.81<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.78</td>
-            </tr><tr>
-                <td>油麦菜</td>
-                <td class="price price-beijing">¥1.25</td>
-                <td class="price price-chengdu">¥1.35</td>
-                <td class="price price-mianyang">¥1.38</td>
-                <td class="price price-kunming">¥2.80<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.31</td>
-            </tr><tr>
-                <td>散菜花</td>
-                <td class="price price-beijing">¥2.05</td>
-                <td class="price price-chengdu">¥2.21</td>
-                <td class="price price-mianyang">¥2.25</td>
-                <td class="price price-kunming">¥4.59<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.15</td>
-            </tr><tr>
-                <td>绿菜花</td>
-                <td class="price price-beijing">¥2.50</td>
-                <td class="price price-chengdu">¥2.70</td>
-                <td class="price price-mianyang">¥2.75</td>
-                <td class="price price-kunming">¥5.60<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.62</td>
-            </tr></tbody>
-            </table>
-        </div>
-        <div class="category">
-            <div class="category-header" style="background: #c0392b;">
-                <h2>🥩 肉类</h2>
-                <span class="count">20品种</span>
-            </div>
-            <table>
-                <thead>                    <tr>
-                        <th style="width:22%">品名</th>
-                        <th style="width:15.5%">北京新发地<br><small>(斤)</small></th>
-                        <th style="width:15.5%">成都+8%<br><small>(斤)</small></th>
-                        <th style="width:15.5%">绵阳+10%<br><small>(斤)</small></th>
-                        <th style="width:15.5%">昆明+12%<br><small style="color:#9b59b6">(公斤)</small></th>
-                        <th style="width:15.5%">西安+5%<br><small>(斤)</small></th>
-                    </tr></thead>
-                <tbody><tr>
-                <td>大白菜</td>
-                <td class="price price-beijing">¥0.75</td>
-                <td class="price price-chengdu">¥0.81</td>
-                <td class="price price-mianyang">¥0.83</td>
-                <td class="price price-kunming">¥1.68<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.79</td>
-            </tr><tr>
-                <td>娃娃菜</td>
-                <td class="price price-beijing">¥1.15</td>
-                <td class="price price-chengdu">¥1.24</td>
-                <td class="price price-mianyang">¥1.26</td>
-                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.21</td>
-            </tr><tr>
-                <td>小白菜</td>
-                <td class="price price-beijing">¥0.60</td>
-                <td class="price price-chengdu">¥0.65</td>
-                <td class="price price-mianyang">¥0.66</td>
-                <td class="price price-kunming">¥1.34<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.63</td>
-            </tr><tr>
-                <td>圆白菜</td>
-                <td class="price price-beijing">¥0.70</td>
-                <td class="price price-chengdu">¥0.76</td>
-                <td class="price price-mianyang">¥0.77</td>
-                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.73</td>
-            </tr><tr>
-                <td>紫甘蓝</td>
-                <td class="price price-beijing">¥1.15</td>
-                <td class="price price-chengdu">¥1.24</td>
-                <td class="price price-mianyang">¥1.26</td>
-                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.21</td>
-            </tr><tr>
-                <td>芹菜</td>
-                <td class="price price-beijing">¥1.15</td>
-                <td class="price price-chengdu">¥1.24</td>
-                <td class="price price-mianyang">¥1.26</td>
-                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.21</td>
-            </tr><tr>
-                <td>西芹</td>
-                <td class="price price-beijing">¥2.15</td>
-                <td class="price price-chengdu">¥2.32</td>
-                <td class="price price-mianyang">¥2.37</td>
-                <td class="price price-kunming">¥4.82<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.26</td>
-            </tr><tr>
-                <td>菠菜</td>
-                <td class="price price-beijing">¥0.80</td>
-                <td class="price price-chengdu">¥0.86</td>
-                <td class="price price-mianyang">¥0.88</td>
-                <td class="price price-kunming">¥1.79<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.84</td>
-            </tr><tr>
-                <td>莴笋</td>
-                <td class="price price-beijing">¥1.50</td>
-                <td class="price price-chengdu">¥1.62</td>
-                <td class="price price-mianyang">¥1.65</td>
-                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.58</td>
-            </tr><tr>
-                <td>团生菜</td>
-                <td class="price price-beijing">¥2.25</td>
-                <td class="price price-chengdu">¥2.43</td>
-                <td class="price price-mianyang">¥2.48</td>
-                <td class="price price-kunming">¥5.04<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.36</td>
-            </tr><tr>
-                <td>罗马生菜</td>
-                <td class="price price-beijing">¥1.55</td>
-                <td class="price price-chengdu">¥1.67</td>
-                <td class="price price-mianyang">¥1.71</td>
-                <td class="price price-kunming">¥3.47<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.63</td>
-            </tr><tr>
-                <td>散叶生菜</td>
-                <td class="price price-beijing">¥0.90</td>
-                <td class="price price-chengdu">¥0.97</td>
-                <td class="price price-mianyang">¥0.99</td>
-                <td class="price price-kunming">¥2.02<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.95</td>
-            </tr><tr>
-                <td>油菜</td>
-                <td class="price price-beijing">¥0.70</td>
-                <td class="price price-chengdu">¥0.76</td>
-                <td class="price price-mianyang">¥0.77</td>
-                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.73</td>
-            </tr><tr>
-                <td>香菜</td>
-                <td class="price price-beijing">¥1.50</td>
-                <td class="price price-chengdu">¥1.62</td>
-                <td class="price price-mianyang">¥1.65</td>
-                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.58</td>
-            </tr><tr>
-                <td>茴香</td>
-                <td class="price price-beijing">¥1.50</td>
-                <td class="price price-chengdu">¥1.62</td>
-                <td class="price price-mianyang">¥1.65</td>
-                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.58</td>
-            </tr><tr>
-                <td>韭菜</td>
-                <td class="price price-beijing">¥1.60</td>
-                <td class="price price-chengdu">¥1.73</td>
-                <td class="price price-mianyang">¥1.76</td>
-                <td class="price price-kunming">¥3.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.68</td>
-            </tr><tr>
-                <td>苦菊</td>
-                <td class="price price-beijing">¥1.70</td>
-                <td class="price price-chengdu">¥1.84</td>
-                <td class="price price-mianyang">¥1.87</td>
-                <td class="price price-kunming">¥3.81<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.78</td>
-            </tr><tr>
-                <td>油麦菜</td>
-                <td class="price price-beijing">¥1.25</td>
-                <td class="price price-chengdu">¥1.35</td>
-                <td class="price price-mianyang">¥1.38</td>
-                <td class="price price-kunming">¥2.80<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.31</td>
-            </tr><tr>
-                <td>散菜花</td>
-                <td class="price price-beijing">¥2.05</td>
-                <td class="price price-chengdu">¥2.21</td>
-                <td class="price price-mianyang">¥2.25</td>
-                <td class="price price-kunming">¥4.59<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.15</td>
-            </tr><tr>
-                <td>绿菜花</td>
-                <td class="price price-beijing">¥2.50</td>
-                <td class="price price-chengdu">¥2.70</td>
-                <td class="price price-mianyang">¥2.75</td>
-                <td class="price price-kunming">¥5.60<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.62</td>
-            </tr></tbody>
-            </table>
-        </div>
-        <div class="category">
-            <div class="category-header" style="background: #2980b9;">
-                <h2>🐟 水产</h2>
-                <span class="count">20品种</span>
-            </div>
-            <table>
-                <thead>                    <tr>
-                        <th style="width:22%">品名</th>
-                        <th style="width:15.5%">北京新发地<br><small>(斤)</small></th>
-                        <th style="width:15.5%">成都+8%<br><small>(斤)</small></th>
-                        <th style="width:15.5%">绵阳+10%<br><small>(斤)</small></th>
-                        <th style="width:15.5%">昆明+12%<br><small style="color:#9b59b6">(公斤)</small></th>
-                        <th style="width:15.5%">西安+5%<br><small>(斤)</small></th>
-                    </tr></thead>
-                <tbody><tr>
-                <td>大白菜</td>
-                <td class="price price-beijing">¥0.75</td>
-                <td class="price price-chengdu">¥0.81</td>
-                <td class="price price-mianyang">¥0.83</td>
-                <td class="price price-kunming">¥1.68<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.79</td>
-            </tr><tr>
-                <td>娃娃菜</td>
-                <td class="price price-beijing">¥1.15</td>
-                <td class="price price-chengdu">¥1.24</td>
-                <td class="price price-mianyang">¥1.26</td>
-                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.21</td>
-            </tr><tr>
-                <td>小白菜</td>
-                <td class="price price-beijing">¥0.60</td>
-                <td class="price price-chengdu">¥0.65</td>
-                <td class="price price-mianyang">¥0.66</td>
-                <td class="price price-kunming">¥1.34<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.63</td>
-            </tr><tr>
-                <td>圆白菜</td>
-                <td class="price price-beijing">¥0.70</td>
-                <td class="price price-chengdu">¥0.76</td>
-                <td class="price price-mianyang">¥0.77</td>
-                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.73</td>
-            </tr><tr>
-                <td>紫甘蓝</td>
-                <td class="price price-beijing">¥1.15</td>
-                <td class="price price-chengdu">¥1.24</td>
-                <td class="price price-mianyang">¥1.26</td>
-                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.21</td>
-            </tr><tr>
-                <td>芹菜</td>
-                <td class="price price-beijing">¥1.15</td>
-                <td class="price price-chengdu">¥1.24</td>
-                <td class="price price-mianyang">¥1.26</td>
-                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.21</td>
-            </tr><tr>
-                <td>西芹</td>
-                <td class="price price-beijing">¥2.15</td>
-                <td class="price price-chengdu">¥2.32</td>
-                <td class="price price-mianyang">¥2.37</td>
-                <td class="price price-kunming">¥4.82<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.26</td>
-            </tr><tr>
-                <td>菠菜</td>
-                <td class="price price-beijing">¥0.80</td>
-                <td class="price price-chengdu">¥0.86</td>
-                <td class="price price-mianyang">¥0.88</td>
-                <td class="price price-kunming">¥1.79<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.84</td>
-            </tr><tr>
-                <td>莴笋</td>
-                <td class="price price-beijing">¥1.50</td>
-                <td class="price price-chengdu">¥1.62</td>
-                <td class="price price-mianyang">¥1.65</td>
-                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.58</td>
-            </tr><tr>
-                <td>团生菜</td>
-                <td class="price price-beijing">¥2.25</td>
-                <td class="price price-chengdu">¥2.43</td>
-                <td class="price price-mianyang">¥2.48</td>
-                <td class="price price-kunming">¥5.04<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.36</td>
-            </tr><tr>
-                <td>罗马生菜</td>
-                <td class="price price-beijing">¥1.55</td>
-                <td class="price price-chengdu">¥1.67</td>
-                <td class="price price-mianyang">¥1.71</td>
-                <td class="price price-kunming">¥3.47<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.63</td>
-            </tr><tr>
-                <td>散叶生菜</td>
-                <td class="price price-beijing">¥0.90</td>
-                <td class="price price-chengdu">¥0.97</td>
-                <td class="price price-mianyang">¥0.99</td>
-                <td class="price price-kunming">¥2.02<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.95</td>
-            </tr><tr>
-                <td>油菜</td>
-                <td class="price price-beijing">¥0.70</td>
-                <td class="price price-chengdu">¥0.76</td>
-                <td class="price price-mianyang">¥0.77</td>
-                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.73</td>
-            </tr><tr>
-                <td>香菜</td>
-                <td class="price price-beijing">¥1.50</td>
-                <td class="price price-chengdu">¥1.62</td>
-                <td class="price price-mianyang">¥1.65</td>
-                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.58</td>
-            </tr><tr>
-                <td>茴香</td>
-                <td class="price price-beijing">¥1.50</td>
-                <td class="price price-chengdu">¥1.62</td>
-                <td class="price price-mianyang">¥1.65</td>
-                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.58</td>
-            </tr><tr>
-                <td>韭菜</td>
-                <td class="price price-beijing">¥1.60</td>
-                <td class="price price-chengdu">¥1.73</td>
-                <td class="price price-mianyang">¥1.76</td>
-                <td class="price price-kunming">¥3.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.68</td>
-            </tr><tr>
-                <td>苦菊</td>
-                <td class="price price-beijing">¥1.70</td>
-                <td class="price price-chengdu">¥1.84</td>
-                <td class="price price-mianyang">¥1.87</td>
-                <td class="price price-kunming">¥3.81<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.78</td>
-            </tr><tr>
-                <td>油麦菜</td>
-                <td class="price price-beijing">¥1.25</td>
-                <td class="price price-chengdu">¥1.35</td>
-                <td class="price price-mianyang">¥1.38</td>
-                <td class="price price-kunming">¥2.80<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.31</td>
-            </tr><tr>
-                <td>散菜花</td>
-                <td class="price price-beijing">¥2.05</td>
-                <td class="price price-chengdu">¥2.21</td>
-                <td class="price price-mianyang">¥2.25</td>
-                <td class="price price-kunming">¥4.59<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.15</td>
-            </tr><tr>
-                <td>绿菜花</td>
-                <td class="price price-beijing">¥2.50</td>
-                <td class="price price-chengdu">¥2.70</td>
-                <td class="price price-mianyang">¥2.75</td>
-                <td class="price price-kunming">¥5.60<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.62</td>
-            </tr></tbody>
-            </table>
-        </div>
-        <div class="category">
-            <div class="category-header" style="background: #d35400;">
-                <h2>🍎 水果</h2>
-                <span class="count">20品种</span>
-            </div>
-            <table>
-                <thead>                    <tr>
-                        <th style="width:22%">品名</th>
-                        <th style="width:15.5%">北京新发地<br><small>(斤)</small></th>
-                        <th style="width:15.5%">成都+8%<br><small>(斤)</small></th>
-                        <th style="width:15.5%">绵阳+10%<br><small>(斤)</small></th>
-                        <th style="width:15.5%">昆明+12%<br><small style="color:#9b59b6">(公斤)</small></th>
-                        <th style="width:15.5%">西安+5%<br><small>(斤)</small></th>
-                    </tr></thead>
-                <tbody><tr>
-                <td>大白菜</td>
-                <td class="price price-beijing">¥0.75</td>
-                <td class="price price-chengdu">¥0.81</td>
-                <td class="price price-mianyang">¥0.83</td>
-                <td class="price price-kunming">¥1.68<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.79</td>
-            </tr><tr>
-                <td>娃娃菜</td>
-                <td class="price price-beijing">¥1.15</td>
-                <td class="price price-chengdu">¥1.24</td>
-                <td class="price price-mianyang">¥1.26</td>
-                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.21</td>
-            </tr><tr>
-                <td>小白菜</td>
-                <td class="price price-beijing">¥0.60</td>
-                <td class="price price-chengdu">¥0.65</td>
-                <td class="price price-mianyang">¥0.66</td>
-                <td class="price price-kunming">¥1.34<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.63</td>
-            </tr><tr>
-                <td>圆白菜</td>
-                <td class="price price-beijing">¥0.70</td>
-                <td class="price price-chengdu">¥0.76</td>
-                <td class="price price-mianyang">¥0.77</td>
-                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.73</td>
-            </tr><tr>
-                <td>紫甘蓝</td>
-                <td class="price price-beijing">¥1.15</td>
-                <td class="price price-chengdu">¥1.24</td>
-                <td class="price price-mianyang">¥1.26</td>
-                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.21</td>
-            </tr><tr>
-                <td>芹菜</td>
-                <td class="price price-beijing">¥1.15</td>
-                <td class="price price-chengdu">¥1.24</td>
-                <td class="price price-mianyang">¥1.26</td>
-                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.21</td>
-            </tr><tr>
-                <td>西芹</td>
-                <td class="price price-beijing">¥2.15</td>
-                <td class="price price-chengdu">¥2.32</td>
-                <td class="price price-mianyang">¥2.37</td>
-                <td class="price price-kunming">¥4.82<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.26</td>
-            </tr><tr>
-                <td>菠菜</td>
-                <td class="price price-beijing">¥0.80</td>
-                <td class="price price-chengdu">¥0.86</td>
-                <td class="price price-mianyang">¥0.88</td>
-                <td class="price price-kunming">¥1.79<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.84</td>
-            </tr><tr>
-                <td>莴笋</td>
-                <td class="price price-beijing">¥1.50</td>
-                <td class="price price-chengdu">¥1.62</td>
-                <td class="price price-mianyang">¥1.65</td>
-                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.58</td>
-            </tr><tr>
-                <td>团生菜</td>
-                <td class="price price-beijing">¥2.25</td>
-                <td class="price price-chengdu">¥2.43</td>
-                <td class="price price-mianyang">¥2.48</td>
-                <td class="price price-kunming">¥5.04<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.36</td>
-            </tr><tr>
-                <td>罗马生菜</td>
-                <td class="price price-beijing">¥1.55</td>
-                <td class="price price-chengdu">¥1.67</td>
-                <td class="price price-mianyang">¥1.71</td>
-                <td class="price price-kunming">¥3.47<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.63</td>
-            </tr><tr>
-                <td>散叶生菜</td>
-                <td class="price price-beijing">¥0.90</td>
-                <td class="price price-chengdu">¥0.97</td>
-                <td class="price price-mianyang">¥0.99</td>
-                <td class="price price-kunming">¥2.02<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.95</td>
-            </tr><tr>
-                <td>油菜</td>
-                <td class="price price-beijing">¥0.70</td>
-                <td class="price price-chengdu">¥0.76</td>
-                <td class="price price-mianyang">¥0.77</td>
-                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.73</td>
-            </tr><tr>
-                <td>香菜</td>
-                <td class="price price-beijing">¥1.50</td>
-                <td class="price price-chengdu">¥1.62</td>
-                <td class="price price-mianyang">¥1.65</td>
-                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.58</td>
-            </tr><tr>
-                <td>茴香</td>
-                <td class="price price-beijing">¥1.50</td>
-                <td class="price price-chengdu">¥1.62</td>
-                <td class="price price-mianyang">¥1.65</td>
-                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.58</td>
-            </tr><tr>
-                <td>韭菜</td>
-                <td class="price price-beijing">¥1.60</td>
-                <td class="price price-chengdu">¥1.73</td>
-                <td class="price price-mianyang">¥1.76</td>
-                <td class="price price-kunming">¥3.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.68</td>
-            </tr><tr>
-                <td>苦菊</td>
-                <td class="price price-beijing">¥1.70</td>
-                <td class="price price-chengdu">¥1.84</td>
-                <td class="price price-mianyang">¥1.87</td>
-                <td class="price price-kunming">¥3.81<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.78</td>
-            </tr><tr>
-                <td>油麦菜</td>
-                <td class="price price-beijing">¥1.25</td>
-                <td class="price price-chengdu">¥1.35</td>
-                <td class="price price-mianyang">¥1.38</td>
-                <td class="price price-kunming">¥2.80<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.31</td>
-            </tr><tr>
-                <td>散菜花</td>
-                <td class="price price-beijing">¥2.05</td>
-                <td class="price price-chengdu">¥2.21</td>
-                <td class="price price-mianyang">¥2.25</td>
-                <td class="price price-kunming">¥4.59<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.15</td>
-            </tr><tr>
-                <td>绿菜花</td>
-                <td class="price price-beijing">¥2.50</td>
-                <td class="price price-chengdu">¥2.70</td>
-                <td class="price price-mianyang">¥2.75</td>
-                <td class="price price-kunming">¥5.60<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.62</td>
-            </tr></tbody>
-            </table>
-        </div>
-        <div class="category">
-            <div class="category-header" style="background: #8e44ad;">
-                <h2>🥚 禽蛋</h2>
-                <span class="count">20品种</span>
-            </div>
-            <table>
-                <thead>                    <tr>
-                        <th style="width:22%">品名</th>
-                        <th style="width:15.5%">北京新发地<br><small>(斤)</small></th>
-                        <th style="width:15.5%">成都+8%<br><small>(斤)</small></th>
-                        <th style="width:15.5%">绵阳+10%<br><small>(斤)</small></th>
-                        <th style="width:15.5%">昆明+12%<br><small style="color:#9b59b6">(公斤)</small></th>
-                        <th style="width:15.5%">西安+5%<br><small>(斤)</small></th>
-                    </tr></thead>
-                <tbody><tr>
-                <td>大白菜</td>
-                <td class="price price-beijing">¥0.75</td>
-                <td class="price price-chengdu">¥0.81</td>
-                <td class="price price-mianyang">¥0.83</td>
-                <td class="price price-kunming">¥1.68<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.79</td>
-            </tr><tr>
-                <td>娃娃菜</td>
-                <td class="price price-beijing">¥1.15</td>
-                <td class="price price-chengdu">¥1.24</td>
-                <td class="price price-mianyang">¥1.26</td>
-                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.21</td>
-            </tr><tr>
-                <td>小白菜</td>
-                <td class="price price-beijing">¥0.60</td>
-                <td class="price price-chengdu">¥0.65</td>
-                <td class="price price-mianyang">¥0.66</td>
-                <td class="price price-kunming">¥1.34<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.63</td>
-            </tr><tr>
-                <td>圆白菜</td>
-                <td class="price price-beijing">¥0.70</td>
-                <td class="price price-chengdu">¥0.76</td>
-                <td class="price price-mianyang">¥0.77</td>
-                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.73</td>
-            </tr><tr>
-                <td>紫甘蓝</td>
-                <td class="price price-beijing">¥1.15</td>
-                <td class="price price-chengdu">¥1.24</td>
-                <td class="price price-mianyang">¥1.26</td>
-                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.21</td>
-            </tr><tr>
-                <td>芹菜</td>
-                <td class="price price-beijing">¥1.15</td>
-                <td class="price price-chengdu">¥1.24</td>
-                <td class="price price-mianyang">¥1.26</td>
-                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.21</td>
-            </tr><tr>
-                <td>西芹</td>
-                <td class="price price-beijing">¥2.15</td>
-                <td class="price price-chengdu">¥2.32</td>
-                <td class="price price-mianyang">¥2.37</td>
-                <td class="price price-kunming">¥4.82<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.26</td>
-            </tr><tr>
-                <td>菠菜</td>
-                <td class="price price-beijing">¥0.80</td>
-                <td class="price price-chengdu">¥0.86</td>
-                <td class="price price-mianyang">¥0.88</td>
-                <td class="price price-kunming">¥1.79<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.84</td>
-            </tr><tr>
-                <td>莴笋</td>
-                <td class="price price-beijing">¥1.50</td>
-                <td class="price price-chengdu">¥1.62</td>
-                <td class="price price-mianyang">¥1.65</td>
-                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.58</td>
-            </tr><tr>
-                <td>团生菜</td>
-                <td class="price price-beijing">¥2.25</td>
-                <td class="price price-chengdu">¥2.43</td>
-                <td class="price price-mianyang">¥2.48</td>
-                <td class="price price-kunming">¥5.04<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.36</td>
-            </tr><tr>
-                <td>罗马生菜</td>
-                <td class="price price-beijing">¥1.55</td>
-                <td class="price price-chengdu">¥1.67</td>
-                <td class="price price-mianyang">¥1.71</td>
-                <td class="price price-kunming">¥3.47<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.63</td>
-            </tr><tr>
-                <td>散叶生菜</td>
-                <td class="price price-beijing">¥0.90</td>
-                <td class="price price-chengdu">¥0.97</td>
-                <td class="price price-mianyang">¥0.99</td>
-                <td class="price price-kunming">¥2.02<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.95</td>
-            </tr><tr>
-                <td>油菜</td>
-                <td class="price price-beijing">¥0.70</td>
-                <td class="price price-chengdu">¥0.76</td>
-                <td class="price price-mianyang">¥0.77</td>
-                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.73</td>
-            </tr><tr>
-                <td>香菜</td>
-                <td class="price price-beijing">¥1.50</td>
-                <td class="price price-chengdu">¥1.62</td>
-                <td class="price price-mianyang">¥1.65</td>
-                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.58</td>
-            </tr><tr>
-                <td>茴香</td>
-                <td class="price price-beijing">¥1.50</td>
-                <td class="price price-chengdu">¥1.62</td>
-                <td class="price price-mianyang">¥1.65</td>
-                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.58</td>
-            </tr><tr>
-                <td>韭菜</td>
-                <td class="price price-beijing">¥1.60</td>
-                <td class="price price-chengdu">¥1.73</td>
-                <td class="price price-mianyang">¥1.76</td>
-                <td class="price price-kunming">¥3.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.68</td>
-            </tr><tr>
-                <td>苦菊</td>
-                <td class="price price-beijing">¥1.70</td>
-                <td class="price price-chengdu">¥1.84</td>
-                <td class="price price-mianyang">¥1.87</td>
-                <td class="price price-kunming">¥3.81<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.78</td>
-            </tr><tr>
-                <td>油麦菜</td>
-                <td class="price price-beijing">¥1.25</td>
-                <td class="price price-chengdu">¥1.35</td>
-                <td class="price price-mianyang">¥1.38</td>
-                <td class="price price-kunming">¥2.80<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.31</td>
-            </tr><tr>
-                <td>散菜花</td>
-                <td class="price price-beijing">¥2.05</td>
-                <td class="price price-chengdu">¥2.21</td>
-                <td class="price price-mianyang">¥2.25</td>
-                <td class="price price-kunming">¥4.59<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.15</td>
-            </tr><tr>
-                <td>绿菜花</td>
-                <td class="price price-beijing">¥2.50</td>
-                <td class="price price-chengdu">¥2.70</td>
-                <td class="price price-mianyang">¥2.75</td>
-                <td class="price price-kunming">¥5.60<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.62</td>
-            </tr></tbody>
-            </table>
-        </div>
-        <div class="category">
-            <div class="category-header" style="background: #c9a227;">
-                <h2>🌾 粮油</h2>
-                <span class="count">20品种</span>
-            </div>
-            <table>
-                <thead>                    <tr>
-                        <th style="width:22%">品名</th>
-                        <th style="width:15.5%">北京新发地<br><small>(斤)</small></th>
-                        <th style="width:15.5%">成都+8%<br><small>(斤)</small></th>
-                        <th style="width:15.5%">绵阳+10%<br><small>(斤)</small></th>
-                        <th style="width:15.5%">昆明+12%<br><small style="color:#9b59b6">(公斤)</small></th>
-                        <th style="width:15.5%">西安+5%<br><small>(斤)</small></th>
-                    </tr></thead>
-                <tbody><tr>
-                <td>大白菜</td>
-                <td class="price price-beijing">¥0.75</td>
-                <td class="price price-chengdu">¥0.81</td>
-                <td class="price price-mianyang">¥0.83</td>
-                <td class="price price-kunming">¥1.68<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.79</td>
-            </tr><tr>
-                <td>娃娃菜</td>
-                <td class="price price-beijing">¥1.15</td>
-                <td class="price price-chengdu">¥1.24</td>
-                <td class="price price-mianyang">¥1.26</td>
-                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.21</td>
-            </tr><tr>
-                <td>小白菜</td>
-                <td class="price price-beijing">¥0.60</td>
-                <td class="price price-chengdu">¥0.65</td>
-                <td class="price price-mianyang">¥0.66</td>
-                <td class="price price-kunming">¥1.34<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.63</td>
-            </tr><tr>
-                <td>圆白菜</td>
-                <td class="price price-beijing">¥0.70</td>
-                <td class="price price-chengdu">¥0.76</td>
-                <td class="price price-mianyang">¥0.77</td>
-                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.73</td>
-            </tr><tr>
-                <td>紫甘蓝</td>
-                <td class="price price-beijing">¥1.15</td>
-                <td class="price price-chengdu">¥1.24</td>
-                <td class="price price-mianyang">¥1.26</td>
-                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.21</td>
-            </tr><tr>
-                <td>芹菜</td>
-                <td class="price price-beijing">¥1.15</td>
-                <td class="price price-chengdu">¥1.24</td>
-                <td class="price price-mianyang">¥1.26</td>
-                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.21</td>
-            </tr><tr>
-                <td>西芹</td>
-                <td class="price price-beijing">¥2.15</td>
-                <td class="price price-chengdu">¥2.32</td>
-                <td class="price price-mianyang">¥2.37</td>
-                <td class="price price-kunming">¥4.82<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.26</td>
-            </tr><tr>
-                <td>菠菜</td>
-                <td class="price price-beijing">¥0.80</td>
-                <td class="price price-chengdu">¥0.86</td>
-                <td class="price price-mianyang">¥0.88</td>
-                <td class="price price-kunming">¥1.79<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.84</td>
-            </tr><tr>
-                <td>莴笋</td>
-                <td class="price price-beijing">¥1.50</td>
-                <td class="price price-chengdu">¥1.62</td>
-                <td class="price price-mianyang">¥1.65</td>
-                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.58</td>
-            </tr><tr>
-                <td>团生菜</td>
-                <td class="price price-beijing">¥2.25</td>
-                <td class="price price-chengdu">¥2.43</td>
-                <td class="price price-mianyang">¥2.48</td>
-                <td class="price price-kunming">¥5.04<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.36</td>
-            </tr><tr>
-                <td>罗马生菜</td>
-                <td class="price price-beijing">¥1.55</td>
-                <td class="price price-chengdu">¥1.67</td>
-                <td class="price price-mianyang">¥1.71</td>
-                <td class="price price-kunming">¥3.47<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.63</td>
-            </tr><tr>
-                <td>散叶生菜</td>
-                <td class="price price-beijing">¥0.90</td>
-                <td class="price price-chengdu">¥0.97</td>
-                <td class="price price-mianyang">¥0.99</td>
-                <td class="price price-kunming">¥2.02<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.95</td>
-            </tr><tr>
-                <td>油菜</td>
-                <td class="price price-beijing">¥0.70</td>
-                <td class="price price-chengdu">¥0.76</td>
-                <td class="price price-mianyang">¥0.77</td>
-                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.73</td>
-            </tr><tr>
-                <td>香菜</td>
-                <td class="price price-beijing">¥1.50</td>
-                <td class="price price-chengdu">¥1.62</td>
-                <td class="price price-mianyang">¥1.65</td>
-                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.58</td>
-            </tr><tr>
-                <td>茴香</td>
-                <td class="price price-beijing">¥1.50</td>
-                <td class="price price-chengdu">¥1.62</td>
-                <td class="price price-mianyang">¥1.65</td>
-                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.58</td>
-            </tr><tr>
-                <td>韭菜</td>
-                <td class="price price-beijing">¥1.60</td>
-                <td class="price price-chengdu">¥1.73</td>
-                <td class="price price-mianyang">¥1.76</td>
-                <td class="price price-kunming">¥3.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.68</td>
-            </tr><tr>
-                <td>苦菊</td>
-                <td class="price price-beijing">¥1.70</td>
-                <td class="price price-chengdu">¥1.84</td>
-                <td class="price price-mianyang">¥1.87</td>
-                <td class="price price-kunming">¥3.81<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.78</td>
-            </tr><tr>
-                <td>油麦菜</td>
-                <td class="price price-beijing">¥1.25</td>
-                <td class="price price-chengdu">¥1.35</td>
-                <td class="price price-mianyang">¥1.38</td>
-                <td class="price price-kunming">¥2.80<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.31</td>
-            </tr><tr>
-                <td>散菜花</td>
-                <td class="price price-beijing">¥2.05</td>
-                <td class="price price-chengdu">¥2.21</td>
-                <td class="price price-mianyang">¥2.25</td>
-                <td class="price price-kunming">¥4.59<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.15</td>
-            </tr><tr>
-                <td>绿菜花</td>
-                <td class="price price-beijing">¥2.50</td>
-                <td class="price price-chengdu">¥2.70</td>
-                <td class="price price-mianyang">¥2.75</td>
-                <td class="price price-kunming">¥5.60<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.62</td>
-            </tr></tbody>
-            </table>
-        </div>
-        <div class="category">
-            <div class="category-header" style="background: #7d5a50;">
-                <h2>🧄 调料</h2>
-                <span class="count">20品种</span>
-            </div>
-            <table>
-                <thead>                    <tr>
-                        <th style="width:22%">品名</th>
-                        <th style="width:15.5%">北京新发地<br><small>(斤)</small></th>
-                        <th style="width:15.5%">成都+8%<br><small>(斤)</small></th>
-                        <th style="width:15.5%">绵阳+10%<br><small>(斤)</small></th>
-                        <th style="width:15.5%">昆明+12%<br><small style="color:#9b59b6">(公斤)</small></th>
-                        <th style="width:15.5%">西安+5%<br><small>(斤)</small></th>
-                    </tr></thead>
-                <tbody><tr>
-                <td>大白菜</td>
-                <td class="price price-beijing">¥0.75</td>
-                <td class="price price-chengdu">¥0.81</td>
-                <td class="price price-mianyang">¥0.83</td>
-                <td class="price price-kunming">¥1.68<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.79</td>
-            </tr><tr>
-                <td>娃娃菜</td>
-                <td class="price price-beijing">¥1.15</td>
-                <td class="price price-chengdu">¥1.24</td>
-                <td class="price price-mianyang">¥1.26</td>
-                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.21</td>
-            </tr><tr>
-                <td>小白菜</td>
-                <td class="price price-beijing">¥0.60</td>
-                <td class="price price-chengdu">¥0.65</td>
-                <td class="price price-mianyang">¥0.66</td>
-                <td class="price price-kunming">¥1.34<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.63</td>
-            </tr><tr>
-                <td>圆白菜</td>
-                <td class="price price-beijing">¥0.70</td>
-                <td class="price price-chengdu">¥0.76</td>
-                <td class="price price-mianyang">¥0.77</td>
-                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.73</td>
-            </tr><tr>
-                <td>紫甘蓝</td>
-                <td class="price price-beijing">¥1.15</td>
-                <td class="price price-chengdu">¥1.24</td>
-                <td class="price price-mianyang">¥1.26</td>
-                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.21</td>
-            </tr><tr>
-                <td>芹菜</td>
-                <td class="price price-beijing">¥1.15</td>
-                <td class="price price-chengdu">¥1.24</td>
-                <td class="price price-mianyang">¥1.26</td>
-                <td class="price price-kunming">¥2.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.21</td>
-            </tr><tr>
-                <td>西芹</td>
-                <td class="price price-beijing">¥2.15</td>
-                <td class="price price-chengdu">¥2.32</td>
-                <td class="price price-mianyang">¥2.37</td>
-                <td class="price price-kunming">¥4.82<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.26</td>
-            </tr><tr>
-                <td>菠菜</td>
-                <td class="price price-beijing">¥0.80</td>
-                <td class="price price-chengdu">¥0.86</td>
-                <td class="price price-mianyang">¥0.88</td>
-                <td class="price price-kunming">¥1.79<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.84</td>
-            </tr><tr>
-                <td>莴笋</td>
-                <td class="price price-beijing">¥1.50</td>
-                <td class="price price-chengdu">¥1.62</td>
-                <td class="price price-mianyang">¥1.65</td>
-                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.58</td>
-            </tr><tr>
-                <td>团生菜</td>
-                <td class="price price-beijing">¥2.25</td>
-                <td class="price price-chengdu">¥2.43</td>
-                <td class="price price-mianyang">¥2.48</td>
-                <td class="price price-kunming">¥5.04<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.36</td>
-            </tr><tr>
-                <td>罗马生菜</td>
-                <td class="price price-beijing">¥1.55</td>
-                <td class="price price-chengdu">¥1.67</td>
-                <td class="price price-mianyang">¥1.71</td>
-                <td class="price price-kunming">¥3.47<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.63</td>
-            </tr><tr>
-                <td>散叶生菜</td>
-                <td class="price price-beijing">¥0.90</td>
-                <td class="price price-chengdu">¥0.97</td>
-                <td class="price price-mianyang">¥0.99</td>
-                <td class="price price-kunming">¥2.02<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.95</td>
-            </tr><tr>
-                <td>油菜</td>
-                <td class="price price-beijing">¥0.70</td>
-                <td class="price price-chengdu">¥0.76</td>
-                <td class="price price-mianyang">¥0.77</td>
-                <td class="price price-kunming">¥1.57<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥0.73</td>
-            </tr><tr>
-                <td>香菜</td>
-                <td class="price price-beijing">¥1.50</td>
-                <td class="price price-chengdu">¥1.62</td>
-                <td class="price price-mianyang">¥1.65</td>
-                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.58</td>
-            </tr><tr>
-                <td>茴香</td>
-                <td class="price price-beijing">¥1.50</td>
-                <td class="price price-chengdu">¥1.62</td>
-                <td class="price price-mianyang">¥1.65</td>
-                <td class="price price-kunming">¥3.36<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.58</td>
-            </tr><tr>
-                <td>韭菜</td>
-                <td class="price price-beijing">¥1.60</td>
-                <td class="price price-chengdu">¥1.73</td>
-                <td class="price price-mianyang">¥1.76</td>
-                <td class="price price-kunming">¥3.58<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.68</td>
-            </tr><tr>
-                <td>苦菊</td>
-                <td class="price price-beijing">¥1.70</td>
-                <td class="price price-chengdu">¥1.84</td>
-                <td class="price price-mianyang">¥1.87</td>
-                <td class="price price-kunming">¥3.81<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.78</td>
-            </tr><tr>
-                <td>油麦菜</td>
-                <td class="price price-beijing">¥1.25</td>
-                <td class="price price-chengdu">¥1.35</td>
-                <td class="price price-mianyang">¥1.38</td>
-                <td class="price price-kunming">¥2.80<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥1.31</td>
-            </tr><tr>
-                <td>散菜花</td>
-                <td class="price price-beijing">¥2.05</td>
-                <td class="price price-chengdu">¥2.21</td>
-                <td class="price price-mianyang">¥2.25</td>
-                <td class="price price-kunming">¥4.59<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.15</td>
-            </tr><tr>
-                <td>绿菜花</td>
-                <td class="price price-beijing">¥2.50</td>
-                <td class="price price-chengdu">¥2.70</td>
-                <td class="price price-mianyang">¥2.75</td>
-                <td class="price price-kunming">¥5.60<span class="kg-note">公斤价</span></td>
-                <td class="price price-xian">¥2.62</td>
-            </tr></tbody>
-            </table>
-        </div>
         <div class="footer">
-            <p>数据每日自动更新 | 仅供参考 | 实际价格以市场为准</p>
-            <p style="margin-top:5px;">Powered by WorkBuddy AI</p>
+            <p>数据更新时间：2026-03-31 11:47</p>
+            <p>价格仅供参考，实际交易请以市场为准</p>
         </div>
     </div>
 </body>
