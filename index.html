@@ -3,2121 +3,652 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>江油生鲜批发报价 - 2026年04月01日</title>
+    <title>江油生鲜配送 - 五省市批发价格参考</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-        .container { max-width: 1400px; margin: 0 auto; }
-        
-        .header {
-            background: white;
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        .header h1 { color: #1f2937; font-size: 28px; margin-bottom: 8px; }
-        .header .date { color: #6b7280; font-size: 14px; margin-bottom: 16px; }
-        .header .stats { 
-            display: inline-flex;
-            gap: 24px;
-            background: #f3f4f6;
-            padding: 12px 24px;
-            border-radius: 8px;
-        }
-        .header .stats span { color: #4b5563; font-size: 14px; }
-        .header .stats strong { color: #7c3aed; }
-        
-        .markets-info {
-            background: white;
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-        }
-        .markets-info h3 { 
-            font-size: 14px; 
-            color: #6b7280; 
-            margin-bottom: 12px;
-            text-align: center;
-        }
-        .markets-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 12px;
-        }
-        .market-badge {
-            text-align: center;
-            padding: 10px 8px;
-            border-radius: 8px;
-            font-size: 12px;
-        }
-        .market-badge .name { font-weight: 600; margin-bottom: 4px; }
-        .market-badge .unit { font-size: 11px; opacity: 0.8; }
-        
-        .category-section {
-            background: white;
-            border-radius: 16px;
-            margin-bottom: 20px;
-            overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-        .category-header {
-            padding: 16px 20px;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .category-header .icon { font-size: 24px; }
-        .category-header .name { font-size: 20px; font-weight: 600; }
-        .category-header .count {
-            background: rgba(255,255,255,0.3);
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-        }
-        
-        .price-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-        }
-        .price-table th {
-            background: #f9fafb;
-            padding: 12px 8px;
-            text-align: center;
-            font-weight: 600;
-            color: #374151;
-            border-bottom: 2px solid #e5e7eb;
-        }
-        .price-table th:first-child { text-align: left; padding-left: 20px; }
-        .price-table td {
-            padding: 10px 8px;
-            border-bottom: 1px solid #f3f4f6;
-            text-align: center;
-        }
-        .price-table td:first-child { 
-            text-align: left; 
-            padding-left: 20px;
-            font-weight: 500;
-            color: #1f2937;
-        }
-        .price-table tr:hover { background: #f9fafb; }
-        .price { font-weight: 600; color: #dc2626; }
-        
-        .footer {
-            text-align: center;
-            padding: 20px;
-            color: rgba(255,255,255,0.8);
-            font-size: 12px;
-        }
-        
-        @media (max-width: 1024px) {
-            .markets-grid { grid-template-columns: repeat(3, 1fr); }
-            .price-table { font-size: 11px; }
-            .price-table th, .price-table td { padding: 8px 4px; }
-        }
-        @media (max-width: 640px) {
-            .markets-grid { grid-template-columns: repeat(2, 1fr); }
-            body { padding: 10px; }
-            .header h1 { font-size: 20px; }
-        }
+        body { font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header { background: white; border-radius: 15px; padding: 30px; text-align: center; margin-bottom: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        .header h1 { color: #2c3e50; font-size: 28px; margin-bottom: 10px; }
+        .header p { color: #7f8c8d; font-size: 14px; }
+        .update-time { background: #27ae60; color: white; display: inline-block; padding: 8px 20px; border-radius: 20px; margin-top: 15px; font-size: 14px; }
+        .markets { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
+        .market { background: linear-gradient(135deg, #3498db, #2980b9); color: white; padding: 8px 16px; border-radius: 20px; font-size: 13px; }
+        .market.beijing { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+        .market.chengdu { background: linear-gradient(135deg, #3498db, #2980b9); }
+        .market.mianyang { background: linear-gradient(135deg, #9b59b6, #8e44ad); }
+        .market.kunming { background: linear-gradient(135deg, #f39c12, #e67e22); }
+        .market.xian { background: linear-gradient(135deg, #1abc9c, #16a085); }
+        .legend { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 15px; font-size: 12px; color: #555; }
+        .legend span { display: flex; align-items: center; gap: 5px; }
+        .legend .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .section { background: white; border-radius: 15px; margin-bottom: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        .section-title { padding: 15px 25px; color: white; font-size: 18px; font-weight: bold; }
+        .section-title.vegetable { background: linear-gradient(135deg, #27ae60, #2ecc71); }
+        .section-title.meat { background: linear-gradient(135deg, #e74c3c, #c0392b); }
+        .section-title.fish { background: linear-gradient(135deg, #3498db, #2980b9); }
+        .section-title.fruit { background: linear-gradient(135deg, #f39c12, #e67e22); }
+        table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        th { background: #ecf0f1; padding: 12px 10px; text-align: center; font-weight: 600; color: #2c3e50; }
+        td { padding: 12px 10px; text-align: center; border-bottom: 1px solid #eee; }
+        tr:hover { background: #f8f9fa; }
+        td.name { text-align: left; padding-left: 20px; font-weight: 500; color: #2c3e50; }
+        td.base { color: #e74c3c; font-weight: bold; background: #fdf2f2; }
+        td.chengdu { color: #3498db; }
+        td.mianyang { color: #9b59b6; }
+        td.kunming { color: #f39c12; }
+        td.xian { color: #1abc9c; }
+        .footer { text-align: center; padding: 30px; color: white; font-size: 12px; opacity: 0.8; }
+        .footer a { color: white; text-decoration: none; }
+        @media (max-width: 768px) { table { font-size: 12px; } th, td { padding: 8px 5px; } .markets { gap: 8px; } }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🥬 江油生鲜批发报价</h1>
-            <div class="date">2026年04月01日 | 数据来源：北京新发地批发市场</div>
-            <div class="stats">
-                <span>📦 <strong>224</strong> 个品种</span>
-                <span>🏪 <strong>5</strong> 个市场</span>
-                <span>📊 <strong>7</strong> 大品类</span>
+            <h1>农产品批发价格参考表</h1>
+            <p>五省市批发市场 · 每日实时更新</p>
+            <div class="update-time">更新时间: 2026年04月01日</div>
+            <div class="markets">
+                <span class="market beijing">北京新发地</span>
+                <span class="market chengdu">四川成都</span>
+                <span class="market mianyang">四川绵阳</span>
+                <span class="market kunming">云南昆明</span>
+                <span class="market xian">陕西西安</span>
             </div>
-        </div>
-        
-        <div class="markets-info">
-            <h3>📍 五省市批发价格对比（已含运费及损耗）</h3>
-            <div class="markets-grid">
-                <div class="market-badge" style="background: #d1fae5; color: #065f46;">
-                    <div class="name">🏙️ 北京新发地</div>
-                    <div class="unit">基准价（元/斤）</div>
-                </div>
-                <div class="market-badge" style="background: #dbeafe; color: #1e40af;">
-                    <div class="name">🏔️ 四川成都</div>
-                    <div class="unit">+8%（元/斤）</div>
-                </div>
-                <div class="market-badge" style="background: #dcfce7; color: #166534;">
-                    <div class="name">🏔️ 四川绵阳</div>
-                    <div class="unit">+10%（元/斤）</div>
-                </div>
-                <div class="market-badge" style="background: #f3e8ff; color: #6b21a8;">
-                    <div class="name">🌸 云南昆明</div>
-                    <div class="unit">+12%（元/公斤）</div>
-                </div>
-                <div class="market-badge" style="background: #ffedd5; color: #9a3412;">
-                    <div class="name">🏯 陕西西安</div>
-                    <div class="unit">+5%（元/斤）</div>
-                </div>
+            <div class="legend">
+                <span><span class="dot" style="background:#e74c3c;"></span>北京(基准价)</span>
+                <span><span class="dot" style="background:#3498db;"></span>成都(+8%)</span>
+                <span><span class="dot" style="background:#9b59b6;"></span>绵阳(+10%)</span>
+                <span><span class="dot" style="background:#f39c12;"></span>昆明(+12%)</span>
+                <span><span class="dot" style="background:#1abc9c;"></span>西安(+5%)</span>
             </div>
         </div>
 
-        <div class="category-section">
-            <div class="category-header" style="background: #10b981;">
-                <span class="icon">🥬</span>
-                <span class="name">蔬菜</span>
-                <span class="count">109品种</span>
-            </div>
-            <table class="price-table">
+        <div class="section">
+            <div class="section-title vegetable">🥬 蔬菜</div>
+            <table>
                 <thead>
                     <tr>
-                        <th>品名</th>
-                        <th>北京<br><small>(斤)</small></th>
-                        <th>成都<br><small>(斤)</small></th>
-                        <th>绵阳<br><small>(斤)</small></th>
-                        <th>昆明<br><small>(公斤)</small></th>
-                        <th>西安<br><small>(斤)</small></th>
+                        <th style="width:25%;">品名</th>
+                        <th class="base" style="width:15%;">北京</th>
+                        <th class="chengdu" style="width:15%;">成都</th>
+                        <th class="mianyang" style="width:15%;">绵阳</th>
+                        <th class="kunming" style="width:15%;">昆明</th>
+                        <th class="xian" style="width:15%;">西安</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>大白菜</td>
-                        <td class="price">¥1.20</td>
-                        <td class="price">¥1.30</td>
-                        <td class="price">¥1.32</td>
-                        <td class="price">¥2.69</td>
-                        <td class="price">¥1.26</td>
-                    </tr>
-                    <tr>
-                        <td>娃娃菜</td>
-                        <td class="price">¥2.50</td>
-                        <td class="price">¥2.70</td>
-                        <td class="price">¥2.75</td>
-                        <td class="price">¥5.60</td>
-                        <td class="price">¥2.62</td>
-                    </tr>
-                    <tr>
-                        <td>小白菜</td>
-                        <td class="price">¥2.00</td>
-                        <td class="price">¥2.16</td>
-                        <td class="price">¥2.20</td>
-                        <td class="price">¥4.48</td>
-                        <td class="price">¥2.10</td>
-                    </tr>
-                    <tr>
-                        <td>圆白菜(甘蓝)</td>
-                        <td class="price">¥1.50</td>
-                        <td class="price">¥1.62</td>
-                        <td class="price">¥1.65</td>
-                        <td class="price">¥3.36</td>
-                        <td class="price">¥1.58</td>
-                    </tr>
-                    <tr>
-                        <td>紫甘蓝</td>
-                        <td class="price">¥3.00</td>
-                        <td class="price">¥3.24</td>
-                        <td class="price">¥3.30</td>
-                        <td class="price">¥6.72</td>
-                        <td class="price">¥3.15</td>
-                    </tr>
-                    <tr>
-                        <td>芹菜</td>
-                        <td class="price">¥2.30</td>
-                        <td class="price">¥2.48</td>
-                        <td class="price">¥2.53</td>
-                        <td class="price">¥5.15</td>
-                        <td class="price">¥2.42</td>
-                    </tr>
-                    <tr>
-                        <td>西芹</td>
-                        <td class="price">¥3.50</td>
-                        <td class="price">¥3.78</td>
-                        <td class="price">¥3.85</td>
-                        <td class="price">¥7.84</td>
-                        <td class="price">¥3.68</td>
-                    </tr>
-                    <tr>
-                        <td>菠菜</td>
-                        <td class="price">¥3.50</td>
-                        <td class="price">¥3.78</td>
-                        <td class="price">¥3.85</td>
-                        <td class="price">¥7.84</td>
-                        <td class="price">¥3.68</td>
-                    </tr>
-                    <tr>
-                        <td>油麦菜</td>
-                        <td class="price">¥3.00</td>
-                        <td class="price">¥3.24</td>
-                        <td class="price">¥3.30</td>
-                        <td class="price">¥6.72</td>
-                        <td class="price">¥3.15</td>
-                    </tr>
-                    <tr>
-                        <td>生菜</td>
-                        <td class="price">¥3.00</td>
-                        <td class="price">¥3.24</td>
-                        <td class="price">¥3.30</td>
-                        <td class="price">¥6.72</td>
-                        <td class="price">¥3.15</td>
-                    </tr>
-                    <tr>
-                        <td>茼蒿</td>
-                        <td class="price">¥4.00</td>
-                        <td class="price">¥4.32</td>
-                        <td class="price">¥4.40</td>
-                        <td class="price">¥8.96</td>
-                        <td class="price">¥4.20</td>
-                    </tr>
-                    <tr>
-                        <td>香菜</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
-                    </tr>
-                    <tr>
-                        <td>茴香</td>
-                        <td class="price">¥4.00</td>
-                        <td class="price">¥4.32</td>
-                        <td class="price">¥4.40</td>
-                        <td class="price">¥8.96</td>
-                        <td class="price">¥4.20</td>
-                    </tr>
-                    <tr>
-                        <td>韭菜</td>
-                        <td class="price">¥3.00</td>
-                        <td class="price">¥3.24</td>
-                        <td class="price">¥3.30</td>
-                        <td class="price">¥6.72</td>
-                        <td class="price">¥3.15</td>
-                    </tr>
-                    <tr>
-                        <td>韭黄</td>
-                        <td class="price">¥6.00</td>
-                        <td class="price">¥6.48</td>
-                        <td class="price">¥6.60</td>
-                        <td class="price">¥13.44</td>
-                        <td class="price">¥6.30</td>
-                    </tr>
-                    <tr>
-                        <td>蒜苗</td>
-                        <td class="price">¥4.00</td>
-                        <td class="price">¥4.32</td>
-                        <td class="price">¥4.40</td>
-                        <td class="price">¥8.96</td>
-                        <td class="price">¥4.20</td>
-                    </tr>
-                    <tr>
-                        <td>蒜苔</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
-                    </tr>
-                    <tr>
-                        <td>小葱</td>
-                        <td class="price">¥4.00</td>
-                        <td class="price">¥4.32</td>
-                        <td class="price">¥4.40</td>
-                        <td class="price">¥8.96</td>
-                        <td class="price">¥4.20</td>
-                    </tr>
-                    <tr>
-                        <td>大葱</td>
-                        <td class="price">¥2.00</td>
-                        <td class="price">¥2.16</td>
-                        <td class="price">¥2.20</td>
-                        <td class="price">¥4.48</td>
-                        <td class="price">¥2.10</td>
-                    </tr>
-                    <tr>
-                        <td>香葱</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
-                    </tr>
-                    <tr>
-                        <td>芥蓝</td>
-                        <td class="price">¥4.00</td>
-                        <td class="price">¥4.32</td>
-                        <td class="price">¥4.40</td>
-                        <td class="price">¥8.96</td>
-                        <td class="price">¥4.20</td>
-                    </tr>
-                    <tr>
-                        <td>菜心</td>
-                        <td class="price">¥4.00</td>
-                        <td class="price">¥4.32</td>
-                        <td class="price">¥4.40</td>
-                        <td class="price">¥8.96</td>
-                        <td class="price">¥4.20</td>
-                    </tr>
-                    <tr>
-                        <td>上海青</td>
-                        <td class="price">¥2.50</td>
-                        <td class="price">¥2.70</td>
-                        <td class="price">¥2.75</td>
-                        <td class="price">¥5.60</td>
-                        <td class="price">¥2.62</td>
-                    </tr>
-                    <tr>
-                        <td>快菜</td>
-                        <td class="price">¥2.00</td>
-                        <td class="price">¥2.16</td>
-                        <td class="price">¥2.20</td>
-                        <td class="price">¥4.48</td>
-                        <td class="price">¥2.10</td>
-                    </tr>
-                    <tr>
-                        <td>乌塌菜</td>
-                        <td class="price">¥4.00</td>
-                        <td class="price">¥4.32</td>
-                        <td class="price">¥4.40</td>
-                        <td class="price">¥8.96</td>
-                        <td class="price">¥4.20</td>
-                    </tr>
-                    <tr>
-                        <td>荠菜</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
-                    </tr>
-                    <tr>
-                        <td>苋菜</td>
-                        <td class="price">¥4.00</td>
-                        <td class="price">¥4.32</td>
-                        <td class="price">¥4.40</td>
-                        <td class="price">¥8.96</td>
-                        <td class="price">¥4.20</td>
-                    </tr>
-                    <tr>
-                        <td>空心菜</td>
-                        <td class="price">¥3.50</td>
-                        <td class="price">¥3.78</td>
-                        <td class="price">¥3.85</td>
-                        <td class="price">¥7.84</td>
-                        <td class="price">¥3.68</td>
-                    </tr>
-                    <tr>
-                        <td>莴笋</td>
-                        <td class="price">¥2.00</td>
-                        <td class="price">¥2.16</td>
-                        <td class="price">¥2.20</td>
-                        <td class="price">¥4.48</td>
-                        <td class="price">¥2.10</td>
-                    </tr>
-                    <tr>
-                        <td>莴苣</td>
-                        <td class="price">¥2.50</td>
-                        <td class="price">¥2.70</td>
-                        <td class="price">¥2.75</td>
-                        <td class="price">¥5.60</td>
-                        <td class="price">¥2.62</td>
-                    </tr>
-                    <tr>
-                        <td>苦苣</td>
-                        <td class="price">¥4.00</td>
-                        <td class="price">¥4.32</td>
-                        <td class="price">¥4.40</td>
-                        <td class="price">¥8.96</td>
-                        <td class="price">¥4.20</td>
-                    </tr>
-                    <tr>
-                        <td>甘蔗</td>
-                        <td class="price">¥1.50</td>
-                        <td class="price">¥1.62</td>
-                        <td class="price">¥1.65</td>
-                        <td class="price">¥3.36</td>
-                        <td class="price">¥1.58</td>
-                    </tr>
-                    <tr>
-                        <td>芦蒿</td>
-                        <td class="price">¥8.00</td>
-                        <td class="price">¥8.64</td>
-                        <td class="price">¥8.80</td>
-                        <td class="price">¥17.92</td>
-                        <td class="price">¥8.40</td>
-                    </tr>
-                    <tr>
-                        <td>菊花脑</td>
-                        <td class="price">¥6.00</td>
-                        <td class="price">¥6.48</td>
-                        <td class="price">¥6.60</td>
-                        <td class="price">¥13.44</td>
-                        <td class="price">¥6.30</td>
-                    </tr>
-                    <tr>
-                        <td>白萝卜</td>
-                        <td class="price">¥1.00</td>
-                        <td class="price">¥1.08</td>
-                        <td class="price">¥1.10</td>
-                        <td class="price">¥2.24</td>
-                        <td class="price">¥1.05</td>
-                    </tr>
-                    <tr>
-                        <td>胡萝卜</td>
-                        <td class="price">¥1.80</td>
-                        <td class="price">¥1.94</td>
-                        <td class="price">¥1.98</td>
-                        <td class="price">¥4.03</td>
-                        <td class="price">¥1.89</td>
-                    </tr>
-                    <tr>
-                        <td>青萝卜</td>
-                        <td class="price">¥1.50</td>
-                        <td class="price">¥1.62</td>
-                        <td class="price">¥1.65</td>
-                        <td class="price">¥3.36</td>
-                        <td class="price">¥1.58</td>
-                    </tr>
-                    <tr>
-                        <td>心里美</td>
-                        <td class="price">¥2.00</td>
-                        <td class="price">¥2.16</td>
-                        <td class="price">¥2.20</td>
-                        <td class="price">¥4.48</td>
-                        <td class="price">¥2.10</td>
-                    </tr>
-                    <tr>
-                        <td>水萝卜</td>
-                        <td class="price">¥2.50</td>
-                        <td class="price">¥2.70</td>
-                        <td class="price">¥2.75</td>
-                        <td class="price">¥5.60</td>
-                        <td class="price">¥2.62</td>
-                    </tr>
-                    <tr>
-                        <td>土豆</td>
-                        <td class="price">¥1.50</td>
-                        <td class="price">¥1.62</td>
-                        <td class="price">¥1.65</td>
-                        <td class="price">¥3.36</td>
-                        <td class="price">¥1.58</td>
-                    </tr>
-                    <tr>
-                        <td>红薯(白薯)</td>
-                        <td class="price">¥2.00</td>
-                        <td class="price">¥2.16</td>
-                        <td class="price">¥2.20</td>
-                        <td class="price">¥4.48</td>
-                        <td class="price">¥2.10</td>
-                    </tr>
-                    <tr>
-                        <td>紫薯</td>
-                        <td class="price">¥4.00</td>
-                        <td class="price">¥4.32</td>
-                        <td class="price">¥4.40</td>
-                        <td class="price">¥8.96</td>
-                        <td class="price">¥4.20</td>
-                    </tr>
-                    <tr>
-                        <td>山药</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
-                    </tr>
-                    <tr>
-                        <td>麻山药</td>
-                        <td class="price">¥6.00</td>
-                        <td class="price">¥6.48</td>
-                        <td class="price">¥6.60</td>
-                        <td class="price">¥13.44</td>
-                        <td class="price">¥6.30</td>
-                    </tr>
-                    <tr>
-                        <td>芋头</td>
-                        <td class="price">¥4.00</td>
-                        <td class="price">¥4.32</td>
-                        <td class="price">¥4.40</td>
-                        <td class="price">¥8.96</td>
-                        <td class="price">¥4.20</td>
-                    </tr>
-                    <tr>
-                        <td>藕</td>
-                        <td class="price">¥4.00</td>
-                        <td class="price">¥4.32</td>
-                        <td class="price">¥4.40</td>
-                        <td class="price">¥8.96</td>
-                        <td class="price">¥4.20</td>
-                    </tr>
-                    <tr>
-                        <td>莲藕</td>
-                        <td class="price">¥4.50</td>
-                        <td class="price">¥4.86</td>
-                        <td class="price">¥4.95</td>
-                        <td class="price">¥10.08</td>
-                        <td class="price">¥4.73</td>
-                    </tr>
-                    <tr>
-                        <td>荸荠</td>
-                        <td class="price">¥3.00</td>
-                        <td class="price">¥3.24</td>
-                        <td class="price">¥3.30</td>
-                        <td class="price">¥6.72</td>
-                        <td class="price">¥3.15</td>
-                    </tr>
-                    <tr>
-                        <td>竹笋</td>
-                        <td class="price">¥8.00</td>
-                        <td class="price">¥8.64</td>
-                        <td class="price">¥8.80</td>
-                        <td class="price">¥17.92</td>
-                        <td class="price">¥8.40</td>
-                    </tr>
-                    <tr>
-                        <td>冬笋</td>
-                        <td class="price">¥12.00</td>
-                        <td class="price">¥12.96</td>
-                        <td class="price">¥13.20</td>
-                        <td class="price">¥26.88</td>
-                        <td class="price">¥12.60</td>
-                    </tr>
-                    <tr>
-                        <td>春笋</td>
-                        <td class="price">¥8.00</td>
-                        <td class="price">¥8.64</td>
-                        <td class="price">¥8.80</td>
-                        <td class="price">¥17.92</td>
-                        <td class="price">¥8.40</td>
-                    </tr>
-                    <tr>
-                        <td>芦笋</td>
-                        <td class="price">¥10.00</td>
-                        <td class="price">¥10.80</td>
-                        <td class="price">¥11.00</td>
-                        <td class="price">¥22.40</td>
-                        <td class="price">¥10.50</td>
-                    </tr>
-                    <tr>
-                        <td>茨菇</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
-                    </tr>
-                    <tr>
-                        <td>凉薯</td>
-                        <td class="price">¥2.50</td>
-                        <td class="price">¥2.70</td>
-                        <td class="price">¥2.75</td>
-                        <td class="price">¥5.60</td>
-                        <td class="price">¥2.62</td>
-                    </tr>
-                    <tr>
-                        <td>黄瓜</td>
-                        <td class="price">¥2.50</td>
-                        <td class="price">¥2.70</td>
-                        <td class="price">¥2.75</td>
-                        <td class="price">¥5.60</td>
-                        <td class="price">¥2.62</td>
-                    </tr>
-                    <tr>
-                        <td>刺黄瓜</td>
-                        <td class="price">¥3.00</td>
-                        <td class="price">¥3.24</td>
-                        <td class="price">¥3.30</td>
-                        <td class="price">¥6.72</td>
-                        <td class="price">¥3.15</td>
-                    </tr>
-                    <tr>
-                        <td>荷兰黄瓜</td>
-                        <td class="price">¥4.00</td>
-                        <td class="price">¥4.32</td>
-                        <td class="price">¥4.40</td>
-                        <td class="price">¥8.96</td>
-                        <td class="price">¥4.20</td>
-                    </tr>
-                    <tr>
-                        <td>苦瓜</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
-                    </tr>
-                    <tr>
-                        <td>丝瓜</td>
-                        <td class="price">¥4.00</td>
-                        <td class="price">¥4.32</td>
-                        <td class="price">¥4.40</td>
-                        <td class="price">¥8.96</td>
-                        <td class="price">¥4.20</td>
-                    </tr>
-                    <tr>
-                        <td>冬瓜</td>
-                        <td class="price">¥1.50</td>
-                        <td class="price">¥1.62</td>
-                        <td class="price">¥1.65</td>
-                        <td class="price">¥3.36</td>
-                        <td class="price">¥1.58</td>
-                    </tr>
-                    <tr>
-                        <td>南瓜</td>
-                        <td class="price">¥1.80</td>
-                        <td class="price">¥1.94</td>
-                        <td class="price">¥1.98</td>
-                        <td class="price">¥4.03</td>
-                        <td class="price">¥1.89</td>
-                    </tr>
-                    <tr>
-                        <td>金瓜</td>
-                        <td class="price">¥3.00</td>
-                        <td class="price">¥3.24</td>
-                        <td class="price">¥3.30</td>
-                        <td class="price">¥6.72</td>
-                        <td class="price">¥3.15</td>
-                    </tr>
-                    <tr>
-                        <td>西葫芦</td>
-                        <td class="price">¥2.50</td>
-                        <td class="price">¥2.70</td>
-                        <td class="price">¥2.75</td>
-                        <td class="price">¥5.60</td>
-                        <td class="price">¥2.62</td>
-                    </tr>
-                    <tr>
-                        <td>佛手瓜</td>
-                        <td class="price">¥3.00</td>
-                        <td class="price">¥3.24</td>
-                        <td class="price">¥3.30</td>
-                        <td class="price">¥6.72</td>
-                        <td class="price">¥3.15</td>
-                    </tr>
-                    <tr>
-                        <td>瓠瓜</td>
-                        <td class="price">¥2.50</td>
-                        <td class="price">¥2.70</td>
-                        <td class="price">¥2.75</td>
-                        <td class="price">¥5.60</td>
-                        <td class="price">¥2.62</td>
-                    </tr>
-                    <tr>
-                        <td>哈密瓜</td>
-                        <td class="price">¥4.00</td>
-                        <td class="price">¥4.32</td>
-                        <td class="price">¥4.40</td>
-                        <td class="price">¥8.96</td>
-                        <td class="price">¥4.20</td>
-                    </tr>
-                    <tr>
-                        <td>西瓜</td>
-                        <td class="price">¥2.50</td>
-                        <td class="price">¥2.70</td>
-                        <td class="price">¥2.75</td>
-                        <td class="price">¥5.60</td>
-                        <td class="price">¥2.62</td>
-                    </tr>
-                    <tr>
-                        <td>甜瓜</td>
-                        <td class="price">¥4.00</td>
-                        <td class="price">¥4.32</td>
-                        <td class="price">¥4.40</td>
-                        <td class="price">¥8.96</td>
-                        <td class="price">¥4.20</td>
-                    </tr>
-                    <tr>
-                        <td>西红柿</td>
-                        <td class="price">¥3.00</td>
-                        <td class="price">¥3.24</td>
-                        <td class="price">¥3.30</td>
-                        <td class="price">¥6.72</td>
-                        <td class="price">¥3.15</td>
-                    </tr>
-                    <tr>
-                        <td>圣女果</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
-                    </tr>
-                    <tr>
-                        <td>茄子</td>
-                        <td class="price">¥3.00</td>
-                        <td class="price">¥3.24</td>
-                        <td class="price">¥3.30</td>
-                        <td class="price">¥6.72</td>
-                        <td class="price">¥3.15</td>
-                    </tr>
-                    <tr>
-                        <td>青茄子</td>
-                        <td class="price">¥3.50</td>
-                        <td class="price">¥3.78</td>
-                        <td class="price">¥3.85</td>
-                        <td class="price">¥7.84</td>
-                        <td class="price">¥3.68</td>
-                    </tr>
-                    <tr>
-                        <td>长茄子</td>
-                        <td class="price">¥4.00</td>
-                        <td class="price">¥4.32</td>
-                        <td class="price">¥4.40</td>
-                        <td class="price">¥8.96</td>
-                        <td class="price">¥4.20</td>
-                    </tr>
-                    <tr>
-                        <td>青椒</td>
-                        <td class="price">¥4.00</td>
-                        <td class="price">¥4.32</td>
-                        <td class="price">¥4.40</td>
-                        <td class="price">¥8.96</td>
-                        <td class="price">¥4.20</td>
-                    </tr>
-                    <tr>
-                        <td>尖椒</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
-                    </tr>
-                    <tr>
-                        <td>彩椒</td>
-                        <td class="price">¥8.00</td>
-                        <td class="price">¥8.64</td>
-                        <td class="price">¥8.80</td>
-                        <td class="price">¥17.92</td>
-                        <td class="price">¥8.40</td>
-                    </tr>
-                    <tr>
-                        <td>朝天椒</td>
-                        <td class="price">¥8.00</td>
-                        <td class="price">¥8.64</td>
-                        <td class="price">¥8.80</td>
-                        <td class="price">¥17.92</td>
-                        <td class="price">¥8.40</td>
-                    </tr>
-                    <tr>
-                        <td>小米椒</td>
-                        <td class="price">¥10.00</td>
-                        <td class="price">¥10.80</td>
-                        <td class="price">¥11.00</td>
-                        <td class="price">¥22.40</td>
-                        <td class="price">¥10.50</td>
-                    </tr>
-                    <tr>
-                        <td>螺丝椒</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
-                    </tr>
-                    <tr>
-                        <td>豇豆</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
-                    </tr>
-                    <tr>
-                        <td>四季豆</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
-                    </tr>
-                    <tr>
-                        <td>芸豆</td>
-                        <td class="price">¥6.00</td>
-                        <td class="price">¥6.48</td>
-                        <td class="price">¥6.60</td>
-                        <td class="price">¥13.44</td>
-                        <td class="price">¥6.30</td>
-                    </tr>
-                    <tr>
-                        <td>豆角</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
-                    </tr>
-                    <tr>
-                        <td>扁豆</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
-                    </tr>
-                    <tr>
-                        <td>毛豆</td>
-                        <td class="price">¥6.00</td>
-                        <td class="price">¥6.48</td>
-                        <td class="price">¥6.60</td>
-                        <td class="price">¥13.44</td>
-                        <td class="price">¥6.30</td>
-                    </tr>
-                    <tr>
-                        <td>荷兰豆</td>
-                        <td class="price">¥10.00</td>
-                        <td class="price">¥10.80</td>
-                        <td class="price">¥11.00</td>
-                        <td class="price">¥22.40</td>
-                        <td class="price">¥10.50</td>
-                    </tr>
-                    <tr>
-                        <td>甜豆</td>
-                        <td class="price">¥8.00</td>
-                        <td class="price">¥8.64</td>
-                        <td class="price">¥8.80</td>
-                        <td class="price">¥17.92</td>
-                        <td class="price">¥8.40</td>
-                    </tr>
-                    <tr>
-                        <td>豌豆</td>
-                        <td class="price">¥6.00</td>
-                        <td class="price">¥6.48</td>
-                        <td class="price">¥6.60</td>
-                        <td class="price">¥13.44</td>
-                        <td class="price">¥6.30</td>
-                    </tr>
-                    <tr>
-                        <td>蚕豆</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
-                    </tr>
-                    <tr>
-                        <td>香菇</td>
-                        <td class="price">¥8.00</td>
-                        <td class="price">¥8.64</td>
-                        <td class="price">¥8.80</td>
-                        <td class="price">¥17.92</td>
-                        <td class="price">¥8.40</td>
-                    </tr>
-                    <tr>
-                        <td>花菇</td>
-                        <td class="price">¥12.00</td>
-                        <td class="price">¥12.96</td>
-                        <td class="price">¥13.20</td>
-                        <td class="price">¥26.88</td>
-                        <td class="price">¥12.60</td>
-                    </tr>
-                    <tr>
-                        <td>平菇</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
-                    </tr>
-                    <tr>
-                        <td>杏鲍菇</td>
-                        <td class="price">¥6.00</td>
-                        <td class="price">¥6.48</td>
-                        <td class="price">¥6.60</td>
-                        <td class="price">¥13.44</td>
-                        <td class="price">¥6.30</td>
-                    </tr>
-                    <tr>
-                        <td>金针菇</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
-                    </tr>
-                    <tr>
-                        <td>蟹味菇</td>
-                        <td class="price">¥8.00</td>
-                        <td class="price">¥8.64</td>
-                        <td class="price">¥8.80</td>
-                        <td class="price">¥17.92</td>
-                        <td class="price">¥8.40</td>
-                    </tr>
-                    <tr>
-                        <td>白玉菇</td>
-                        <td class="price">¥8.00</td>
-                        <td class="price">¥8.64</td>
-                        <td class="price">¥8.80</td>
-                        <td class="price">¥17.92</td>
-                        <td class="price">¥8.40</td>
-                    </tr>
-                    <tr>
-                        <td>口蘑</td>
-                        <td class="price">¥10.00</td>
-                        <td class="price">¥10.80</td>
-                        <td class="price">¥11.00</td>
-                        <td class="price">¥22.40</td>
-                        <td class="price">¥10.50</td>
-                    </tr>
-                    <tr>
-                        <td>茶树菇</td>
-                        <td class="price">¥12.00</td>
-                        <td class="price">¥12.96</td>
-                        <td class="price">¥13.20</td>
-                        <td class="price">¥26.88</td>
-                        <td class="price">¥12.60</td>
-                    </tr>
-                    <tr>
-                        <td>榛蘑</td>
-                        <td class="price">¥30.00</td>
-                        <td class="price">¥32.40</td>
-                        <td class="price">¥33.00</td>
-                        <td class="price">¥67.20</td>
-                        <td class="price">¥31.50</td>
-                    </tr>
-                    <tr>
-                        <td>木耳</td>
-                        <td class="price">¥8.00</td>
-                        <td class="price">¥8.64</td>
-                        <td class="price">¥8.80</td>
-                        <td class="price">¥17.92</td>
-                        <td class="price">¥8.40</td>
-                    </tr>
-                    <tr>
-                        <td>银耳</td>
-                        <td class="price">¥25.00</td>
-                        <td class="price">¥27.00</td>
-                        <td class="price">¥27.50</td>
-                        <td class="price">¥56.00</td>
-                        <td class="price">¥26.25</td>
-                    </tr>
-                    <tr>
-                        <td>榆黄蘑</td>
-                        <td class="price">¥10.00</td>
-                        <td class="price">¥10.80</td>
-                        <td class="price">¥11.00</td>
-                        <td class="price">¥22.40</td>
-                        <td class="price">¥10.50</td>
-                    </tr>
-                    <tr>
-                        <td>鸡腿菇</td>
-                        <td class="price">¥8.00</td>
-                        <td class="price">¥8.64</td>
-                        <td class="price">¥8.80</td>
-                        <td class="price">¥17.92</td>
-                        <td class="price">¥8.40</td>
-                    </tr>
-                    <tr>
-                        <td>猴头菇</td>
-                        <td class="price">¥25.00</td>
-                        <td class="price">¥27.00</td>
-                        <td class="price">¥27.50</td>
-                        <td class="price">¥56.00</td>
-                        <td class="price">¥26.25</td>
-                    </tr>
-                    <tr>
-                        <td>生姜</td>
-                        <td class="price">¥6.00</td>
-                        <td class="price">¥6.48</td>
-                        <td class="price">¥6.60</td>
-                        <td class="price">¥13.44</td>
-                        <td class="price">¥6.30</td>
-                    </tr>
-                    <tr>
-                        <td>老姜</td>
-                        <td class="price">¥7.00</td>
-                        <td class="price">¥7.56</td>
-                        <td class="price">¥7.70</td>
-                        <td class="price">¥15.68</td>
-                        <td class="price">¥7.35</td>
-                    </tr>
-                    <tr>
-                        <td>鲜姜</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
-                    </tr>
-                    <tr>
-                        <td>大蒜</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
-                    </tr>
-                    <tr>
-                        <td>独头蒜</td>
-                        <td class="price">¥8.00</td>
-                        <td class="price">¥8.64</td>
-                        <td class="price">¥8.80</td>
-                        <td class="price">¥17.92</td>
-                        <td class="price">¥8.40</td>
-                    </tr>
+
+                    <tr>
+                        <td class="name">大白菜</td>
+                        <td class="base">0.70</td>
+                        <td class="chengdu">0.76</td>
+                        <td class="mianyang">0.77</td>
+                        <td class="kunming">0.78</td>
+                        <td class="xian">0.73</td>
+                    </tr>
+
+                    <tr>
+                        <td class="name">小白菜</td>
+                        <td class="base">0.60</td>
+                        <td class="chengdu">0.65</td>
+                        <td class="mianyang">0.66</td>
+                        <td class="kunming">0.67</td>
+                        <td class="xian">0.63</td>
+                    </tr>
+
+                    <tr>
+                        <td class="name">圆白菜</td>
+                        <td class="base">0.70</td>
+                        <td class="chengdu">0.76</td>
+                        <td class="mianyang">0.77</td>
+                        <td class="kunming">0.78</td>
+                        <td class="xian">0.73</td>
+                    </tr>
+
+                    <tr>
+                        <td class="name">娃娃菜</td>
+                        <td class="base">1.15</td>
+                        <td class="chengdu">1.24</td>
+                        <td class="mianyang">1.26</td>
+                        <td class="kunming">1.29</td>
+                        <td class="xian">1.21</td>
+                    </tr>
+
+                    <tr>
+                        <td class="name">油菜</td>
+                        <td class="base">0.70</td>
+                        <td class="chengdu">0.76</td>
+                        <td class="mianyang">0.77</td>
+                        <td class="kunming">0.78</td>
+                        <td class="xian">0.73</td>
+                    </tr>
+
+                    <tr>
+                        <td class="name">菠菜</td>
+                        <td class="base">0.80</td>
+                        <td class="chengdu">0.86</td>
+                        <td class="mianyang">0.88</td>
+                        <td class="kunming">0.90</td>
+                        <td class="xian">0.84</td>
+                    </tr>
+
+                    <tr>
+                        <td class="name">生菜</td>
+                        <td class="base">1.65</td>
+                        <td class="chengdu">1.78</td>
+                        <td class="mianyang">1.81</td>
+                        <td class="kunming">1.85</td>
+                        <td class="xian">1.73</td>
+                    </tr>
+
+                    <tr>
+                        <td class="name">芹菜</td>
+                        <td class="base">1.00</td>
+                        <td class="chengdu">1.08</td>
+                        <td class="mianyang">1.10</td>
+                        <td class="kunming">1.12</td>
+                        <td class="xian">1.05</td>
+                    </tr>
+
+                    <tr>
+                        <td class="name">香菜</td>
+                        <td class="base">1.50</td>
+                        <td class="chengdu">1.62</td>
+                        <td class="mianyang">1.65</td>
+                        <td class="kunming">1.68</td>
+                        <td class="xian">1.58</td>
+                    </tr>
+
+                    <tr>
+                        <td class="name">西兰花</td>
+                        <td class="base">12.75</td>
+                        <td class="chengdu">13.77</td>
+                        <td class="mianyang">14.03</td>
+                        <td class="kunming">14.28</td>
+                        <td class="xian">13.39</td>
+                    </tr>
+
+                    <tr>
+                        <td class="name">西红柿</td>
+                        <td class="base">12.55</td>
+                        <td class="chengdu">13.55</td>
+                        <td class="mianyang">13.81</td>
+                        <td class="kunming">14.06</td>
+                        <td class="xian">13.18</td>
+                    </tr>
+
+                    <tr>
+                        <td class="name">黄瓜</td>
+                        <td class="base">2.00</td>
+                        <td class="chengdu">2.16</td>
+                        <td class="mianyang">2.20</td>
+                        <td class="kunming">2.24</td>
+                        <td class="xian">2.10</td>
+                    </tr>
+
+                    <tr>
+                        <td class="name">茄子</td>
+                        <td class="base">1.90</td>
+                        <td class="chengdu">2.05</td>
+                        <td class="mianyang">2.09</td>
+                        <td class="kunming">2.13</td>
+                        <td class="xian">1.99</td>
+                    </tr>
+
+                    <tr>
+                        <td class="name">青椒</td>
+                        <td class="base">13.20</td>
+                        <td class="chengdu">14.26</td>
+                        <td class="mianyang">14.52</td>
+                        <td class="kunming">14.78</td>
+                        <td class="xian">13.86</td>
+                    </tr>
+
+                    <tr>
+                        <td class="name">豆角</td>
+                        <td class="base">5.96</td>
+                        <td class="chengdu">6.44</td>
+                        <td class="mianyang">6.56</td>
+                        <td class="kunming">6.68</td>
+                        <td class="xian">6.26</td>
+                    </tr>
+
+                    <tr>
+                        <td class="name">土豆</td>
+                        <td class="base">4.92</td>
+                        <td class="chengdu">5.31</td>
+                        <td class="mianyang">5.41</td>
+                        <td class="kunming">5.51</td>
+                        <td class="xian">5.17</td>
+                    </tr>
+
+                    <tr>
+                        <td class="name">白萝卜</td>
+                        <td class="base">8.57</td>
+                        <td class="chengdu">9.26</td>
+                        <td class="mianyang">9.43</td>
+                        <td class="kunming">9.60</td>
+                        <td class="xian">9.00</td>
+                    </tr>
+
+                    <tr>
+                        <td class="name">胡萝卜</td>
+                        <td class="base">7.69</td>
+                        <td class="chengdu">8.31</td>
+                        <td class="mianyang">8.46</td>
+                        <td class="kunming">8.61</td>
+                        <td class="xian">8.07</td>
+                    </tr>
+
+                    <tr>
+                        <td class="name">莲藕</td>
+                        <td class="base">3.62</td>
+                        <td class="chengdu">3.91</td>
+                        <td class="mianyang">3.98</td>
+                        <td class="kunming">4.05</td>
+                        <td class="xian">3.80</td>
+                    </tr>
+
+                    <tr>
+                        <td class="name">莴笋</td>
+                        <td class="base">1.40</td>
+                        <td class="chengdu">1.51</td>
+                        <td class="mianyang">1.54</td>
+                        <td class="kunming">1.57</td>
+                        <td class="xian">1.47</td>
+                    </tr>
+
                 </tbody>
             </table>
         </div>
 
-        <div class="category-section">
-            <div class="category-header" style="background: #ef4444;">
-                <span class="icon">🥩</span>
-                <span class="name">肉类</span>
-                <span class="count">20品种</span>
-            </div>
-            <table class="price-table">
+        <div class="section">
+            <div class="section-title meat">🥩 肉类</div>
+            <table>
                 <thead>
                     <tr>
-                        <th>品名</th>
-                        <th>北京<br><small>(斤)</small></th>
-                        <th>成都<br><small>(斤)</small></th>
-                        <th>绵阳<br><small>(斤)</small></th>
-                        <th>昆明<br><small>(公斤)</small></th>
-                        <th>西安<br><small>(斤)</small></th>
+                        <th style="width:25%;">品名</th>
+                        <th class="base" style="width:15%;">北京</th>
+                        <th class="chengdu" style="width:15%;">成都</th>
+                        <th class="mianyang" style="width:15%;">绵阳</th>
+                        <th class="kunming" style="width:15%;">昆明</th>
+                        <th class="xian" style="width:15%;">西安</th>
                     </tr>
                 </thead>
                 <tbody>
+
                     <tr>
-                        <td>猪肉(白条)</td>
-                        <td class="price">¥11.50</td>
-                        <td class="price">¥12.42</td>
-                        <td class="price">¥12.65</td>
-                        <td class="price">¥25.76</td>
-                        <td class="price">¥12.08</td>
+                        <td class="name">白条猪</td>
+                        <td class="base">13.25</td>
+                        <td class="chengdu">14.31</td>
+                        <td class="mianyang">14.58</td>
+                        <td class="kunming">14.84</td>
+                        <td class="xian">13.91</td>
                     </tr>
+
                     <tr>
-                        <td>牛肉(腱子)</td>
-                        <td class="price">¥38.00</td>
-                        <td class="price">¥41.04</td>
-                        <td class="price">¥41.80</td>
-                        <td class="price">¥85.12</td>
-                        <td class="price">¥39.90</td>
+                        <td class="name">五花肉</td>
+                        <td class="base">7.67</td>
+                        <td class="chengdu">8.28</td>
+                        <td class="mianyang">8.44</td>
+                        <td class="kunming">8.59</td>
+                        <td class="xian">8.05</td>
                     </tr>
+
                     <tr>
-                        <td>羊肉(带骨)</td>
-                        <td class="price">¥32.00</td>
-                        <td class="price">¥34.56</td>
-                        <td class="price">¥35.20</td>
-                        <td class="price">¥71.68</td>
-                        <td class="price">¥33.60</td>
+                        <td class="name">后臀尖</td>
+                        <td class="base">6.27</td>
+                        <td class="chengdu">6.77</td>
+                        <td class="mianyang">6.90</td>
+                        <td class="kunming">7.02</td>
+                        <td class="xian">6.58</td>
                     </tr>
+
                     <tr>
-                        <td>排骨(肋排)</td>
-                        <td class="price">¥22.00</td>
-                        <td class="price">¥23.76</td>
-                        <td class="price">¥24.20</td>
-                        <td class="price">¥49.28</td>
-                        <td class="price">¥23.10</td>
+                        <td class="name">排骨</td>
+                        <td class="base">2.78</td>
+                        <td class="chengdu">3.00</td>
+                        <td class="mianyang">3.06</td>
+                        <td class="kunming">3.11</td>
+                        <td class="xian">2.92</td>
                     </tr>
+
                     <tr>
-                        <td>五花肉</td>
-                        <td class="price">¥14.00</td>
-                        <td class="price">¥15.12</td>
-                        <td class="price">¥15.40</td>
-                        <td class="price">¥31.36</td>
-                        <td class="price">¥14.70</td>
+                        <td class="name">牛肉</td>
+                        <td class="base">3.04</td>
+                        <td class="chengdu">3.28</td>
+                        <td class="mianyang">3.34</td>
+                        <td class="kunming">3.40</td>
+                        <td class="xian">3.19</td>
                     </tr>
+
                     <tr>
-                        <td>里脊肉</td>
-                        <td class="price">¥18.00</td>
-                        <td class="price">¥19.44</td>
-                        <td class="price">¥19.80</td>
-                        <td class="price">¥40.32</td>
-                        <td class="price">¥18.90</td>
+                        <td class="name">羊肉</td>
+                        <td class="base">8.76</td>
+                        <td class="chengdu">9.46</td>
+                        <td class="mianyang">9.64</td>
+                        <td class="kunming">9.81</td>
+                        <td class="xian">9.20</td>
                     </tr>
+
                     <tr>
-                        <td>鸡胸肉</td>
-                        <td class="price">¥12.00</td>
-                        <td class="price">¥12.96</td>
-                        <td class="price">¥13.20</td>
-                        <td class="price">¥26.88</td>
-                        <td class="price">¥12.60</td>
+                        <td class="name">白条鸡</td>
+                        <td class="base">12.02</td>
+                        <td class="chengdu">12.98</td>
+                        <td class="mianyang">13.22</td>
+                        <td class="kunming">13.46</td>
+                        <td class="xian">12.62</td>
                     </tr>
+
                     <tr>
-                        <td>鸡腿肉</td>
-                        <td class="price">¥10.00</td>
-                        <td class="price">¥10.80</td>
-                        <td class="price">¥11.00</td>
-                        <td class="price">¥22.40</td>
-                        <td class="price">¥10.50</td>
+                        <td class="name">鸡胸肉</td>
+                        <td class="base">3.73</td>
+                        <td class="chengdu">4.03</td>
+                        <td class="mianyang">4.10</td>
+                        <td class="kunming">4.18</td>
+                        <td class="xian">3.92</td>
                     </tr>
+
                     <tr>
-                        <td>鸭肉(白条)</td>
-                        <td class="price">¥9.00</td>
-                        <td class="price">¥9.72</td>
-                        <td class="price">¥9.90</td>
-                        <td class="price">¥20.16</td>
-                        <td class="price">¥9.45</td>
+                        <td class="name">鸡腿</td>
+                        <td class="base">3.29</td>
+                        <td class="chengdu">3.55</td>
+                        <td class="mianyang">3.62</td>
+                        <td class="kunming">3.68</td>
+                        <td class="xian">3.45</td>
                     </tr>
+
                     <tr>
-                        <td>兔肉</td>
-                        <td class="price">¥20.00</td>
-                        <td class="price">¥21.60</td>
-                        <td class="price">¥22.00</td>
-                        <td class="price">¥44.80</td>
-                        <td class="price">¥21.00</td>
+                        <td class="name">鸭肉</td>
+                        <td class="base">4.16</td>
+                        <td class="chengdu">4.49</td>
+                        <td class="mianyang">4.58</td>
+                        <td class="kunming">4.66</td>
+                        <td class="xian">4.37</td>
                     </tr>
+
                     <tr>
-                        <td>猪蹄</td>
-                        <td class="price">¥15.00</td>
-                        <td class="price">¥16.20</td>
-                        <td class="price">¥16.50</td>
-                        <td class="price">¥33.60</td>
-                        <td class="price">¥15.75</td>
+                        <td class="name">鹅肉</td>
+                        <td class="base">3.34</td>
+                        <td class="chengdu">3.61</td>
+                        <td class="mianyang">3.67</td>
+                        <td class="kunming">3.74</td>
+                        <td class="xian">3.51</td>
                     </tr>
-                    <tr>
-                        <td>猪肝</td>
-                        <td class="price">¥8.00</td>
-                        <td class="price">¥8.64</td>
-                        <td class="price">¥8.80</td>
-                        <td class="price">¥17.92</td>
-                        <td class="price">¥8.40</td>
-                    </tr>
-                    <tr>
-                        <td>肥牛卷</td>
-                        <td class="price">¥35.00</td>
-                        <td class="price">¥37.80</td>
-                        <td class="price">¥38.50</td>
-                        <td class="price">¥78.40</td>
-                        <td class="price">¥36.75</td>
-                    </tr>
-                    <tr>
-                        <td>羊肉卷</td>
-                        <td class="price">¥36.00</td>
-                        <td class="price">¥38.88</td>
-                        <td class="price">¥39.60</td>
-                        <td class="price">¥80.64</td>
-                        <td class="price">¥37.80</td>
-                    </tr>
-                    <tr>
-                        <td>腊肉(川味)</td>
-                        <td class="price">¥28.00</td>
-                        <td class="price">¥30.24</td>
-                        <td class="price">¥30.80</td>
-                        <td class="price">¥62.72</td>
-                        <td class="price">¥29.40</td>
-                    </tr>
-                    <tr>
-                        <td>香肠(川味)</td>
-                        <td class="price">¥30.00</td>
-                        <td class="price">¥32.40</td>
-                        <td class="price">¥33.00</td>
-                        <td class="price">¥67.20</td>
-                        <td class="price">¥31.50</td>
-                    </tr>
-                    <tr>
-                        <td>火腿(宣威)</td>
-                        <td class="price">¥45.00</td>
-                        <td class="price">¥48.60</td>
-                        <td class="price">¥49.50</td>
-                        <td class="price">¥100.80</td>
-                        <td class="price">¥47.25</td>
-                    </tr>
-                    <tr>
-                        <td>腊排骨</td>
-                        <td class="price">¥35.00</td>
-                        <td class="price">¥37.80</td>
-                        <td class="price">¥38.50</td>
-                        <td class="price">¥78.40</td>
-                        <td class="price">¥36.75</td>
-                    </tr>
-                    <tr>
-                        <td>冷鲜牛肉</td>
-                        <td class="price">¥42.00</td>
-                        <td class="price">¥45.36</td>
-                        <td class="price">¥46.20</td>
-                        <td class="price">¥94.08</td>
-                        <td class="price">¥44.10</td>
-                    </tr>
-                    <tr>
-                        <td>冷鲜羊肉</td>
-                        <td class="price">¥38.00</td>
-                        <td class="price">¥41.04</td>
-                        <td class="price">¥41.80</td>
-                        <td class="price">¥85.12</td>
-                        <td class="price">¥39.90</td>
-                    </tr>
+
                 </tbody>
             </table>
         </div>
 
-        <div class="category-section">
-            <div class="category-header" style="background: #3b82f6;">
-                <span class="icon">🐟</span>
-                <span class="name">水产</span>
-                <span class="count">20品种</span>
-            </div>
-            <table class="price-table">
+        <div class="section">
+            <div class="section-title fish">🐟 水产</div>
+            <table>
                 <thead>
                     <tr>
-                        <th>品名</th>
-                        <th>北京<br><small>(斤)</small></th>
-                        <th>成都<br><small>(斤)</small></th>
-                        <th>绵阳<br><small>(斤)</small></th>
-                        <th>昆明<br><small>(公斤)</small></th>
-                        <th>西安<br><small>(斤)</small></th>
+                        <th style="width:25%;">品名</th>
+                        <th class="base" style="width:15%;">北京</th>
+                        <th class="chengdu" style="width:15%;">成都</th>
+                        <th class="mianyang" style="width:15%;">绵阳</th>
+                        <th class="kunming" style="width:15%;">昆明</th>
+                        <th class="xian" style="width:15%;">西安</th>
                     </tr>
                 </thead>
                 <tbody>
+
                     <tr>
-                        <td>草鱼(2斤)</td>
-                        <td class="price">¥8.00</td>
-                        <td class="price">¥8.64</td>
-                        <td class="price">¥8.80</td>
-                        <td class="price">¥17.92</td>
-                        <td class="price">¥8.40</td>
+                        <td class="name">草鱼</td>
+                        <td class="base">14.28</td>
+                        <td class="chengdu">15.42</td>
+                        <td class="mianyang">15.71</td>
+                        <td class="kunming">15.99</td>
+                        <td class="xian">14.99</td>
                     </tr>
+
                     <tr>
-                        <td>鲤鱼(1斤)</td>
-                        <td class="price">¥7.00</td>
-                        <td class="price">¥7.56</td>
-                        <td class="price">¥7.70</td>
-                        <td class="price">¥15.68</td>
-                        <td class="price">¥7.35</td>
+                        <td class="name">鲤鱼</td>
+                        <td class="base">3.39</td>
+                        <td class="chengdu">3.66</td>
+                        <td class="mianyang">3.73</td>
+                        <td class="kunming">3.80</td>
+                        <td class="xian">3.56</td>
                     </tr>
+
                     <tr>
-                        <td>鲫鱼(0.5斤)</td>
-                        <td class="price">¥9.00</td>
-                        <td class="price">¥9.72</td>
-                        <td class="price">¥9.90</td>
-                        <td class="price">¥20.16</td>
-                        <td class="price">¥9.45</td>
+                        <td class="name">鲫鱼</td>
+                        <td class="base">14.76</td>
+                        <td class="chengdu">15.94</td>
+                        <td class="mianyang">16.24</td>
+                        <td class="kunming">16.53</td>
+                        <td class="xian">15.50</td>
                     </tr>
+
                     <tr>
-                        <td>花鲢(3斤)</td>
-                        <td class="price">¥9.00</td>
-                        <td class="price">¥9.72</td>
-                        <td class="price">¥9.90</td>
-                        <td class="price">¥20.16</td>
-                        <td class="price">¥9.45</td>
+                        <td class="name">鲢鱼</td>
+                        <td class="base">12.93</td>
+                        <td class="chengdu">13.96</td>
+                        <td class="mianyang">14.22</td>
+                        <td class="kunming">14.48</td>
+                        <td class="xian">13.58</td>
                     </tr>
+
                     <tr>
-                        <td>白鲢(2斤)</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
+                        <td class="name">鳜鱼</td>
+                        <td class="base">7.17</td>
+                        <td class="chengdu">7.74</td>
+                        <td class="mianyang">7.89</td>
+                        <td class="kunming">8.03</td>
+                        <td class="xian">7.53</td>
                     </tr>
+
                     <tr>
-                        <td>黄鳝</td>
-                        <td class="price">¥35.00</td>
-                        <td class="price">¥37.80</td>
-                        <td class="price">¥38.50</td>
-                        <td class="price">¥78.40</td>
-                        <td class="price">¥36.75</td>
+                        <td class="name">鲈鱼</td>
+                        <td class="base">13.50</td>
+                        <td class="chengdu">14.58</td>
+                        <td class="mianyang">14.85</td>
+                        <td class="kunming">15.12</td>
+                        <td class="xian">14.18</td>
                     </tr>
+
                     <tr>
-                        <td>泥鳅</td>
-                        <td class="price">¥18.00</td>
-                        <td class="price">¥19.44</td>
-                        <td class="price">¥19.80</td>
-                        <td class="price">¥40.32</td>
-                        <td class="price">¥18.90</td>
+                        <td class="name">带鱼</td>
+                        <td class="base">3.06</td>
+                        <td class="chengdu">3.30</td>
+                        <td class="mianyang">3.37</td>
+                        <td class="kunming">3.43</td>
+                        <td class="xian">3.21</td>
                     </tr>
+
                     <tr>
-                        <td>小龙虾</td>
-                        <td class="price">¥28.00</td>
-                        <td class="price">¥30.24</td>
-                        <td class="price">¥30.80</td>
-                        <td class="price">¥62.72</td>
-                        <td class="price">¥29.40</td>
+                        <td class="name">黄花鱼</td>
+                        <td class="base">7.68</td>
+                        <td class="chengdu">8.29</td>
+                        <td class="mianyang">8.45</td>
+                        <td class="kunming">8.60</td>
+                        <td class="xian">8.06</td>
                     </tr>
+
                     <tr>
-                        <td>大闸蟹(母)</td>
-                        <td class="price">¥45.00</td>
-                        <td class="price">¥48.60</td>
-                        <td class="price">¥49.50</td>
-                        <td class="price">¥100.80</td>
-                        <td class="price">¥47.25</td>
+                        <td class="name">白虾</td>
+                        <td class="base">11.92</td>
+                        <td class="chengdu">12.87</td>
+                        <td class="mianyang">13.11</td>
+                        <td class="kunming">13.35</td>
+                        <td class="xian">12.52</td>
                     </tr>
+
                     <tr>
-                        <td>基围虾</td>
-                        <td class="price">¥38.00</td>
-                        <td class="price">¥41.04</td>
-                        <td class="price">¥41.80</td>
-                        <td class="price">¥85.12</td>
-                        <td class="price">¥39.90</td>
+                        <td class="name">基围虾</td>
+                        <td class="base">9.37</td>
+                        <td class="chengdu">10.12</td>
+                        <td class="mianyang">10.31</td>
+                        <td class="kunming">10.49</td>
+                        <td class="xian">9.84</td>
                     </tr>
+
                     <tr>
-                        <td>罗非鱼</td>
-                        <td class="price">¥10.00</td>
-                        <td class="price">¥10.80</td>
-                        <td class="price">¥11.00</td>
-                        <td class="price">¥22.40</td>
-                        <td class="price">¥10.50</td>
+                        <td class="name">大闸蟹</td>
+                        <td class="base">6.61</td>
+                        <td class="chengdu">7.14</td>
+                        <td class="mianyang">7.27</td>
+                        <td class="kunming">7.40</td>
+                        <td class="xian">6.94</td>
                     </tr>
+
                     <tr>
-                        <td>鳜鱼(桂鱼)</td>
-                        <td class="price">¥40.00</td>
-                        <td class="price">¥43.20</td>
-                        <td class="price">¥44.00</td>
-                        <td class="price">¥89.60</td>
-                        <td class="price">¥42.00</td>
+                        <td class="name">河蟹</td>
+                        <td class="base">3.68</td>
+                        <td class="chengdu">3.97</td>
+                        <td class="mianyang">4.05</td>
+                        <td class="kunming">4.12</td>
+                        <td class="xian">3.86</td>
                     </tr>
-                    <tr>
-                        <td>鲈鱼</td>
-                        <td class="price">¥20.00</td>
-                        <td class="price">¥21.60</td>
-                        <td class="price">¥22.00</td>
-                        <td class="price">¥44.80</td>
-                        <td class="price">¥21.00</td>
-                    </tr>
-                    <tr>
-                        <td>牛蛙</td>
-                        <td class="price">¥12.00</td>
-                        <td class="price">¥12.96</td>
-                        <td class="price">¥13.20</td>
-                        <td class="price">¥26.88</td>
-                        <td class="price">¥12.60</td>
-                    </tr>
-                    <tr>
-                        <td>甲鱼</td>
-                        <td class="price">¥30.00</td>
-                        <td class="price">¥32.40</td>
-                        <td class="price">¥33.00</td>
-                        <td class="price">¥67.20</td>
-                        <td class="price">¥31.50</td>
-                    </tr>
-                    <tr>
-                        <td>乌龟</td>
-                        <td class="price">¥25.00</td>
-                        <td class="price">¥27.00</td>
-                        <td class="price">¥27.50</td>
-                        <td class="price">¥56.00</td>
-                        <td class="price">¥26.25</td>
-                    </tr>
-                    <tr>
-                        <td>田螺</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
-                    </tr>
-                    <tr>
-                        <td>河虾</td>
-                        <td class="price">¥50.00</td>
-                        <td class="price">¥54.00</td>
-                        <td class="price">¥55.00</td>
-                        <td class="price">¥112.00</td>
-                        <td class="price">¥52.50</td>
-                    </tr>
-                    <tr>
-                        <td>皮皮虾</td>
-                        <td class="price">¥35.00</td>
-                        <td class="price">¥37.80</td>
-                        <td class="price">¥38.50</td>
-                        <td class="price">¥78.40</td>
-                        <td class="price">¥36.75</td>
-                    </tr>
-                    <tr>
-                        <td>海参</td>
-                        <td class="price">¥80.00</td>
-                        <td class="price">¥86.40</td>
-                        <td class="price">¥88.00</td>
-                        <td class="price">¥179.20</td>
-                        <td class="price">¥84.00</td>
-                    </tr>
+
                 </tbody>
             </table>
         </div>
 
-        <div class="category-section">
-            <div class="category-header" style="background: #f97316;">
-                <span class="icon">🍎</span>
-                <span class="name">水果</span>
-                <span class="count">26品种</span>
-            </div>
-            <table class="price-table">
+        <div class="section">
+            <div class="section-title fruit">🍎 水果</div>
+            <table>
                 <thead>
                     <tr>
-                        <th>品名</th>
-                        <th>北京<br><small>(斤)</small></th>
-                        <th>成都<br><small>(斤)</small></th>
-                        <th>绵阳<br><small>(斤)</small></th>
-                        <th>昆明<br><small>(公斤)</small></th>
-                        <th>西安<br><small>(斤)</small></th>
+                        <th style="width:25%;">品名</th>
+                        <th class="base" style="width:15%;">北京</th>
+                        <th class="chengdu" style="width:15%;">成都</th>
+                        <th class="mianyang" style="width:15%;">绵阳</th>
+                        <th class="kunming" style="width:15%;">昆明</th>
+                        <th class="xian" style="width:15%;">西安</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>苹果(红富士)</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
-                    </tr>
-                    <tr>
-                        <td>香蕉(国产)</td>
-                        <td class="price">¥3.00</td>
-                        <td class="price">¥3.24</td>
-                        <td class="price">¥3.30</td>
-                        <td class="price">¥6.72</td>
-                        <td class="price">¥3.15</td>
-                    </tr>
-                    <tr>
-                        <td>香蕉(进口)</td>
-                        <td class="price">¥6.00</td>
-                        <td class="price">¥6.48</td>
-                        <td class="price">¥6.60</td>
-                        <td class="price">¥13.44</td>
-                        <td class="price">¥6.30</td>
-                    </tr>
-                    <tr>
-                        <td>橙子(脐橙)</td>
-                        <td class="price">¥4.50</td>
-                        <td class="price">¥4.86</td>
-                        <td class="price">¥4.95</td>
-                        <td class="price">¥10.08</td>
-                        <td class="price">¥4.73</td>
-                    </tr>
-                    <tr>
-                        <td>橘子(蜜橘)</td>
-                        <td class="price">¥3.00</td>
-                        <td class="price">¥3.24</td>
-                        <td class="price">¥3.30</td>
-                        <td class="price">¥6.72</td>
-                        <td class="price">¥3.15</td>
-                    </tr>
-                    <tr>
-                        <td>葡萄(红提)</td>
-                        <td class="price">¥8.00</td>
-                        <td class="price">¥8.64</td>
-                        <td class="price">¥8.80</td>
-                        <td class="price">¥17.92</td>
-                        <td class="price">¥8.40</td>
-                    </tr>
-                    <tr>
-                        <td>葡萄(青提)</td>
-                        <td class="price">¥10.00</td>
-                        <td class="price">¥10.80</td>
-                        <td class="price">¥11.00</td>
-                        <td class="price">¥22.40</td>
-                        <td class="price">¥10.50</td>
-                    </tr>
-                    <tr>
-                        <td>西瓜(黑美人)</td>
-                        <td class="price">¥2.50</td>
-                        <td class="price">¥2.70</td>
-                        <td class="price">¥2.75</td>
-                        <td class="price">¥5.60</td>
-                        <td class="price">¥2.62</td>
-                    </tr>
-                    <tr>
-                        <td>西瓜(麒麟)</td>
-                        <td class="price">¥3.00</td>
-                        <td class="price">¥3.24</td>
-                        <td class="price">¥3.30</td>
-                        <td class="price">¥6.72</td>
-                        <td class="price">¥3.15</td>
-                    </tr>
-                    <tr>
-                        <td>芒果(金煌)</td>
-                        <td class="price">¥6.00</td>
-                        <td class="price">¥6.48</td>
-                        <td class="price">¥6.60</td>
-                        <td class="price">¥13.44</td>
-                        <td class="price">¥6.30</td>
-                    </tr>
-                    <tr>
-                        <td>芒果(凯特)</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
-                    </tr>
-                    <tr>
-                        <td>草莓(红颜)</td>
-                        <td class="price">¥15.00</td>
-                        <td class="price">¥16.20</td>
-                        <td class="price">¥16.50</td>
-                        <td class="price">¥33.60</td>
-                        <td class="price">¥15.75</td>
-                    </tr>
-                    <tr>
-                        <td>猕猴桃(绿心)</td>
-                        <td class="price">¥4.00</td>
-                        <td class="price">¥4.32</td>
-                        <td class="price">¥4.40</td>
-                        <td class="price">¥8.96</td>
-                        <td class="price">¥4.20</td>
-                    </tr>
-                    <tr>
-                        <td>猕猴桃(红心)</td>
-                        <td class="price">¥10.00</td>
-                        <td class="price">¥10.80</td>
-                        <td class="price">¥11.00</td>
-                        <td class="price">¥22.40</td>
-                        <td class="price">¥10.50</td>
-                    </tr>
-                    <tr>
-                        <td>菠萝</td>
-                        <td class="price">¥2.50</td>
-                        <td class="price">¥2.70</td>
-                        <td class="price">¥2.75</td>
-                        <td class="price">¥5.60</td>
-                        <td class="price">¥2.62</td>
-                    </tr>
-                    <tr>
-                        <td>柚子(白肉)</td>
-                        <td class="price">¥3.00</td>
-                        <td class="price">¥3.24</td>
-                        <td class="price">¥3.30</td>
-                        <td class="price">¥6.72</td>
-                        <td class="price">¥3.15</td>
-                    </tr>
-                    <tr>
-                        <td>柚子(红肉)</td>
-                        <td class="price">¥4.00</td>
-                        <td class="price">¥4.32</td>
-                        <td class="price">¥4.40</td>
-                        <td class="price">¥8.96</td>
-                        <td class="price">¥4.20</td>
-                    </tr>
-                    <tr>
-                        <td>石榴(软籽)</td>
-                        <td class="price">¥8.00</td>
-                        <td class="price">¥8.64</td>
-                        <td class="price">¥8.80</td>
-                        <td class="price">¥17.92</td>
-                        <td class="price">¥8.40</td>
-                    </tr>
-                    <tr>
-                        <td>火龙果(白心)</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
-                    </tr>
-                    <tr>
-                        <td>火龙果(红心)</td>
-                        <td class="price">¥7.00</td>
-                        <td class="price">¥7.56</td>
-                        <td class="price">¥7.70</td>
-                        <td class="price">¥15.68</td>
-                        <td class="price">¥7.35</td>
-                    </tr>
-                    <tr>
-                        <td>枇杷</td>
-                        <td class="price">¥15.00</td>
-                        <td class="price">¥16.20</td>
-                        <td class="price">¥16.50</td>
-                        <td class="price">¥33.60</td>
-                        <td class="price">¥15.75</td>
-                    </tr>
-                    <tr>
-                        <td>樱桃</td>
-                        <td class="price">¥30.00</td>
-                        <td class="price">¥32.40</td>
-                        <td class="price">¥33.00</td>
-                        <td class="price">¥67.20</td>
-                        <td class="price">¥31.50</td>
-                    </tr>
-                    <tr>
-                        <td>龙眼</td>
-                        <td class="price">¥12.00</td>
-                        <td class="price">¥12.96</td>
-                        <td class="price">¥13.20</td>
-                        <td class="price">¥26.88</td>
-                        <td class="price">¥12.60</td>
-                    </tr>
-                    <tr>
-                        <td>荔枝</td>
-                        <td class="price">¥15.00</td>
-                        <td class="price">¥16.20</td>
-                        <td class="price">¥16.50</td>
-                        <td class="price">¥33.60</td>
-                        <td class="price">¥15.75</td>
-                    </tr>
-                    <tr>
-                        <td>甘蔗</td>
-                        <td class="price">¥1.50</td>
-                        <td class="price">¥1.62</td>
-                        <td class="price">¥1.65</td>
-                        <td class="price">¥3.36</td>
-                        <td class="price">¥1.58</td>
-                    </tr>
-                    <tr>
-                        <td>椰子</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
 
-        <div class="category-section">
-            <div class="category-header" style="background: #a855f7;">
-                <span class="icon">🥚</span>
-                <span class="name">禽蛋</span>
-                <span class="count">10品种</span>
-            </div>
-            <table class="price-table">
-                <thead>
                     <tr>
-                        <th>品名</th>
-                        <th>北京<br><small>(斤)</small></th>
-                        <th>成都<br><small>(斤)</small></th>
-                        <th>绵阳<br><small>(斤)</small></th>
-                        <th>昆明<br><small>(公斤)</small></th>
-                        <th>西安<br><small>(斤)</small></th>
+                        <td class="name">苹果</td>
+                        <td class="base">14.93</td>
+                        <td class="chengdu">16.12</td>
+                        <td class="mianyang">16.42</td>
+                        <td class="kunming">16.72</td>
+                        <td class="xian">15.68</td>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>鸡蛋(红蛋)</td>
-                        <td class="price">¥4.50</td>
-                        <td class="price">¥4.86</td>
-                        <td class="price">¥4.95</td>
-                        <td class="price">¥10.08</td>
-                        <td class="price">¥4.73</td>
-                    </tr>
-                    <tr>
-                        <td>鸡蛋(粉蛋)</td>
-                        <td class="price">¥4.20</td>
-                        <td class="price">¥4.54</td>
-                        <td class="price">¥4.62</td>
-                        <td class="price">¥9.41</td>
-                        <td class="price">¥4.41</td>
-                    </tr>
-                    <tr>
-                        <td>鸭蛋</td>
-                        <td class="price">¥6.50</td>
-                        <td class="price">¥7.02</td>
-                        <td class="price">¥7.15</td>
-                        <td class="price">¥14.56</td>
-                        <td class="price">¥6.83</td>
-                    </tr>
-                    <tr>
-                        <td>鹅蛋</td>
-                        <td class="price">¥8.00</td>
-                        <td class="price">¥8.64</td>
-                        <td class="price">¥8.80</td>
-                        <td class="price">¥17.92</td>
-                        <td class="price">¥8.40</td>
-                    </tr>
-                    <tr>
-                        <td>鹌鹑蛋</td>
-                        <td class="price">¥7.00</td>
-                        <td class="price">¥7.56</td>
-                        <td class="price">¥7.70</td>
-                        <td class="price">¥15.68</td>
-                        <td class="price">¥7.35</td>
-                    </tr>
-                    <tr>
-                        <td>皮蛋</td>
-                        <td class="price">¥8.00</td>
-                        <td class="price">¥8.64</td>
-                        <td class="price">¥8.80</td>
-                        <td class="price">¥17.92</td>
-                        <td class="price">¥8.40</td>
-                    </tr>
-                    <tr>
-                        <td>咸鸭蛋</td>
-                        <td class="price">¥10.00</td>
-                        <td class="price">¥10.80</td>
-                        <td class="price">¥11.00</td>
-                        <td class="price">¥22.40</td>
-                        <td class="price">¥10.50</td>
-                    </tr>
-                    <tr>
-                        <td>乌鸡蛋</td>
-                        <td class="price">¥12.00</td>
-                        <td class="price">¥12.96</td>
-                        <td class="price">¥13.20</td>
-                        <td class="price">¥26.88</td>
-                        <td class="price">¥12.60</td>
-                    </tr>
-                    <tr>
-                        <td>绿壳蛋</td>
-                        <td class="price">¥10.00</td>
-                        <td class="price">¥10.80</td>
-                        <td class="price">¥11.00</td>
-                        <td class="price">¥22.40</td>
-                        <td class="price">¥10.50</td>
-                    </tr>
-                    <tr>
-                        <td>土鸡蛋</td>
-                        <td class="price">¥15.00</td>
-                        <td class="price">¥16.20</td>
-                        <td class="price">¥16.50</td>
-                        <td class="price">¥33.60</td>
-                        <td class="price">¥15.75</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
 
-        <div class="category-section">
-            <div class="category-header" style="background: #eab308;">
-                <span class="icon">🌾</span>
-                <span class="name">粮油</span>
-                <span class="count">16品种</span>
-            </div>
-            <table class="price-table">
-                <thead>
                     <tr>
-                        <th>品名</th>
-                        <th>北京<br><small>(斤)</small></th>
-                        <th>成都<br><small>(斤)</small></th>
-                        <th>绵阳<br><small>(斤)</small></th>
-                        <th>昆明<br><small>(公斤)</small></th>
-                        <th>西安<br><small>(斤)</small></th>
+                        <td class="name">梨</td>
+                        <td class="base">14.00</td>
+                        <td class="chengdu">15.12</td>
+                        <td class="mianyang">15.40</td>
+                        <td class="kunming">15.68</td>
+                        <td class="xian">14.70</td>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>大米(普通)</td>
-                        <td class="price">¥2.50</td>
-                        <td class="price">¥2.70</td>
-                        <td class="price">¥2.75</td>
-                        <td class="price">¥5.60</td>
-                        <td class="price">¥2.62</td>
-                    </tr>
-                    <tr>
-                        <td>大米(优质)</td>
-                        <td class="price">¥3.50</td>
-                        <td class="price">¥3.78</td>
-                        <td class="price">¥3.85</td>
-                        <td class="price">¥7.84</td>
-                        <td class="price">¥3.68</td>
-                    </tr>
-                    <tr>
-                        <td>面粉(特一)</td>
-                        <td class="price">¥2.80</td>
-                        <td class="price">¥3.02</td>
-                        <td class="price">¥3.08</td>
-                        <td class="price">¥6.27</td>
-                        <td class="price">¥2.94</td>
-                    </tr>
-                    <tr>
-                        <td>面条(挂面)</td>
-                        <td class="price">¥3.50</td>
-                        <td class="price">¥3.78</td>
-                        <td class="price">¥3.85</td>
-                        <td class="price">¥7.84</td>
-                        <td class="price">¥3.68</td>
-                    </tr>
-                    <tr>
-                        <td>花生油(5L)</td>
-                        <td class="price">¥65.00</td>
-                        <td class="price">¥70.20</td>
-                        <td class="price">¥71.50</td>
-                        <td class="price">¥145.60</td>
-                        <td class="price">¥68.25</td>
-                    </tr>
-                    <tr>
-                        <td>菜籽油(5L)</td>
-                        <td class="price">¥55.00</td>
-                        <td class="price">¥59.40</td>
-                        <td class="price">¥60.50</td>
-                        <td class="price">¥123.20</td>
-                        <td class="price">¥57.75</td>
-                    </tr>
-                    <tr>
-                        <td>大豆油(5L)</td>
-                        <td class="price">¥45.00</td>
-                        <td class="price">¥48.60</td>
-                        <td class="price">¥49.50</td>
-                        <td class="price">¥100.80</td>
-                        <td class="price">¥47.25</td>
-                    </tr>
-                    <tr>
-                        <td>玉米油(5L)</td>
-                        <td class="price">¥60.00</td>
-                        <td class="price">¥64.80</td>
-                        <td class="price">¥66.00</td>
-                        <td class="price">¥134.40</td>
-                        <td class="price">¥63.00</td>
-                    </tr>
-                    <tr>
-                        <td>芝麻油</td>
-                        <td class="price">¥25.00</td>
-                        <td class="price">¥27.00</td>
-                        <td class="price">¥27.50</td>
-                        <td class="price">¥56.00</td>
-                        <td class="price">¥26.25</td>
-                    </tr>
-                    <tr>
-                        <td>糯米</td>
-                        <td class="price">¥4.00</td>
-                        <td class="price">¥4.32</td>
-                        <td class="price">¥4.40</td>
-                        <td class="price">¥8.96</td>
-                        <td class="price">¥4.20</td>
-                    </tr>
-                    <tr>
-                        <td>小米</td>
-                        <td class="price">¥6.00</td>
-                        <td class="price">¥6.48</td>
-                        <td class="price">¥6.60</td>
-                        <td class="price">¥13.44</td>
-                        <td class="price">¥6.30</td>
-                    </tr>
-                    <tr>
-                        <td>红豆</td>
-                        <td class="price">¥7.00</td>
-                        <td class="price">¥7.56</td>
-                        <td class="price">¥7.70</td>
-                        <td class="price">¥15.68</td>
-                        <td class="price">¥7.35</td>
-                    </tr>
-                    <tr>
-                        <td>绿豆</td>
-                        <td class="price">¥8.00</td>
-                        <td class="price">¥8.64</td>
-                        <td class="price">¥8.80</td>
-                        <td class="price">¥17.92</td>
-                        <td class="price">¥8.40</td>
-                    </tr>
-                    <tr>
-                        <td>黄豆</td>
-                        <td class="price">¥4.50</td>
-                        <td class="price">¥4.86</td>
-                        <td class="price">¥4.95</td>
-                        <td class="price">¥10.08</td>
-                        <td class="price">¥4.73</td>
-                    </tr>
-                    <tr>
-                        <td>花生(带壳)</td>
-                        <td class="price">¥6.00</td>
-                        <td class="price">¥6.48</td>
-                        <td class="price">¥6.60</td>
-                        <td class="price">¥13.44</td>
-                        <td class="price">¥6.30</td>
-                    </tr>
-                    <tr>
-                        <td>花生米</td>
-                        <td class="price">¥9.00</td>
-                        <td class="price">¥9.72</td>
-                        <td class="price">¥9.90</td>
-                        <td class="price">¥20.16</td>
-                        <td class="price">¥9.45</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
 
-        <div class="category-section">
-            <div class="category-header" style="background: #92400e;">
-                <span class="icon">🧄</span>
-                <span class="name">调料</span>
-                <span class="count">23品种</span>
-            </div>
-            <table class="price-table">
-                <thead>
                     <tr>
-                        <th>品名</th>
-                        <th>北京<br><small>(斤)</small></th>
-                        <th>成都<br><small>(斤)</small></th>
-                        <th>绵阳<br><small>(斤)</small></th>
-                        <th>昆明<br><small>(公斤)</small></th>
-                        <th>西安<br><small>(斤)</small></th>
+                        <td class="name">香蕉</td>
+                        <td class="base">8.31</td>
+                        <td class="chengdu">8.97</td>
+                        <td class="mianyang">9.14</td>
+                        <td class="kunming">9.31</td>
+                        <td class="xian">8.73</td>
                     </tr>
-                </thead>
-                <tbody>
+
                     <tr>
-                        <td>干辣椒(子弹)</td>
-                        <td class="price">¥18.00</td>
-                        <td class="price">¥19.44</td>
-                        <td class="price">¥19.80</td>
-                        <td class="price">¥40.32</td>
-                        <td class="price">¥18.90</td>
+                        <td class="name">橘子</td>
+                        <td class="base">5.90</td>
+                        <td class="chengdu">6.37</td>
+                        <td class="mianyang">6.49</td>
+                        <td class="kunming">6.61</td>
+                        <td class="xian">6.20</td>
                     </tr>
+
                     <tr>
-                        <td>干辣椒(灯笼)</td>
-                        <td class="price">¥20.00</td>
-                        <td class="price">¥21.60</td>
-                        <td class="price">¥22.00</td>
-                        <td class="price">¥44.80</td>
-                        <td class="price">¥21.00</td>
+                        <td class="name">橙子</td>
+                        <td class="base">4.68</td>
+                        <td class="chengdu">5.05</td>
+                        <td class="mianyang">5.15</td>
+                        <td class="kunming">5.24</td>
+                        <td class="xian">4.91</td>
                     </tr>
+
                     <tr>
-                        <td>干辣椒(满天星)</td>
-                        <td class="price">¥22.00</td>
-                        <td class="price">¥23.76</td>
-                        <td class="price">¥24.20</td>
-                        <td class="price">¥49.28</td>
-                        <td class="price">¥23.10</td>
+                        <td class="name">柚子</td>
+                        <td class="base">4.99</td>
+                        <td class="chengdu">5.39</td>
+                        <td class="mianyang">5.49</td>
+                        <td class="kunming">5.59</td>
+                        <td class="xian">5.24</td>
                     </tr>
+
                     <tr>
-                        <td>新一代(微辣)</td>
-                        <td class="price">¥15.00</td>
-                        <td class="price">¥16.20</td>
-                        <td class="price">¥16.50</td>
-                        <td class="price">¥33.60</td>
-                        <td class="price">¥15.75</td>
+                        <td class="name">葡萄</td>
+                        <td class="base">4.27</td>
+                        <td class="chengdu">4.61</td>
+                        <td class="mianyang">4.70</td>
+                        <td class="kunming">4.78</td>
+                        <td class="xian">4.48</td>
                     </tr>
+
                     <tr>
-                        <td>花椒(大红袍)</td>
-                        <td class="price">¥80.00</td>
-                        <td class="price">¥86.40</td>
-                        <td class="price">¥88.00</td>
-                        <td class="price">¥179.20</td>
-                        <td class="price">¥84.00</td>
+                        <td class="name">西瓜</td>
+                        <td class="base">4.58</td>
+                        <td class="chengdu">4.95</td>
+                        <td class="mianyang">5.04</td>
+                        <td class="kunming">5.13</td>
+                        <td class="xian">4.81</td>
                     </tr>
+
                     <tr>
-                        <td>花椒(青花椒)</td>
-                        <td class="price">¥45.00</td>
-                        <td class="price">¥48.60</td>
-                        <td class="price">¥49.50</td>
-                        <td class="price">¥100.80</td>
-                        <td class="price">¥47.25</td>
+                        <td class="name">哈密瓜</td>
+                        <td class="base">7.49</td>
+                        <td class="chengdu">8.09</td>
+                        <td class="mianyang">8.24</td>
+                        <td class="kunming">8.39</td>
+                        <td class="xian">7.86</td>
                     </tr>
+
                     <tr>
-                        <td>麻椒</td>
-                        <td class="price">¥50.00</td>
-                        <td class="price">¥54.00</td>
-                        <td class="price">¥55.00</td>
-                        <td class="price">¥112.00</td>
-                        <td class="price">¥52.50</td>
+                        <td class="name">草莓</td>
+                        <td class="base">6.59</td>
+                        <td class="chengdu">7.12</td>
+                        <td class="mianyang">7.25</td>
+                        <td class="kunming">7.38</td>
+                        <td class="xian">6.92</td>
                     </tr>
+
                     <tr>
-                        <td>八角</td>
-                        <td class="price">¥25.00</td>
-                        <td class="price">¥27.00</td>
-                        <td class="price">¥27.50</td>
-                        <td class="price">¥56.00</td>
-                        <td class="price">¥26.25</td>
+                        <td class="name">猕猴桃</td>
+                        <td class="base">5.24</td>
+                        <td class="chengdu">5.66</td>
+                        <td class="mianyang">5.76</td>
+                        <td class="kunming">5.87</td>
+                        <td class="xian">5.50</td>
                     </tr>
+
                     <tr>
-                        <td>桂皮</td>
-                        <td class="price">¥15.00</td>
-                        <td class="price">¥16.20</td>
-                        <td class="price">¥16.50</td>
-                        <td class="price">¥33.60</td>
-                        <td class="price">¥15.75</td>
+                        <td class="name">菠萝</td>
+                        <td class="base">2.50</td>
+                        <td class="chengdu">2.70</td>
+                        <td class="mianyang">2.75</td>
+                        <td class="kunming">2.80</td>
+                        <td class="xian">2.62</td>
                     </tr>
+
                     <tr>
-                        <td>香叶</td>
-                        <td class="price">¥20.00</td>
-                        <td class="price">¥21.60</td>
-                        <td class="price">¥22.00</td>
-                        <td class="price">¥44.80</td>
-                        <td class="price">¥21.00</td>
+                        <td class="name">芒果</td>
+                        <td class="base">10.19</td>
+                        <td class="chengdu">11.01</td>
+                        <td class="mianyang">11.21</td>
+                        <td class="kunming">11.41</td>
+                        <td class="xian">10.70</td>
                     </tr>
-                    <tr>
-                        <td>陈皮</td>
-                        <td class="price">¥12.00</td>
-                        <td class="price">¥12.96</td>
-                        <td class="price">¥13.20</td>
-                        <td class="price">¥26.88</td>
-                        <td class="price">¥12.60</td>
-                    </tr>
-                    <tr>
-                        <td>白扣(白豆蔻)</td>
-                        <td class="price">¥35.00</td>
-                        <td class="price">¥37.80</td>
-                        <td class="price">¥38.50</td>
-                        <td class="price">¥78.40</td>
-                        <td class="price">¥36.75</td>
-                    </tr>
-                    <tr>
-                        <td>草果</td>
-                        <td class="price">¥30.00</td>
-                        <td class="price">¥32.40</td>
-                        <td class="price">¥33.00</td>
-                        <td class="price">¥67.20</td>
-                        <td class="price">¥31.50</td>
-                    </tr>
-                    <tr>
-                        <td>砂仁</td>
-                        <td class="price">¥28.00</td>
-                        <td class="price">¥30.24</td>
-                        <td class="price">¥30.80</td>
-                        <td class="price">¥62.72</td>
-                        <td class="price">¥29.40</td>
-                    </tr>
-                    <tr>
-                        <td>小茴香</td>
-                        <td class="price">¥10.00</td>
-                        <td class="price">¥10.80</td>
-                        <td class="price">¥11.00</td>
-                        <td class="price">¥22.40</td>
-                        <td class="price">¥10.50</td>
-                    </tr>
-                    <tr>
-                        <td>孜然</td>
-                        <td class="price">¥22.00</td>
-                        <td class="price">¥23.76</td>
-                        <td class="price">¥24.20</td>
-                        <td class="price">¥49.28</td>
-                        <td class="price">¥23.10</td>
-                    </tr>
-                    <tr>
-                        <td>胡椒(黑)</td>
-                        <td class="price">¥30.00</td>
-                        <td class="price">¥32.40</td>
-                        <td class="price">¥33.00</td>
-                        <td class="price">¥67.20</td>
-                        <td class="price">¥31.50</td>
-                    </tr>
-                    <tr>
-                        <td>胡椒(白)</td>
-                        <td class="price">¥35.00</td>
-                        <td class="price">¥37.80</td>
-                        <td class="price">¥38.50</td>
-                        <td class="price">¥78.40</td>
-                        <td class="price">¥36.75</td>
-                    </tr>
-                    <tr>
-                        <td>豆瓣(郫县)</td>
-                        <td class="price">¥8.00</td>
-                        <td class="price">¥8.64</td>
-                        <td class="price">¥8.80</td>
-                        <td class="price">¥17.92</td>
-                        <td class="price">¥8.40</td>
-                    </tr>
-                    <tr>
-                        <td>豆豉</td>
-                        <td class="price">¥6.00</td>
-                        <td class="price">¥6.48</td>
-                        <td class="price">¥6.60</td>
-                        <td class="price">¥13.44</td>
-                        <td class="price">¥6.30</td>
-                    </tr>
-                    <tr>
-                        <td>泡椒</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
-                    </tr>
-                    <tr>
-                        <td>酸菜</td>
-                        <td class="price">¥4.00</td>
-                        <td class="price">¥4.32</td>
-                        <td class="price">¥4.40</td>
-                        <td class="price">¥8.96</td>
-                        <td class="price">¥4.20</td>
-                    </tr>
-                    <tr>
-                        <td>榨菜</td>
-                        <td class="price">¥5.00</td>
-                        <td class="price">¥5.40</td>
-                        <td class="price">¥5.50</td>
-                        <td class="price">¥11.20</td>
-                        <td class="price">¥5.25</td>
-                    </tr>
+
                 </tbody>
             </table>
         </div>
 
         <div class="footer">
-            <p>数据更新时间：2026-04-01 11:19</p>
-            <p>价格仅供参考，实际交易请以市场为准</p>
+            <p>数据来源: 北京新发地批发市场 API (实时数据)</p>
+            <p>价格仅供参考，实际成交价以当地市场为准</p>
+            <p>生成时间: 2026-04-01 11:20:35</p>
         </div>
     </div>
 </body>
